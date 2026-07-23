@@ -1,26 +1,190 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Design tokens — single dark theme (Meet Khunt portfolio design system)
+--------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color */
+  --color-bg: #0f0e0e;
+  --color-ink: #0f0e0e; /* dark text on light surfaces */
+  --color-paper: #ffffff; /* primary text / borders / pills */
+  --color-muted: rgba(255, 255, 255, 0.5); /* labels, categories, hover */
+  --color-ink-10: rgba(15, 14, 14, 0.1);
+  --color-ink-50: rgba(15, 14, 14, 0.5);
+  --color-accent: #ffd98e; /* warm cream accent */
+  --color-scrim: rgba(16, 16, 16, 0.4);
+
+  /* Layout */
+  --max-w: 1800px;
+  --gutter: 20px;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (min-width: 1200px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --gutter: 48px;
   }
 }
 
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-ink: var(--color-ink);
+  --color-paper: var(--color-paper);
+  --color-muted: var(--color-muted);
+  --color-accent: var(--color-accent);
+  --color-scrim: var(--color-scrim);
+  --font-sans: var(--font-switzer);
+  --font-ui: var(--font-inter);
+
+  /* Template breakpoints: phone < 810 <= tablet < 1200 <= desktop */
+  --breakpoint-md: 810px;
+  --breakpoint-lg: 1200px;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+html {
+  background: var(--color-bg);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-paper);
+  font-family: var(--font-switzer), sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Hide native cursor when the custom cursor is active (fine pointers only) */
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* Lenis recommended styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ---------------------------------------------------------------------------
+   Type presets (design system)
+--------------------------------------------------------------------------- */
+.heading-xl {
+  font-size: 40px;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: var(--color-paper);
+}
+@media (min-width: 1200px) {
+  .heading-xl {
+    font-size: 80px;
+  }
+}
+
+.title-sm {
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: var(--color-paper);
+}
+
+.label {
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+@media (max-width: 809.98px) {
+  .label {
+    font-size: 13px;
+  }
+}
+
+.small-caps {
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-paper);
+}
+
+.category {
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+/* Link hover: white -> 50% white */
+.link-fade {
+  color: var(--color-paper);
+  transition: color 0.2s ease;
+}
+.link-fade:hover {
+  color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Layout helpers
+--------------------------------------------------------------------------- */
+/* Section row: full width, centered, max 1800px with gutter padding */
+.section-row {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Pill button (white) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper);
+  border: 1px solid var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  padding: 10px 16px;
+  transition: transform 0.3s var(--ease-out-soft);
+  will-change: transform;
+}
+.pill:hover {
+  transform: scale(1.05);
+}
+
+/* SplitText mask lines */
+.reveal-line {
+  will-change: transform;
 }

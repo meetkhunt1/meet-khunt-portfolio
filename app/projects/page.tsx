@@ -1,20 +1,19 @@
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Hero from "@/components/sections/Hero";
 import Works from "@/components/sections/Works";
-import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
 import FixedBadge from "@/components/ui/FixedBadge";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Work — Meet Khunt",
+};
+
+export default function ProjectsPage() {
   return (
     <>
       <Header />
-      <main className="flex w-full flex-col items-center overflow-hidden">
-        <Hero />
+      <main className="flex w-full flex-col items-center overflow-hidden pt-20">
         <Works />
-        <About />
-        <Contact />
         <Footer />
       </main>
       <FixedBadge />
