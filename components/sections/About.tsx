@@ -35,7 +35,7 @@ export default function About() {
     <section id="about" className="section-row pt-[120px] lg:pt-[200px]">
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-0">
         {/* Left: text + info columns */}
-        <div className="flex flex-[5] flex-col gap-24 lg:gap-40 lg:pt-[60px]">
+        <div className="flex flex-3 flex-col gap-24 lg:gap-40 lg:pt-[60px]">
           <div className="flex flex-col gap-12">
             <h3 className="heading-xl">
               <RevealText as="span" split="lines" className="block">
@@ -83,15 +83,16 @@ export default function About() {
 
         {/* Right: portrait (desktop only) */}
         <div
-          className="hidden flex-1 self-start lg:sticky lg:top-24 lg:block"
+          className="hidden flex-2 self-start lg:sticky lg:top-24 lg:block"
           ref={portraitRef}
         >
           <ParallaxImage
             src={ABOUT.portrait}
             alt="Portrait of Meet Khunt"
-            className="aspect-[4/5] w-full"
+            /* Capped so the portrait stays fully visible while it sticks */
+            className="aspect-[4/5] max-h-[calc(100svh-9rem)] w-full"
             strength={6}
-            sizes="(min-width: 1200px) 33vw, 0px"
+            sizes="(min-width: 1200px) 40vw, 0px"
           />
         </div>
       </div>
