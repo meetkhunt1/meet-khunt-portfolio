@@ -31,15 +31,17 @@ function GalleryRow({ images }: { images: GalleryImage[] }) {
   return (
     <div className={`grid grid-cols-1 items-start gap-6 ${cols}`}>
       {images.map((img) => (
-        <Image
-          key={img.src}
-          src={img.src}
-          alt={img.alt}
-          width={img.width}
-          height={img.height}
-          sizes={images.length > 1 ? "(min-width: 768px) 50vw, 100vw" : "100vw"}
-          className="h-auto w-full"
-        />
+        <figure key={img.src} className="flex flex-col gap-3">
+          <Image
+            src={img.src}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
+            sizes={images.length > 1 ? "(min-width: 768px) 50vw, 100vw" : "100vw"}
+            className="h-auto w-full"
+          />
+          {img.caption && <figcaption className="category">{img.caption}</figcaption>}
+        </figure>
       ))}
     </div>
   );
@@ -61,7 +63,7 @@ export default async function ProjectPage({
   const rows: GalleryImage[][] = [];
   for (const img of project.gallery) {
     const last = rows[rows.length - 1];
-    if (!img.full && last && !last[0].full) last.push(img);
+    if (!img.full && !img.newRow && last && !last[0].full) last.push(img);
     else rows.push([img]);
   }
 
@@ -91,6 +93,29 @@ export default async function ProjectPage({
             >
               Official website ↗
             </a>
+
+            {project.links && (
+              <div className="mt-6 flex w-full max-w-[640px] flex-col">
+                <p className="label pb-4">Live pages</p>
+                {project.links.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="view"
+                    className="group flex items-baseline justify-between gap-6 border-t border-paper/15 py-4 last:border-b"
+                  >
+                    <span className="label normal-case leading-[1.5] text-paper transition-colors group-hover:text-muted">
+                      {link.label}
+                    </span>
+                    <span className="label shrink-0 text-paper/60 transition-transform duration-300 group-hover:translate-x-1">
+                      ↗
+                    </span>
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-[2] gap-12 lg:justify-end lg:pt-24">

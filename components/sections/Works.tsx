@@ -1,26 +1,42 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
 import RevealText from "@/components/anim/RevealText";
-import { PROJECTS, type Project } from "@/lib/data";
+import { FEATURED_PROJECTS, PROJECTS, WORKS, type Project } from "@/lib/data";
 
+function ArrowUpRight({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M7 17 17 7" />
+      <path d="M8 7h9v9" />
+    </svg>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Uniform grid card — /projects index
+--------------------------------------------------------------------------- */
 function ProjectCard({ project }: { project: Project }) {
-  const spanClass =
-    project.span === 4 ? "lg:col-span-4" : "lg:col-span-2";
-  const aspectClass =
-    project.span === 4 ? "aspect-[16/10]" : "aspect-[4/3]";
-
   return (
     <Link
       href={`/projects/${project.slug}`}
       data-card
       data-cursor="view"
-      className={`group flex flex-col opacity-0 lg:pb-[150px] ${spanClass}`}
+      className="group flex flex-col opacity-0 lg:col-span-3"
     >
-      <div className={`relative w-full overflow-hidden ${aspectClass}`}>
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
@@ -37,8 +53,76 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-export default function Works() {
+/* ---------------------------------------------------------------------------
+   Carousel card — home page
+--------------------------------------------------------------------------- */
+function CarouselCard({ project }: { project: Project }) {
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
+      data-card
+      data-cursor="view"
+      className="works-slide group relative snap-start overflow-hidden rounded-[18px] opacity-0"
+    >
+      <div className="relative aspect-square w-full overflow-hidden bg-black/5">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(min-width: 1200px) 25vw, (min-width: 810px) 50vw, 78vw"
+          className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.06]"
+        />
+
+        {/* Scrims: several cards are light screenshots, so the label and the
+            corner arrow need their own contrast, not the photo's. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 bg-linear-to-t from-black/85 via-black/40 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-black/40 to-transparent"
+        />
+
+        {/* Corner arrow */}
+        <span className="absolute right-4 top-4 text-white transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+          <ArrowUpRight className="h-6 w-6" />
+        </span>
+
+        {/* Label */}
+        <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-5">
+          <h6 className="text-[22px] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
+            {project.title}
+          </h6>
+          <p className="category !text-white/75">{project.category}</p>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+type WorksProps = {
+  /** "carousel" = light panel + horizontal slider (home). "grid" = uniform 2-per-row (work index). */
+  variant?: "carousel" | "grid";
+  eyebrow?: string;
+  heading?: string;
+  subheading?: string;
+  showCta?: boolean;
+};
+
+export default function Works({
+  variant = "carousel",
+  eyebrow = WORKS.eyebrow,
+  heading = WORKS.heading,
+  subheading = WORKS.subheading,
+  showCta = true,
+}: WorksProps) {
+  const uniform = variant === "grid";
+  const projects = uniform ? PROJECTS : FEATURED_PROJECTS;
   const gridRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(true);
 
   useGSAP(
     () => {
@@ -54,8 +138,8 @@ export default function Works() {
             y: 0,
             duration: 0.7,
             ease: "power3.out",
-            delay: (i % 2) * 0.12,
-            scrollTrigger: { trigger: card, start: "top 85%", once: true },
+            delay: (i % 4) * 0.1,
+            scrollTrigger: { trigger: card, start: "top 92%", once: true },
           },
         );
       });
@@ -63,34 +147,149 @@ export default function Works() {
     { scope: gridRef },
   );
 
+  /* Arrow state comes from the real scroll position, so it stays right on
+     resize and after a native swipe. */
+  const syncArrows = useCallback(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    setAtStart(el.scrollLeft <= 2);
+    setAtEnd(max <= 2 || el.scrollLeft >= max - 2);
+  }, []);
+
+  useEffect(() => {
+    if (uniform) return;
+    syncArrows();
+    window.addEventListener("resize", syncArrows);
+    return () => window.removeEventListener("resize", syncArrows);
+  }, [uniform, syncArrows]);
+
+  const scrollByCard = (direction: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8;
+    el.scrollBy({ left: step * direction, behavior: "smooth" });
+  };
+
+  /* ---------------- /projects index: uniform 2-per-row grid ---------------- */
+  if (uniform) {
+    return (
+      <section id="works" className="section-row pt-[100px]">
+        <div className="grid grid-cols-12 gap-2.5 py-[60px] pb-12">
+          <RevealText as="h3" className="heading-xl col-span-12" split="lines">
+            {heading}
+          </RevealText>
+        </div>
+
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 gap-x-2.5 gap-y-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-y-[100px]"
+        >
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  /* ------------------- home: light panel + carousel ----------------------- */
   return (
     <section id="works" className="section-row pt-[100px]">
-      {/* Heading on a 12-col grid */}
-      <div className="grid grid-cols-12 gap-2.5 py-[60px] pb-12">
-        <RevealText
-          as="h3"
-          className="heading-xl col-span-12"
-          split="lines"
-        >
-          Selected work
-        </RevealText>
-      </div>
+      <div className="rounded-[28px] bg-[#f1f6fa] px-5 py-14 md:rounded-[40px] md:px-10 md:py-20 lg:px-14">
+        {/* Eyebrow */}
+        <div className="flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-[0_1px_3px_rgba(15,14,14,0.08)]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#2f7cf6]" />
+            <span className="font-ui text-[13px] font-semibold tracking-[-0.01em] text-ink">
+              {eyebrow}
+            </span>
+          </span>
+        </div>
 
-      {/* Asymmetric editorial grid: 2+4 / 4+2 / 2+4 */}
-      <div
-        ref={gridRef}
-        className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-6"
-      >
-        {PROJECTS.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
+        {/* Heading + sub */}
+        <div className="mt-6 flex flex-col items-center gap-4 text-center">
+          <RevealText as="h3" className="heading-xl !text-ink" split="lines">
+            {heading}
+          </RevealText>
+          <p className="max-w-[46ch] font-ui text-[15px] leading-[1.5] text-ink/60 md:text-[17px]">
+            {subheading}
+          </p>
+        </div>
 
-      {/* CTA */}
-      <div className="flex w-full justify-center pb-4 pt-8 lg:pt-0">
-        <Link href="/projects" className="pill rounded-[50px]" data-cursor="grow">
-          see them all
-        </Link>
+        {/* Carousel */}
+        <div ref={gridRef} className="relative mt-12 md:mt-16">
+          <div
+            ref={trackRef}
+            onScroll={syncArrows}
+            data-lenis-prevent
+            className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth"
+          >
+            {projects.map((project) => (
+              <CarouselCard key={project.slug} project={project} />
+            ))}
+          </div>
+
+          {/* Prev / next */}
+          <button
+            type="button"
+            aria-label="Previous projects"
+            onClick={() => scrollByCard(-1)}
+            disabled={atStart}
+            data-cursor="grow"
+            className="absolute left-0 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-ink text-white shadow-[0_6px_20px_rgba(15,14,14,0.18)] transition-all duration-300 hover:scale-105 disabled:pointer-events-none disabled:opacity-25 md:flex"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path d="M19 12H5" />
+              <path d="m12 19-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="Next projects"
+            onClick={() => scrollByCard(1)}
+            disabled={atEnd}
+            data-cursor="grow"
+            className="absolute right-0 top-1/2 hidden h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-2xl bg-ink text-white shadow-[0_6px_20px_rgba(15,14,14,0.18)] transition-all duration-300 hover:scale-105 disabled:pointer-events-none disabled:opacity-25 md:flex"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        {/* CTA */}
+        {showCta && (
+          <div className="mt-12 flex w-full justify-center">
+            <Link
+              href="/projects"
+              data-cursor="grow"
+              className="inline-flex items-center justify-center rounded-[50px] bg-ink px-5 py-3 font-ui text-[12px] font-semibold tracking-[-0.01em] text-white transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-105"
+            >
+              see them all
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

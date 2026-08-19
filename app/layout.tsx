@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import SmoothScroll from "@/components/providers/SmoothScroll";
-import CustomCursor from "@/components/ui/CustomCursor";
+import SiteChrome from "@/components/providers/SiteChrome";
 import { SITE } from "@/lib/data";
 
 const switzer = localFont({
@@ -24,6 +23,7 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://meetkhunt.com"),
   title: SITE.title,
   description: SITE.description,
   openGraph: {
@@ -48,10 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${switzer.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-bg text-paper antialiased">
-        <SmoothScroll>
-          {children}
-          <CustomCursor />
-        </SmoothScroll>
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

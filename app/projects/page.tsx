@@ -13,7 +13,7 @@ export default function ProjectsPage() {
     <>
       <Header />
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
-        <Works />
+        <Works variant="grid" heading="All work" showCta={false} />
         <Footer />
       </main>
       <FixedBadge />

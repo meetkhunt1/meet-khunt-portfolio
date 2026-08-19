@@ -184,6 +184,36 @@ html.lenis body {
   transform: scale(1.05);
 }
 
+/* Work carousel slide: 1 up on phones, 2 on tablet, 4 on desktop (20px gap) */
+.works-slide {
+  flex: 0 0 auto;
+  width: 78%;
+}
+@media (min-width: 640px) {
+  .works-slide {
+    width: 58%;
+  }
+}
+@media (min-width: 810px) {
+  .works-slide {
+    width: calc((100% - 20px) / 2);
+  }
+}
+@media (min-width: 1200px) {
+  .works-slide {
+    width: calc((100% - 60px) / 4);
+  }
+}
+
+/* Horizontal sliders: keep the drag/swipe, drop the scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* SplitText mask lines */
 .reveal-line {
   will-change: transform;

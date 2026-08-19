@@ -1,0 +1,779 @@
+/* ---------------------------------------------------------------------------
+   /d2c — offer page. Light theme, scoped under .d2c so it cannot leak into the
+   dark portfolio. Plain CSS, no utility framework, no animation library.
+--------------------------------------------------------------------------- */
+
+.d2c {
+  /* Light surfaces */
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --ink: #0f0e0e;
+  --muted: rgba(15, 14, 14, 0.62);
+  /* 0.6 is the floor that clears WCAG AA (4.5:1) at 12–13px on both --bg and
+     --surface. Anything lighter fails on the small trust/label copy. */
+  --soft: rgba(15, 14, 14, 0.6);
+  --line: rgba(15, 14, 14, 0.1);
+  --line-strong: rgba(15, 14, 14, 0.18);
+
+  /* Brand accent, carried over from the home page. Used as a fill behind ink
+     text only — cream on white has no usable contrast. */
+  --accent: #ffd98e;
+  --accent-deep: #f5c25c;
+
+  --measure: 1100px;
+  --pad: 20px;
+  --radius: 16px;
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-switzer), system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (min-width: 810px) {
+  .d2c {
+    --pad: 40px;
+  }
+}
+
+/* Keep the document background light so overscroll doesn't reveal the dark
+   portfolio shell behind this page. */
+html:has(.d2c),
+html:has(.d2c) body {
+  background: #fbfaf8;
+}
+
+.d2c *,
+.d2c *::before,
+.d2c *::after {
+  box-sizing: border-box;
+}
+
+/* Reset rules are wrapped in :where() so they carry zero specificity. Written
+   plainly, `.d2c a` (0,1,1) outranks `.d2c-btn` (0,1,0) and repaints the CTAs
+   ink-on-ink, and `.d2c p` silently cancels every component margin-top. */
+:where(
+    .d2c p,
+    .d2c h1,
+    .d2c h2,
+    .d2c h3,
+    .d2c ul,
+    .d2c li,
+    .d2c figure
+  ) {
+  margin: 0;
+  padding: 0;
+}
+
+:where(.d2c ul) {
+  list-style: none;
+}
+
+:where(.d2c a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.d2c img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.d2c ::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Layout
+--------------------------------------------------------------------------- */
+.d2c-wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+.d2c-section {
+  padding-block: clamp(60px, 11vw, 124px);
+}
+
+.d2c-section--tint {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.d2c-section--accent {
+  background: var(--accent);
+}
+
+/* ---------------------------------------------------------------------------
+   Type
+--------------------------------------------------------------------------- */
+.d2c-h1 {
+  font-size: clamp(33px, 8.4vw, 74px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.d2c-h2 {
+  font-size: clamp(27px, 5.6vw, 50px);
+  line-height: 1.06;
+  letter-spacing: -0.032em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.d2c-h3 {
+  font-size: clamp(19px, 2.4vw, 23px);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.d2c-lead {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 2.1vw, 20px);
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.d2c-body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.62;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.d2c-label {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+/* Highlighter swipe behind the closing phrase of the H1.
+   Drawn as a background gradient rather than an absolutely-positioned bar so
+   the phrase wraps normally on narrow screens — a nowrap inline-block here
+   overflowed the viewport and clipped the text. */
+.d2c-mark {
+  padding-inline: 0.05em;
+  background-image: linear-gradient(
+    to top,
+    var(--accent) 0.4em,
+    transparent 0.4em
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+--------------------------------------------------------------------------- */
+.d2c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 15px 30px;
+  border: 1px solid var(--ink);
+  border-radius: 50px;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+
+.d2c-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 -6px var(--accent-deep);
+}
+
+.d2c-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.d2c-btn--full {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Hero — CSS-only entrance so nothing above the fold waits on JS
+--------------------------------------------------------------------------- */
+.d2c-hero {
+  padding-top: clamp(56px, 13vw, 128px);
+  padding-bottom: clamp(56px, 10vw, 110px);
+}
+
+/* The <h1> is deliberately excluded: it is the LCP element, and starting it at
+   opacity 0 defers Largest Contentful Paint by the whole stagger. It paints
+   immediately; only the supporting copy rises in. */
+.d2c-hero__eyebrow,
+.d2c-hero__sub,
+.d2c-hero__actions,
+.d2c-hero__trust {
+  animation: d2c-rise 0.6s var(--ease) both;
+}
+.d2c-hero__eyebrow {
+  animation-delay: 0s;
+}
+.d2c-hero__sub {
+  animation-delay: 0.08s;
+}
+.d2c-hero__actions {
+  animation-delay: 0.16s;
+}
+.d2c-hero__trust {
+  animation-delay: 0.24s;
+}
+
+@keyframes d2c-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.d2c-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+.d2c-hero__eyebrow span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-deep);
+}
+
+.d2c-hero .d2c-h1 {
+  max-width: 17ch;
+}
+
+.d2c-hero__sub {
+  margin-top: clamp(20px, 3vw, 28px);
+}
+
+.d2c-hero__actions {
+  margin-top: clamp(26px, 4vw, 36px);
+}
+
+.d2c-hero__trust {
+  margin-top: 18px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--soft);
+  max-width: 46ch;
+}
+
+/* ---------------------------------------------------------------------------
+   Problem
+--------------------------------------------------------------------------- */
+.d2c-problem__grid {
+  display: grid;
+  gap: clamp(22px, 4vw, 56px);
+}
+
+@media (min-width: 810px) {
+  .d2c-problem__grid {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Steps
+--------------------------------------------------------------------------- */
+.d2c-steps {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(30px, 5vw, 52px);
+}
+
+@media (min-width: 810px) {
+  .d2c-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.d2c-step {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(22px, 3vw, 30px);
+}
+
+.d2c-step__n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.d2c-step .d2c-body {
+  margin-top: 10px;
+}
+
+/* Video embed placeholder */
+.d2c-video {
+  margin-top: clamp(28px, 4vw, 48px);
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.d2c-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.d2c-video__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background-image: linear-gradient(
+      to right,
+      var(--line) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.d2c-video__play {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Work grid
+--------------------------------------------------------------------------- */
+.d2c-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: clamp(30px, 5vw, 52px);
+}
+
+@media (min-width: 700px) {
+  .d2c-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .d2c-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+.d2c-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.d2c-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+
+/* Desktop + mobile shots side by side */
+.d2c-shots {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.d2c-frame {
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  overflow: hidden;
+}
+
+.d2c-frame__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.d2c-frame__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.d2c-frame--desktop {
+  flex: 1 1 auto;
+  min-width: 0;
+  border-radius: 8px;
+  aspect-ratio: 16 / 11;
+  display: flex;
+  flex-direction: column;
+}
+
+.d2c-frame__bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 16px;
+  padding-inline: 7px;
+  background: rgba(15, 14, 14, 0.045);
+  border-bottom: 1px solid var(--line);
+}
+.d2c-frame__bar i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.d2c-frame--mobile {
+  flex: 0 0 27%;
+  max-width: 96px;
+  border-radius: 12px;
+  aspect-ratio: 9 / 16;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.d2c-frame__notch {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26%;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--line-strong);
+}
+
+/* Wireframe placeholder — reads as a landing page, costs zero requests */
+.d2c-wire {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 8px;
+}
+.d2c-wire__hero {
+  flex: 0 0 34%;
+  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 14, 14, 0.09),
+    rgba(15, 14, 14, 0.04)
+  );
+}
+.d2c-wire__line {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(15, 14, 14, 0.09);
+}
+.d2c-wire__line--lg {
+  height: 8px;
+  width: 72%;
+  background: rgba(15, 14, 14, 0.14);
+}
+.d2c-wire__cta {
+  height: 12px;
+  width: 46%;
+  border-radius: 20px;
+  background: var(--accent);
+}
+.d2c-wire__grid {
+  display: flex;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.d2c-wire__grid span {
+  flex: 1;
+  border-radius: 4px;
+  background: rgba(15, 14, 14, 0.06);
+}
+
+.d2c-card__foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.d2c-card__caption {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.d2c-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+.d2c-card__link:hover {
+  color: var(--ink);
+}
+
+.d2c-note {
+  margin-top: 22px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--soft);
+  max-width: 60ch;
+}
+
+/* ---------------------------------------------------------------------------
+   What I build
+--------------------------------------------------------------------------- */
+.d2c-builds {
+  display: grid;
+  gap: 14px;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+@media (min-width: 700px) {
+  .d2c-builds {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .d2c-builds {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.d2c-build {
+  display: flex;
+  gap: 12px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.d2c-build svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--accent-deep);
+}
+
+.d2c-build__title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.d2c-build p {
+  margin-top: 5px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Offer
+--------------------------------------------------------------------------- */
+.d2c-offer .d2c-label,
+.d2c-offer .d2c-body {
+  color: rgba(15, 14, 14, 0.72);
+}
+
+.d2c-offer .d2c-h2 {
+  margin-top: 16px;
+  max-width: 20ch;
+}
+
+.d2c-offer .d2c-body {
+  margin-top: 20px;
+}
+
+.d2c-offer__actions {
+  margin-top: clamp(26px, 4vw, 36px);
+}
+
+.d2c-offer .d2c-btn:hover {
+  box-shadow: 0 10px 0 -6px rgba(15, 14, 14, 0.25);
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+--------------------------------------------------------------------------- */
+.d2c-footer {
+  padding-block: clamp(40px, 6vw, 72px);
+  border-top: 1px solid var(--line);
+}
+
+.d2c-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+@media (min-width: 700px) {
+  .d2c-footer__inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.d2c-footer__name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.d2c-footer__role {
+  margin-top: 5px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.d2c-footer__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.d2c-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.d2c-footer__links a:hover {
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   Sticky mobile CTA
+--------------------------------------------------------------------------- */
+.d2c-sticky {
+  display: none;
+}
+
+@media (max-width: 809.98px) {
+  .d2c-sticky {
+    display: block;
+    position: fixed;
+    z-index: 40;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(251, 250, 248, 0.92);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+  }
+
+  /* Room so the bar never covers the footer */
+  .d2c {
+    padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal
+--------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d2c *,
+  .d2c *::before,
+  .d2c *::after {
+    animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001s !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -46,6 +46,10 @@ export type GalleryImage = {
   height: number;
   /** Full-bleed row on the case-study grid; otherwise shares a row */
   full?: boolean;
+  /** Force a new grid row instead of joining the previous one */
+  newRow?: boolean;
+  /** Small line under the image — useful when several shots look alike */
+  caption?: string;
 };
 
 export type Project = {
@@ -53,8 +57,8 @@ export type Project = {
   title: string;
   category: string;
   image: string;
-  /** Grid column span on the 6-col works grid */
-  span: 2 | 4;
+  /** Shown in the home-page "Selected work" grid; every project shows on /projects */
+  featured?: boolean;
   /** Small tag above the case-study headline */
   tag: string;
   /** Case-study H1 */
@@ -63,16 +67,163 @@ export type Project = {
   services: string[];
   industries: string[];
   liveUrl: string;
+  /** Extra live pages worth linking individually (funnels, landing pages) */
+  links?: { label: string; href: string }[];
   gallery: GalleryImage[];
 };
 
 export const PROJECTS: Project[] = [
   {
+    slug: "luma-nutrition",
+    title: "Luma Nutrition: Advertorials built to convert",
+    category: "ADVERTORIALS · LANDING PAGES",
+    image: "/projects/luma-cover.webp",
+    featured: true,
+    tag: "DTC Supplement Brand (Advertorial Development)",
+    headline: "Five Editorial Advertorials for Cold Paid Traffic",
+    description: [
+      "Luma Nutrition is a direct-to-consumer supplement brand — magnesium glycinate, berberine 1,200 mg and turmeric curcumin with BioPerine. The work was a set of five long-form advertorials, each built as a standalone page outside the main store so a different product and a different problem could be tested against its own traffic.",
+      "Every page is dressed as editorial rather than as an ad: a publication masthead and disclaimer bar, an author byline with a last-updated stamp, and a numbered argument that walks the reader from the problem to the dose that actually solves it. Comparison tables, supplement-facts callouts, verified-review pull quotes and product blocks are placed at the points where the reader is most likely to act.",
+      "The commerce layer is threaded through the scroll instead of parked at the end — sticky product bars that follow the reader, inline CTAs after each section, and offer buttons that hand off to the Luma Nutrition store. Each page is built mobile-first and kept light so it holds up under paid traffic.",
+    ],
+    services: [
+      "Advertorial Design & Build",
+      "Landing Page Design",
+      "Conversion Rate Optimization",
+      "Mobile-First Responsive Development",
+    ],
+    industries: ["Health & Wellness", "Supplements", "DTC E-Commerce"],
+    liveUrl: "https://lumanutrition.com",
+    gallery: [
+      {
+        src: "/projects/luma-turmeric.webp",
+        alt: "Luma Turmeric Curcumin advertorial for joint relief",
+        width: 1200,
+        height: 4228,
+        caption: "Advertorial — Turmeric Curcumin for Joint Relief",
+      },
+      {
+        src: "/projects/luma-cholesterol.webp",
+        alt: "Luma Nutrition berberine advertorial about cholesterol",
+        width: 1200,
+        height: 4228,
+        caption: "Advertorial — Why Your Berberine Isn’t Doing Anything for Your Cholesterol",
+      },
+      {
+        src: "/projects/luma-blood-sugar.webp",
+        alt: "Luma Nutrition berberine advertorial about afternoon blood sugar crashes",
+        width: 1200,
+        height: 4228,
+        caption: "Advertorial — 5 Reasons Your Blood Sugar Crashes Every Afternoon",
+      },
+      {
+        src: "/projects/luma-berberine.webp",
+        alt: "Luma Nutrition berberine advertorial about weight loss",
+        width: 1200,
+        height: 4407,
+        newRow: true,
+        caption: "Advertorial — 7 Things To Know Before You Buy Berberine",
+      },
+      {
+        src: "/projects/luma-magnesium.webp",
+        alt: "Luma Nutrition magnesium glycinate advertorial about sleep",
+        width: 1200,
+        height: 4407,
+        caption: "Advertorial — How to Choose a Magnesium for Sleep",
+      },
+    ],
+  },
+  {
+    slug: "hume-health",
+    title: "Hume Health: Advertorials that scale",
+    category: "FUNNELISH · ADVERTORIALS",
+    image: "/projects/hume-cover.webp",
+    featured: true,
+    tag: "Smart Health Wearables Brand (Funnelish Development)",
+    headline: "Advertorials & Interactive Calculator Funnels for Paid Traffic",
+    description: [
+      "Hume Health builds smart health hardware — the Hume Band 2.0 wearable and the Hume Body Pod body-composition scanner. The work was a high-volume landing page program on Funnelish: long-form advertorials and interactive health calculators built as dedicated entry points for cold paid traffic on Meta and native.",
+      "Each advertorial is engineered as a scroll — a curiosity hook, a problem the reader recognises in themselves, then the product introduced as the mechanism that solves it, backed by spec blocks, testimonials, comparison tables, FAQs and repeated CTAs placed at the exact points where intent peaks.",
+      "The calculator pages lead with a working tool instead of a pitch. Readers enter their own numbers — blood pressure, height and weight, waist and hip — and get an instant result scored against real clinical ranges, which earns the attention the offer then converts. Every page is built mobile-first, loads fast on ad traffic, and ships in tracked variants so headlines, hooks and offer blocks can be tested without touching the main store.",
+    ],
+    services: [
+      "Funnelish Development",
+      "Advertorial Design & Build",
+      "Landing Page Design",
+      "Interactive Calculator Development",
+      "Conversion Rate Optimization",
+      "Mobile-First Responsive Development",
+      "A/B Test Variants",
+    ],
+    industries: ["Health Tech & Wearables", "Health & Wellness", "DTC E-Commerce"],
+    liveUrl: "https://humehealth.com",
+    links: [
+      {
+        label: "Advertorial — Why You're Always Tired (It's Not Sleep)",
+        href: "https://insights.smartscalesreviews.com/why-you-are-always-tired-its-not-sleep",
+      },
+      {
+        label: "Advertorial — Still Tired After 8 Hours of Sleep",
+        href: "https://insights.smartscalesreviews.com/still-tired-after-8-hours-of-sleep",
+      },
+      {
+        label: "Calculator — Blood Pressure & MAP",
+        href: "https://insights.smartscalesreviews.com/blood-pressure-calculator-vstd-273",
+      },
+      {
+        label: "Calculator — BMI & Weight Loss",
+        href: "https://buy.humehealth.com/bmi-calculator-and-weight-loss",
+      },
+      {
+        label: "Calculator — Waist-to-Hip Ratio",
+        href: "https://buy.humehealth.com/waist-to-hip-ratio-calculator-vstd-380",
+      },
+    ],
+    gallery: [
+      {
+        src: "/projects/hume-banner.webp",
+        alt: "Hume Health brand identity logo banner",
+        width: 1920,
+        height: 408,
+        full: true,
+      },
+      {
+        src: "/projects/hume-advertorial-tired.webp",
+        alt: "Hume Band 2.0 advertorial, full page: why you're always tired",
+        width: 933,
+        height: 4921,
+        caption: "Advertorial — Why You’re Always Tired (It’s Not Sleep)",
+      },
+      {
+        src: "/projects/hume-advertorial-sleep.webp",
+        alt: "Hume Band 2.0 advertorial, full page: still tired after eight hours of sleep",
+        width: 933,
+        height: 6846,
+        caption: "Advertorial — Still Tired After 8 Hours of Sleep",
+      },
+      {
+        src: "/projects/hume-calculator-bp.webp",
+        alt: "Hume Health blood pressure and mean arterial pressure calculator page",
+        width: 933,
+        height: 4616,
+        newRow: true,
+        caption: "Calculator — Blood Pressure & MAP",
+      },
+      {
+        src: "/projects/hume-calculator-bmi.webp",
+        alt: "Hume Body Pod BMI and weight loss calculator page",
+        width: 933,
+        height: 2478,
+        caption: "Calculator — BMI & Weight Loss",
+      },
+    ],
+  },
+  {
     slug: "aavilo",
     title: "Aavilo: Pet wellness that converts",
-    category: "SHOPIFY · LANDING PAGES",
+    category: "PRODUCT PAGE DESIGN · STORE REDESIGN",
     image: "/projects/aavilo-card.webp",
-    span: 4,
+    featured: true,
     tag: "DTC Pet Wellness Brand (Shopify Development)",
     headline: "Shopify Store Redesign & High-Converting Landing Pages",
     description: [
@@ -122,7 +273,7 @@ export const PROJECTS: Project[] = [
     title: "Baby Gains: Strong bodies, bright minds",
     category: "SHOPIFY REDESIGN",
     image: "/projects/baby-gains-card.webp",
-    span: 2,
+    featured: true,
     tag: "Children's Fitness Equipment Brand (Shopify Development)",
     headline: "Complete Shopify Store Redesign",
     description: [
@@ -186,7 +337,7 @@ export const PROJECTS: Project[] = [
     title: "Hanson of Sonoma: Premium spirits online",
     category: "SHOPIFY REDESIGN",
     image: "/projects/hanson-card.webp",
-    span: 2,
+    featured: true,
     tag: "Premium Wine & Lifestyle Brand (Shopify Development)",
     headline: "Premium Shopify Store Redesign",
     description: [
@@ -242,7 +393,7 @@ export const PROJECTS: Project[] = [
     title: "Kitchen Corner: Craftsmanship online",
     category: "WORDPRESS",
     image: "/projects/kitchen-corner-card.webp",
-    span: 4,
+    featured: true,
     tag: "Kitchen Solutions Brand (WordPress Development)",
     headline: "Corporate Website Design & Development",
     description: [
@@ -300,6 +451,17 @@ export const PROJECTS: Project[] = [
     ],
   },
 ];
+
+/** Home page shows a curated subset; /projects shows every project. */
+export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
+
+/** Copy for the home-page work carousel */
+export const WORKS = {
+  eyebrow: "Case Studies",
+  heading: "Selected work",
+  subheading:
+    "I don’t just talk about what I can build — here’s what I’ve already shipped.",
+};
 
 export const ABOUT = {
   headingLines: ["Hello there", "I’m Meet Khunt"],
