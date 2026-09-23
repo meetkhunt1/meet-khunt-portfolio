@@ -51,7 +51,7 @@ export default function About() {
               </RevealText>
             </h3>
             <FadeIn className="max-w-[560px]">
-              <p className="label normal-case leading-[1.5] text-paper/80">
+              <p className="label normal-case leading-[1.5] text-fg/80">
                 {ABOUT.paragraph}
               </p>
             </FadeIn>
@@ -60,7 +60,7 @@ export default function About() {
           <FadeIn className="flex items-end" delay={0.1}>
             <div className="flex flex-col gap-5 pr-[60px]">
               <p className="label">Services</p>
-              <p className="label text-paper">
+              <p className="label text-fg">
                 {ABOUT.services.map((s) => (
                   <span key={s} className="block">
                     {s}
@@ -70,7 +70,7 @@ export default function About() {
             </div>
             <div className="flex flex-col gap-5">
               <p className="label">Clients</p>
-              <p className="label text-paper">
+              <p className="label text-fg">
                 {ABOUT.clients.map((c) => (
                   <span key={c} className="block">
                     {c}

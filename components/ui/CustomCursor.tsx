@@ -65,12 +65,15 @@ export default function CustomCursor() {
   return (
     <div
       ref={dotRef}
-      className="pointer-events-none fixed left-0 top-0 z-[100] hidden size-3 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-paper opacity-0 mix-blend-difference lg:flex"
+      /* Literal white, not a theme token: `mix-blend-difference` turns a white
+         source into an inversion of whatever is behind it, so the dot stays
+         visible over ink, over paper and over a photograph alike. */
+      className="pointer-events-none fixed left-0 top-0 z-[100] hidden size-3 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white opacity-0 mix-blend-difference lg:flex"
       aria-hidden
     >
       <span
         ref={labelRef}
-        className="text-[2.5px] font-semibold uppercase tracking-[0.05em] text-ink opacity-0"
+        className="text-[2.5px] font-semibold uppercase tracking-[0.05em] text-black opacity-0"
         style={{ fontFamily: "var(--font-inter)" }}
       >
         View

@@ -38,7 +38,10 @@ export default function SmoothScroll({
       if (cancelled) return;
 
       instance = new Lenis({
-        duration: 1.1,
+        /* Settle time after a wheel tick. This is the whole "floaty" feel:
+           1.1s reads as drift, 0.6s still smooths the steps but keeps the page
+           under the reader's thumb. Raise it for more glide, lower for less. */
+        duration: 0.6,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
       });

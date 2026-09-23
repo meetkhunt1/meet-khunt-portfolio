@@ -116,7 +116,7 @@ export default function Hero() {
       {/* Desktop wordmark, wipe-revealed, above the trail */}
       <div className="section-row relative z-[2] hidden w-full items-center justify-center lg:flex">
         <div ref={logoRef} className="relative opacity-0">
-          <h1 className="whitespace-nowrap text-center text-[11.5vw] font-medium uppercase leading-[0.9] tracking-[-0.04em] text-paper opacity-90">
+          <h1 className="whitespace-nowrap text-center text-[11.5vw] font-medium uppercase leading-[0.9] tracking-[-0.04em] text-fg opacity-90">
             {HERO.wordmark}
           </h1>
         </div>
@@ -127,7 +127,7 @@ export default function Hero() {
         <h1 className="sr-only">{HERO.wordmark}</h1>
         <span
           aria-hidden
-          className="text-[26vw] font-medium uppercase leading-[0.85] tracking-[-0.04em] text-paper opacity-90"
+          className="text-[26vw] font-medium uppercase leading-[0.85] tracking-[-0.04em] text-fg opacity-90"
         >
           {HERO.wordmarkTop}
         </span>
@@ -138,7 +138,7 @@ export default function Hero() {
         />
         <span
           aria-hidden
-          className="text-[26vw] font-medium uppercase leading-[0.85] tracking-[-0.04em] text-paper opacity-90"
+          className="text-[26vw] font-medium uppercase leading-[0.85] tracking-[-0.04em] text-fg opacity-90"
         >
           {HERO.wordmarkBottom}
         </span>
@@ -147,7 +147,7 @@ export default function Hero() {
       {/* Tagline pinned to the bottom */}
       <p
         ref={taglineRef}
-        className="absolute bottom-10 z-[3] w-full max-w-[490px] px-5 text-center text-[13px] font-medium uppercase leading-[1.4] tracking-[0.02em] text-paper opacity-0 lg:text-sm"
+        className="absolute bottom-10 z-[3] w-full max-w-[490px] px-5 text-center text-[13px] font-medium uppercase leading-[1.4] tracking-[0.02em] text-fg opacity-0 lg:text-sm"
       >
         {SITE.tagline}
       </p>

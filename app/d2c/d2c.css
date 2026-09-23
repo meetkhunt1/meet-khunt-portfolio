@@ -1,50 +1,57 @@
-/* ---------------------------------------------------------------------------
-   /d2c — offer page. Light theme, scoped under .d2c so it cannot leak into the
-   dark portfolio. Plain CSS, no utility framework, no animation library.
---------------------------------------------------------------------------- */
+/* ===========================================================================
+   /d2c — long-form offer page
+
+   Geometry (section padding, gaps, widths, type scale, radii, breakpoints) is
+   a 1:1 rebuild of the reference build: a light page on the orange accent.
+   The route is deliberately light even though the rest of the portfolio is
+   dark, so the wrapper repaints its own surface rather than inheriting one.
+
+   Breakpoints match the reference exactly: desktop, <=1024px, <=767px.
+
+   Everything is namespaced under .d2c and written in explicit values because
+   Tailwind's preflight strips heading sizes, list markers and margins.
+   ========================================================================= */
 
 .d2c {
-  /* Light surfaces */
-  --bg: #fbfaf8;
-  --surface: #ffffff;
-  --ink: #0f0e0e;
-  --muted: rgba(15, 14, 14, 0.62);
-  /* 0.6 is the floor that clears WCAG AA (4.5:1) at 12–13px on both --bg and
-     --surface. Anything lighter fails on the small trust/label copy. */
-  --soft: rgba(15, 14, 14, 0.6);
-  --line: rgba(15, 14, 14, 0.1);
-  --line-strong: rgba(15, 14, 14, 0.18);
+  /* Palette — light surfaces, ink with a navy cast, orange accent.
+     The reference's flat greys (#666 borders on white) are softened one step
+     so 1px and 2px card outlines read as structure, not as boxes. */
+  --d2c-bg: #ffffff; /* section surface */
+  --d2c-bg-deep: #f5f7f9; /* page edge + footer */
+  --d2c-accent: #ff5602; /* brand accent */
+  --d2c-accent-dark: #e44c00; /* accent hover */
+  --d2c-accent-soft: #f89e52; /* accent tint (gradient text) */
+  --d2c-on-accent: #ffffff; /* text on accent */
+  --d2c-tab: #ffffff; /* caret tab on the sticky button */
+  --d2c-heading: #101828; /* headings + list text */
+  --d2c-body: #2c3444; /* body copy */
+  --d2c-body-soft: #4a5263; /* secondary copy */
+  --d2c-muted: #6f7787; /* footer, captions */
+  --d2c-line: #d3d8de; /* box borders */
+  --d2c-line-soft: #dbe0e6; /* accordion */
+  --d2c-line-faint: #e3e7ec; /* divider */
+  --d2c-surface: #f7f9fb; /* accordion header, placeholders */
+  --d2c-shape: #f2f3f3; /* shape dividers */
+  --d2c-yes: #0f9d2f; /* affirmative icons */
+  --d2c-no: #e02020; /* negative icons */
 
-  /* Brand accent, carried over from the home page. Used as a fill behind ink
-     text only — cream on white has no usable contrast. */
-  --accent: #ffd98e;
-  --accent-deep: #f5c25c;
+  --d2c-max: 1140px;
+  --d2c-font: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
 
-  --measure: 1100px;
-  --pad: 20px;
-  --radius: 16px;
-  --ease: cubic-bezier(0.25, 1, 0.5, 1);
-
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-switzer), system-ui, -apple-system, "Segoe UI",
-    sans-serif;
-  font-weight: 500;
+  background: var(--d2c-bg);
+  color: var(--d2c-body);
+  /* The global header is fixed, so the wrapper reserves its height. */
+  padding-top: var(--header-h);
+  font-family: var(--d2c-font);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-@media (min-width: 810px) {
-  .d2c {
-    --pad: 40px;
-  }
-}
-
-/* Keep the document background light so overscroll doesn't reveal the dark
-   portfolio shell behind this page. */
-html:has(.d2c),
-html:has(.d2c) body {
-  background: #fbfaf8;
+/* This route opts out of Lenis, so in-page anchors need native smooth scroll. */
+html:has(.d2c) {
+  scroll-behavior: smooth;
 }
 
 .d2c *,
@@ -53,321 +60,213 @@ html:has(.d2c) body {
   box-sizing: border-box;
 }
 
-/* Reset rules are wrapped in :where() so they carry zero specificity. Written
-   plainly, `.d2c a` (0,1,1) outranks `.d2c-btn` (0,1,0) and repaints the CTAs
-   ink-on-ink, and `.d2c p` silently cancels every component margin-top. */
-:where(
-    .d2c p,
-    .d2c h1,
-    .d2c h2,
-    .d2c h3,
-    .d2c ul,
-    .d2c li,
-    .d2c figure
-  ) {
-  margin: 0;
-  padding: 0;
+/* --------------------------------------------------------------- primitives */
+
+/* Full-bleed section: horizontal padding outside, 1140px content inside. */
+.d2c-sec {
+  position: relative;
+  padding-inline: var(--d2c-sec-px, 0px);
+  scroll-margin-top: calc(var(--header-h) + 8px);
 }
 
-:where(.d2c ul) {
-  list-style: none;
-}
-
-:where(.d2c a) {
-  color: inherit;
-  text-decoration: none;
-}
-
-:where(.d2c img) {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.d2c ::selection {
-  background: var(--accent);
-  color: var(--ink);
-}
-
-/* ---------------------------------------------------------------------------
-   Layout
---------------------------------------------------------------------------- */
-.d2c-wrap {
-  width: 100%;
-  max-width: var(--measure);
+.d2c-sec__in {
+  max-width: var(--d2c-max);
   margin-inline: auto;
-  padding-inline: var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--d2c-sec-gap, 20px);
+  padding-block: var(--d2c-sec-pt, 80px) var(--d2c-sec-pb, 30px);
 }
 
-.d2c-section {
-  padding-block: clamp(60px, 11vw, 124px);
+/* Elementor shape dividers, kept as decoration only. */
+.d2c-shape {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  direction: ltr;
+  pointer-events: none;
+}
+.d2c-shape svg {
+  display: block;
+  position: relative;
+  left: 50%;
+  width: calc(150% + 1.3px);
+  height: 40px;
+  transform: translateX(-50%);
+}
+.d2c-shape--flip svg {
+  transform: translateX(-50%) rotate(180deg);
+}
+.d2c-shape path {
+  fill: var(--d2c-shape);
 }
 
-.d2c-section--tint {
-  background: var(--surface);
-  border-block: 1px solid var(--line);
-}
-
-.d2c-section--accent {
-  background: var(--accent);
-}
-
-/* ---------------------------------------------------------------------------
-   Type
---------------------------------------------------------------------------- */
-.d2c-h1 {
-  font-size: clamp(33px, 8.4vw, 74px);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  font-weight: 700;
-  text-wrap: balance;
-}
+/* ------------------------------------------------------------------ headings */
 
 .d2c-h2 {
-  font-size: clamp(27px, 5.6vw, 50px);
-  line-height: 1.06;
-  letter-spacing: -0.032em;
+  font-size: 35px;
   font-weight: 700;
-  text-wrap: balance;
-}
-
-.d2c-h3 {
-  font-size: clamp(19px, 2.4vw, 23px);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-}
-
-.d2c-lead {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(16px, 2.1vw, 20px);
-  line-height: 1.55;
-  color: var(--muted);
-  max-width: 60ch;
-}
-
-.d2c-body {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(15px, 1.8vw, 17px);
-  line-height: 1.62;
-  color: var(--muted);
-  max-width: 62ch;
-}
-
-.d2c-label {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--soft);
-}
-
-/* Highlighter swipe behind the closing phrase of the H1.
-   Drawn as a background gradient rather than an absolutely-positioned bar so
-   the phrase wraps normally on narrow screens — a nowrap inline-block here
-   overflowed the viewport and clipped the text. */
-.d2c-mark {
-  padding-inline: 0.05em;
-  background-image: linear-gradient(
-    to top,
-    var(--accent) 0.4em,
-    transparent 0.4em
-  );
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
-/* ---------------------------------------------------------------------------
-   Buttons
---------------------------------------------------------------------------- */
-.d2c-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 54px;
-  padding: 15px 30px;
-  border: 1px solid var(--ink);
-  border-radius: 50px;
-  background: var(--ink);
-  color: #fff;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
-}
-
-.d2c-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 0 -6px var(--accent-deep);
-}
-
-.d2c-btn:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
-}
-
-.d2c-btn--full {
-  width: 100%;
-}
-
-/* ---------------------------------------------------------------------------
-   Hero — CSS-only entrance so nothing above the fold waits on JS
---------------------------------------------------------------------------- */
-.d2c-hero {
-  padding-top: clamp(56px, 13vw, 128px);
-  padding-bottom: clamp(56px, 10vw, 110px);
-}
-
-/* The <h1> is deliberately excluded: it is the LCP element, and starting it at
-   opacity 0 defers Largest Contentful Paint by the whole stagger. It paints
-   immediately; only the supporting copy rises in. */
-.d2c-hero__eyebrow,
-.d2c-hero__sub,
-.d2c-hero__actions,
-.d2c-hero__trust {
-  animation: d2c-rise 0.6s var(--ease) both;
-}
-.d2c-hero__eyebrow {
-  animation-delay: 0s;
-}
-.d2c-hero__sub {
-  animation-delay: 0.08s;
-}
-.d2c-hero__actions {
-  animation-delay: 0.16s;
-}
-.d2c-hero__trust {
-  animation-delay: 0.24s;
-}
-
-@keyframes d2c-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.d2c-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 22px;
-}
-.d2c-hero__eyebrow span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-deep);
-}
-
-.d2c-hero .d2c-h1 {
-  max-width: 17ch;
-}
-
-.d2c-hero__sub {
-  margin-top: clamp(20px, 3vw, 28px);
-}
-
-.d2c-hero__actions {
-  margin-top: clamp(26px, 4vw, 36px);
-}
-
-.d2c-hero__trust {
-  margin-top: 18px;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--soft);
-  max-width: 46ch;
-}
-
-/* ---------------------------------------------------------------------------
-   Problem
---------------------------------------------------------------------------- */
-.d2c-problem__grid {
-  display: grid;
-  gap: clamp(22px, 4vw, 56px);
-}
-
-@media (min-width: 810px) {
-  .d2c-problem__grid {
-    grid-template-columns: 1.15fr 1fr;
-    align-items: start;
-  }
-}
-
-/* ---------------------------------------------------------------------------
-   Steps
---------------------------------------------------------------------------- */
-.d2c-steps {
-  display: grid;
-  gap: 16px;
-  margin-top: clamp(30px, 5vw, 52px);
-}
-
-@media (min-width: 810px) {
-  .d2c-steps {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-}
-
-.d2c-step {
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: clamp(22px, 3vw, 30px);
-}
-
-.d2c-step__n {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-.d2c-step .d2c-body {
+  line-height: 1.2em;
+  text-align: center;
+  color: var(--d2c-heading);
   margin-top: 10px;
 }
-
-/* Video embed placeholder */
-.d2c-video {
-  margin-top: clamp(28px, 4vw, 48px);
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg);
+.d2c-h2--pb {
+  padding-bottom: 30px;
 }
 
-.d2c-video iframe {
+/* Section sub-headline: 80% wide, centred, tight line-height. */
+.d2c-sub {
+  width: 80%;
+  align-self: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--d2c-body);
+}
+
+/* ------------------------------------------------------------------- button */
+
+.d2c-btnrow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.d2c-btnrow--pad {
+  padding-block: 10px;
+}
+
+.d2c-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+  background: var(--d2c-accent);
+  color: var(--d2c-on-accent);
+  border: 1px solid var(--d2c-accent);
+  border-radius: 15px;
+  padding: 15px 90px;
+  font-family: var(--d2c-font);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.d2c-btn:hover,
+.d2c-btn:focus {
+  background: var(--d2c-accent-dark);
+  border-color: var(--d2c-accent);
+  color: var(--d2c-on-accent);
+}
+
+/* Looping shine sweep, same timing as the reference. */
+.d2c-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: skewX(-25deg);
+  animation: d2c-shine 2.5s infinite;
+}
+@keyframes d2c-shine {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+/* ==================================================================== hero */
+
+.d2c-hero .d2c-sec__in {
+  --d2c-sec-pt: 20px;
+  --d2c-sec-pb: 40px;
+  align-items: center;
+}
+.d2c-hero {
+  --d2c-sec-px: 15px;
+}
+
+.d2c-hero__eyebrow {
+  width: 47%;
+  padding: 5px 0;
+  border: 2px solid var(--d2c-accent);
+  border-radius: 100px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: var(--d2c-heading);
+}
+
+.d2c-h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.3em;
+  color: var(--d2c-heading);
+}
+.d2c-h1 .d2c-mark {
+  color: var(--d2c-accent);
+  text-decoration: underline;
+}
+
+.d2c-hero__sub {
+  width: 80%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--d2c-body);
+}
+
+/* Bordered video card with the accent label bar on top. */
+.d2c-videocard {
+  width: 80%;
+  margin-top: 5px;
+  border: 1px solid var(--d2c-accent);
+  border-radius: 7px;
+}
+.d2c-videocard__label {
+  background: var(--d2c-accent);
+  color: var(--d2c-on-accent);
+  padding: 5px;
+  border-radius: 6px 6px 0 0;
+  text-align: center;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.d2c-videocard__frame {
+  position: relative;
+  aspect-ratio: 1.77777;
+  border-radius: 0 0 7px 7px;
+  overflow: hidden;
+}
+.d2c-videocard__frame iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
 }
-
-.d2c-video__ph {
+.d2c-videocard__ph {
   position: absolute;
   inset: 0;
   display: flex;
@@ -375,405 +274,910 @@ html:has(.d2c) body {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background-image: linear-gradient(
-      to right,
-      var(--line) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background: var(--d2c-surface);
 }
-
-.d2c-video__play {
+.d2c-videocard__play {
   display: grid;
   place-items: center;
-  width: 62px;
-  height: 62px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--accent);
-  color: var(--ink);
+  background: var(--d2c-accent);
+  color: var(--d2c-on-accent);
 }
-
-/* ---------------------------------------------------------------------------
-   Work grid
---------------------------------------------------------------------------- */
-.d2c-grid {
-  display: grid;
-  gap: 18px;
-  margin-top: clamp(30px, 5vw, 52px);
-}
-
-@media (min-width: 700px) {
-  .d2c-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1100px) {
-  .d2c-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-  }
-}
-
-.d2c-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 16px;
-  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
-}
-
-.d2c-card:hover {
-  border-color: var(--line-strong);
-  transform: translateY(-3px);
-}
-
-/* Desktop + mobile shots side by side */
-.d2c-shots {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-}
-
-.d2c-frame {
-  background: var(--bg);
-  border: 1px solid var(--line-strong);
-  overflow: hidden;
-}
-
-.d2c-frame__screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.d2c-frame__screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.d2c-frame--desktop {
-  flex: 1 1 auto;
-  min-width: 0;
-  border-radius: 8px;
-  aspect-ratio: 16 / 11;
-  display: flex;
-  flex-direction: column;
-}
-
-.d2c-frame__bar {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 16px;
-  padding-inline: 7px;
-  background: rgba(15, 14, 14, 0.045);
-  border-bottom: 1px solid var(--line);
-}
-.d2c-frame__bar i {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--line-strong);
-}
-
-.d2c-frame--mobile {
-  flex: 0 0 27%;
-  max-width: 96px;
-  border-radius: 12px;
-  aspect-ratio: 9 / 16;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
-}
-
-.d2c-frame__notch {
-  position: absolute;
-  top: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 26%;
-  height: 3px;
-  border-radius: 3px;
-  background: var(--line-strong);
-}
-
-/* Wireframe placeholder — reads as a landing page, costs zero requests */
-.d2c-wire {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  height: 100%;
-  padding: 8px;
-}
-.d2c-wire__hero {
-  flex: 0 0 34%;
-  border-radius: 4px;
-  background: linear-gradient(
-    135deg,
-    rgba(15, 14, 14, 0.09),
-    rgba(15, 14, 14, 0.04)
-  );
-}
-.d2c-wire__line {
-  height: 5px;
-  border-radius: 3px;
-  background: rgba(15, 14, 14, 0.09);
-}
-.d2c-wire__line--lg {
-  height: 8px;
-  width: 72%;
-  background: rgba(15, 14, 14, 0.14);
-}
-.d2c-wire__cta {
-  height: 12px;
-  width: 46%;
-  border-radius: 20px;
-  background: var(--accent);
-}
-.d2c-wire__grid {
-  display: flex;
-  gap: 6px;
-  flex: 1 1 auto;
-  min-height: 0;
-}
-.d2c-wire__grid span {
-  flex: 1;
-  border-radius: 4px;
-  background: rgba(15, 14, 14, 0.06);
-}
-
-.d2c-card__foot {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
-
-.d2c-card__caption {
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  color: var(--ink);
-}
-
-.d2c-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  flex: 0 0 auto;
-  font-family: var(--font-inter), system-ui, sans-serif;
+.d2c-videocard__phlabel {
   font-size: 13px;
-  font-weight: 600;
-  color: var(--muted);
-  transition: color 0.2s ease;
-}
-.d2c-card__link:hover {
-  color: var(--ink);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--d2c-muted);
 }
 
-.d2c-note {
-  margin-top: 22px;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--soft);
-  max-width: 60ch;
+/* ============================================================ who is it for */
+
+.d2c-audience {
+  --d2c-sec-px: 10px;
 }
 
-/* ---------------------------------------------------------------------------
-   What I build
---------------------------------------------------------------------------- */
-.d2c-builds {
-  display: grid;
-  gap: 14px;
-  margin-top: clamp(28px, 4vw, 48px);
-}
-
-@media (min-width: 700px) {
-  .d2c-builds {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1100px) {
-  .d2c-builds {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.d2c-build {
+.d2c-cols {
   display: flex;
-  gap: 12px;
-  padding: 20px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-}
-
-.d2c-build svg {
-  flex: 0 0 auto;
-  margin-top: 3px;
-  color: var(--accent-deep);
-}
-
-.d2c-build__title {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.d2c-build p {
-  margin-top: 5px;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--muted);
-}
-
-/* ---------------------------------------------------------------------------
-   Offer
---------------------------------------------------------------------------- */
-.d2c-offer .d2c-label,
-.d2c-offer .d2c-body {
-  color: rgba(15, 14, 14, 0.72);
-}
-
-.d2c-offer .d2c-h2 {
-  margin-top: 16px;
-  max-width: 20ch;
-}
-
-.d2c-offer .d2c-body {
-  margin-top: 20px;
-}
-
-.d2c-offer__actions {
-  margin-top: clamp(26px, 4vw, 36px);
-}
-
-.d2c-offer .d2c-btn:hover {
-  box-shadow: 0 10px 0 -6px rgba(15, 14, 14, 0.25);
-}
-
-/* ---------------------------------------------------------------------------
-   Footer
---------------------------------------------------------------------------- */
-.d2c-footer {
-  padding-block: clamp(40px, 6vw, 72px);
-  border-top: 1px solid var(--line);
-}
-
-.d2c-footer__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-@media (min-width: 700px) {
-  .d2c-footer__inner {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-}
-
-.d2c-footer__name {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-}
-
-.d2c-footer__role {
-  margin-top: 5px;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.d2c-footer__links {
-  display: flex;
-  align-items: center;
   gap: 20px;
 }
 
+.d2c-card {
+  width: 100%;
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--d2c-accent);
+  border-radius: 10px;
+  padding: 0 20px 30px;
+}
+/* Tab hanging off the top edge of the card. */
+.d2c-card__cap {
+  width: 80%;
+  align-self: center;
+  background: var(--d2c-accent);
+  color: var(--d2c-on-accent);
+  padding: 5px 0;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Elementor icon-list: 20px icon, 10px between rows. */
+.d2c-iconlist {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0 0;
+}
+.d2c-iconlist li {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--d2c-heading);
+}
+.d2c-iconlist li:not(:last-child) {
+  padding-bottom: 5px;
+}
+.d2c-iconlist li:not(:first-child) {
+  margin-top: 5px;
+}
+.d2c-iconlist svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0 2.5px;
+}
+.d2c-iconlist--yes svg {
+  fill: var(--d2c-yes);
+}
+.d2c-iconlist--no svg {
+  fill: var(--d2c-no);
+}
+
+/* =================================================================== proof */
+
+.d2c-results .d2c-sec__in {
+  --d2c-sec-gap: 22px;
+}
+
+.d2c-proofbox {
+  scroll-margin-top: calc(var(--header-h) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--d2c-line);
+  border-radius: 10px;
+  padding: 10px;
+}
+.d2c-proofgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+/* Full-page screenshots run 2,500-7,000px tall. Each one sits in a short frame
+   that scrolls internally, so the whole page can be read without the proof wall
+   costing thousands of pixels of document height. */
+.d2c-shot {
+  position: relative;
+  height: 460px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+.d2c-shot:hover {
+  border-color: var(--d2c-accent);
+}
+.d2c-shot__scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 5px;
+  /* Visible thumb doubles as the "this scrolls" affordance. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--d2c-accent) rgba(16, 24, 40, 0.08);
+}
+.d2c-shot__scroll:focus-visible {
+  outline: 2px solid var(--d2c-accent);
+  outline-offset: 2px;
+}
+.d2c-shot__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.d2c-shot__scroll::-webkit-scrollbar-track {
+  background: rgba(16, 24, 40, 0.08);
+}
+.d2c-shot__scroll::-webkit-scrollbar-thumb {
+  background: var(--d2c-accent);
+  border-radius: 3px;
+}
+.d2c-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.d2c-shot__hint {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: rgba(8, 8, 8, 0.8);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--d2c-accent);
+  pointer-events: none;
+}
+
+/* ================================================= problem + system (lists) */
+
+.d2c-featbox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--d2c-line);
+  border-radius: 10px;
+  padding: 30px 10px;
+}
+
+.d2c-feat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.d2c-feat li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+.d2c-feat li:not(:last-child) {
+  margin-bottom: 20px;
+}
+.d2c-feat__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 50px;
+}
+.d2c-feat__icon svg {
+  width: 15px;
+  height: auto;
+  fill: var(--d2c-on-accent);
+}
+.d2c-feat--no .d2c-feat__icon {
+  background: var(--d2c-no);
+}
+.d2c-feat--yes .d2c-feat__icon {
+  background: var(--d2c-yes);
+}
+.d2c-feat__title {
+  margin: 0 0 5px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--d2c-heading);
+}
+.d2c-feat__text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--d2c-body-soft);
+}
+
+.d2c-divider {
+  padding-block: 5px;
+  text-align: center;
+}
+.d2c-divider span {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  border-top: 1px solid var(--d2c-line-faint);
+}
+
+.d2c-close {
+  width: 80%;
+  align-self: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--d2c-body);
+}
+
+/* ============================================================= how it works */
+
+.d2c-phase {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid var(--d2c-line);
+  border-radius: 10px;
+  padding: 20px 40px;
+}
+.d2c-phase__title {
+  font-size: 22.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--d2c-accent);
+}
+.d2c-phase__body {
+  font-size: 15px;
+  line-height: 1em;
+  color: var(--d2c-heading);
+}
+.d2c-phase__body p {
+  margin: 0;
+}
+.d2c-phase__body ul {
+  list-style: disc;
+  margin: 0 0 22.5px 45px;
+  padding: 0;
+}
+.d2c-phase__body li {
+  list-style: disc;
+}
+
+.d2c-roles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  border: 2px solid var(--d2c-line);
+  border-radius: 10px;
+}
+.d2c-role {
+  padding: 10px 20px;
+  text-align: start;
+}
+.d2c-role h3 {
+  margin: 0 0 5px;
+  font-size: 17.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--d2c-accent);
+}
+.d2c-role p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--d2c-heading);
+}
+
+/* ================================================================= founder */
+
+.d2c-founderwrap .d2c-sec__in {
+  --d2c-sec-gap: 22px;
+  --d2c-sec-pb: 40px;
+}
+
+.d2c-founder {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  background: var(--d2c-bg);
+  border: 9px solid var(--d2c-accent);
+  border-radius: 18px;
+  box-shadow: 0 18px 44px -24px rgba(16, 24, 40, 0.35);
+  padding: 22px;
+}
+.d2c-founder__row {
+  width: 98.73%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.d2c-founder__text {
+  width: 57.577%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 9px;
+  padding: 25px 6px;
+}
+.d2c-founder__h2 {
+  width: 92.466%;
+  padding: 8px 0;
+  font-size: 35px;
+  font-weight: 900;
+  line-height: 1.1em;
+  text-transform: capitalize;
+  color: var(--d2c-heading);
+}
+.d2c-gradient {
+  background: linear-gradient(90deg, var(--d2c-accent) 0%, var(--d2c-accent-soft) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.d2c-founder__bio,
+.d2c-founder__closing {
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4em;
+  color: var(--d2c-body);
+}
+.d2c-founder__listtitle {
+  width: 100%;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1em;
+  color: var(--d2c-heading);
+}
+.d2c-founder__list {
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.d2c-founder__list li {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.3em;
+  color: var(--d2c-heading);
+}
+.d2c-founder__list li:not(:last-child) {
+  padding-bottom: 5px;
+}
+.d2c-founder__list li:not(:first-child) {
+  margin-top: 5px;
+}
+.d2c-founder__list svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin: 0 2.75px;
+  fill: var(--d2c-yes);
+}
+.d2c-founder__img {
+  width: 41.962%;
+  align-self: center;
+  text-align: center;
+}
+.d2c-founder__img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px -12px rgba(16, 24, 40, 0.35);
+}
+
+/* ===================================================================== FAQ */
+
+.d2c-faqwrap .d2c-sec__in {
+  --d2c-sec-gap: 22px;
+}
+
+.d2c-faq {
+  width: 80%;
+  align-self: center;
+}
+.d2c-faq__card {
+  border: 1px solid var(--d2c-line-soft);
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+.d2c-faq__card:not(:last-child) {
+  margin-bottom: 10px;
+}
+.d2c-faq__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 14px 30px;
+  padding-right: 60px;
+  background: var(--d2c-surface);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: var(--d2c-font);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--d2c-heading);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.d2c-faq__card.is-open .d2c-faq__btn {
+  border-radius: 10px 10px 0 0;
+}
+.d2c-faq__icon {
+  position: absolute;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  color: var(--d2c-accent);
+  transition: transform 0.4s ease;
+}
+.d2c-faq__card.is-open .d2c-faq__icon {
+  transform: rotate(180deg);
+}
+.d2c-faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.d2c-faq__card.is-open .d2c-faq__panel {
+  grid-template-rows: 1fr;
+}
+.d2c-faq__clip {
+  overflow: hidden;
+}
+.d2c-faq__body {
+  padding: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--d2c-body);
+}
+.d2c-faq__body p {
+  margin: 0 0 1em;
+}
+.d2c-faq__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ================================================================== footer */
+
+.d2c-footer {
+  background: var(--d2c-bg-deep);
+  border-top: 1px solid var(--d2c-line-faint);
+  /* Reserve room for the fixed CTA bar in the footer's own colour. */
+  padding-bottom: 84px;
+}
+.d2c-footer .d2c-sec__in {
+  --d2c-sec-gap: 10px;
+  --d2c-sec-pt: 80px;
+  --d2c-sec-pb: 60px;
+  align-items: stretch;
+}
+.d2c-footer__links {
+  display: flex;
+  gap: 10px;
+}
 .d2c-footer__links a {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--d2c-muted);
+  transition: color 0.3s;
+}
+.d2c-footer__links a:hover {
+  color: var(--d2c-accent);
+}
+.d2c-footer__disclaimer {
+  margin: 0;
+  padding: 30px 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--d2c-muted);
+}
+.d2c-footer__copy {
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--d2c-body-soft);
+}
+
+/* ============================================================== sticky bar */
+
+.d2c-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: var(--d2c-bg);
+  border-top: 1px solid var(--d2c-line);
+  box-shadow: 0 -10px 30px -18px rgba(16, 24, 40, 0.5);
+  padding-block: 10px;
+}
+.d2c-sticky__in {
+  max-width: var(--d2c-max);
+  margin-inline: auto;
+  padding-inline: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.d2c-sticky__text {
+  width: 50%;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--d2c-heading);
+}
+.d2c-sticky__btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-family: var(--font-inter), system-ui, sans-serif;
-  font-size: 14px;
+  justify-content: center;
+  background: var(--d2c-accent);
+  color: var(--d2c-on-accent);
+  border: 1px solid var(--d2c-accent);
+  border-radius: 10px;
+  padding: 5px 30px;
+  font-family: var(--d2c-font);
+  font-size: 20px;
   font-weight: 600;
-  color: var(--muted);
-  transition: color 0.2s ease;
+  line-height: 2;
+  transform-origin: center;
+  animation: d2c-shake 2s ease-in-out infinite;
+  transition: background 0.3s;
 }
-
-.d2c-footer__links a:hover {
-  color: var(--ink);
+.d2c-sticky__btn:hover {
+  background: var(--d2c-accent-dark);
 }
-
-/* ---------------------------------------------------------------------------
-   Sticky mobile CTA
---------------------------------------------------------------------------- */
-.d2c-sticky {
-  display: none;
+/* Caret tab pinned to the right edge of the button. */
+.d2c-sticky__tab {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  background: var(--d2c-tab);
 }
-
-@media (max-width: 809.98px) {
-  .d2c-sticky {
-    display: block;
-    position: fixed;
-    z-index: 40;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 10px var(--pad) calc(10px + env(safe-area-inset-bottom, 0px));
-    background: rgba(251, 250, 248, 0.92);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--line);
+.d2c-sticky__tab svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+  fill: var(--d2c-accent);
+}
+@keyframes d2c-shake {
+  0%,
+  100% {
+    transform: translateX(0);
   }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+}
 
-  /* Room so the bar never covers the footer */
+/* ========================================================================= */
+/* <= 1024px                                                                 */
+/* ========================================================================= */
+
+@media (max-width: 1024px) {
   .d2c {
-    padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+    padding-inline: 10px;
+  }
+
+  .d2c-h1 {
+    font-size: 40px;
+  }
+  .d2c-h2 {
+    font-size: 35px;
+  }
+  .d2c-btn {
+    font-size: 30px;
+  }
+  .d2c-videocard {
+    width: 90%;
+  }
+
+  .d2c-sec__in {
+    --d2c-sec-pt: 50px;
+  }
+  .d2c-hero .d2c-sec__in {
+    --d2c-sec-pt: 20px;
+  }
+  .d2c-audience,
+  .d2c-results,
+  .d2c-problem,
+  .d2c-system,
+  .d2c-how,
+  .d2c-faqwrap {
+    --d2c-sec-px: 10px;
+  }
+  .d2c-footer .d2c-sec__in {
+    --d2c-sec-pt: 50px;
+    --d2c-sec-pb: 50px;
+  }
+
+  .d2c-cols {
+    gap: 15px;
+  }
+  .d2c-card__cap {
+    font-size: 20px;
+  }
+
+  .d2c-proofgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .d2c-shot {
+    height: 420px;
+  }
+
+  /* Portrait drops under the copy, centred rather than left-hugging. */
+  .d2c-founder__text {
+    width: 100%;
+  }
+  .d2c-founder__img {
+    margin-inline: auto;
+  }
+  .d2c-founder__closing {
+    text-align: center;
+  }
+
+  .d2c-sticky {
+    border-top-width: 2px;
+  }
+  .d2c-sticky__text {
+    font-size: 20px;
+  }
+  .d2c-sticky__btn {
+    padding: 8px 30px;
   }
 }
 
-/* ---------------------------------------------------------------------------
-   Scroll reveal
---------------------------------------------------------------------------- */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+/* ========================================================================= */
+/* <= 767px                                                                  */
+/* ========================================================================= */
+
+@media (max-width: 767px) {
+  .d2c {
+    padding-inline: 0;
+  }
+  .d2c-footer {
+    padding-bottom: 64px;
+  }
+
+  .d2c-hero {
+    --d2c-sec-px: 10px;
+  }
+  .d2c-hero .d2c-sec__in {
+    --d2c-sec-pt: 15px;
+    --d2c-sec-pb: 20px;
+  }
+
+  .d2c-hero__eyebrow {
+    width: 80%;
+    padding: 3px 0;
+    font-size: 14px;
+    line-height: 1.1em;
+  }
+  .d2c-h1 {
+    font-size: 30px;
+    line-height: 1.3em;
+  }
+  .d2c-hero__sub {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .d2c-videocard {
+    width: 100%;
+    margin-bottom: 18px;
+  }
+  .d2c-videocard__label {
+    font-size: 14px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  /* Full-width, tighter CTA. */
+  .d2c-btn {
+    display: block;
+    width: 100%;
+    font-size: 25px;
+    line-height: 1.3em;
+    letter-spacing: 0;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px 15px;
+  }
+
+  .d2c-h2 {
+    font-size: 30px;
+    padding-bottom: 30px;
+  }
+  .d2c-results .d2c-h2 {
+    font-size: 28px;
+  }
+  .d2c-sub,
+  .d2c-close {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.1em;
+  }
+
+  .d2c-cols {
+    flex-wrap: wrap;
+  }
+  .d2c-card__cap {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  /* Proof wall: one screenshot per row so the frame stays readable. */
+  .d2c-proofgrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .d2c-shot {
+    height: 400px;
+  }
+
+  .d2c-feat__icon {
+    width: 20px;
+    height: 20px;
+  }
+  .d2c-feat__icon svg {
+    width: 10px;
+  }
+
+  .d2c-phase {
+    padding: 20px;
+  }
+  /* Titles and bullets wrap at this width, so the 1em leading is loosened. */
+  .d2c-phase__title {
+    line-height: 1.2;
+  }
+  .d2c-phase__body {
+    line-height: 1.3;
+  }
+  .d2c-roles {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .d2c-founderwrap {
+    --d2c-sec-px: 8px;
+  }
+  .d2c-founderwrap .d2c-sec__in {
+    --d2c-sec-gap: 12px;
+    --d2c-sec-pt: 48px;
+    --d2c-sec-pb: 24px;
+  }
+  .d2c-founder {
+    border-width: 5px;
+    padding: 0;
+  }
+  .d2c-founder__row {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+  }
+  .d2c-founder__text {
+    gap: 10px;
+    padding: 20px 7px 20px 0;
+  }
+  .d2c-founder__h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+  }
+  .d2c-founder__bio,
+  .d2c-founder__closing {
+    text-align: center;
+    font-size: 17px;
+  }
+  .d2c-founder__listtitle {
+    text-align: center;
+    line-height: 1.2em;
+    padding-block: 10px;
+  }
+  .d2c-founder__list li {
+    font-size: 16px;
+  }
+  .d2c-founder__list svg {
+    width: 18px;
+    height: 18px;
+  }
+  .d2c-founder__img {
+    width: 100%;
+  }
+
+  .d2c-faq {
+    width: 100%;
+  }
+
+  .d2c-footer__links {
+    gap: 20px;
+  }
+  .d2c-footer__links a {
+    font-size: 16px;
+  }
+  .d2c-footer__disclaimer {
+    padding: 30px 10px 0;
+    font-size: 14px;
+  }
+  .d2c-footer__copy {
+    padding-block: 20px;
+    font-size: 16px;
+  }
+
+  .d2c-sticky {
+    border-top-width: 1px;
+  }
+  .d2c-sticky__in {
+    justify-content: space-evenly;
+    gap: 0;
+    padding-inline: 10px;
+  }
+  .d2c-sticky__text {
+    font-size: 16px;
+    line-height: 1.2em;
+  }
+  .d2c-sticky__btn {
+    font-size: 15px;
+    padding: 7px 25px 7px 20px;
+    border-width: 2px;
+  }
 }
 
-[data-reveal].is-in {
-  opacity: 1;
-  transform: none;
-}
+/* ------------------------------------------------------------------ motion */
 
 @media (prefers-reduced-motion: reduce) {
-  .d2c *,
-  .d2c *::before,
-  .d2c *::after {
-    animation-duration: 0.001s !important;
-    animation-delay: 0s !important;
-    transition-duration: 0.001s !important;
+  html:has(.d2c) {
+    scroll-behavior: auto;
   }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
+  .d2c-btn::before,
+  .d2c-sticky__btn {
+    animation: none;
+  }
+  .d2c-faq__panel,
+  .d2c-faq__icon,
+  .d2c-faq__btn {
+    transition: none;
   }
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import SiteChrome from "@/components/providers/SiteChrome";
+import Header from "@/components/layout/Header";
 import { SITE } from "@/lib/data";
 
 const switzer = localFont({
@@ -47,8 +48,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${switzer.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-bg text-paper antialiased">
-        <SiteChrome>{children}</SiteChrome>
+      <body className="min-h-screen bg-bg text-fg antialiased">
+        <SiteChrome>
+          <Header />
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

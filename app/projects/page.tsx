@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Works from "@/components/sections/Works";
+import WorkIndex from "@/components/sections/WorkIndex";
 import FixedBadge from "@/components/ui/FixedBadge";
 
 export const metadata: Metadata = {
@@ -11,9 +10,8 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <>
-      <Header />
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
-        <Works variant="grid" heading="All work" showCta={false} />
+        <WorkIndex />
         <Footer />
       </main>
       <FixedBadge />

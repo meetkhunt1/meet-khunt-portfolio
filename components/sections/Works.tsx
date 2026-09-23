@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
 import RevealText from "@/components/anim/RevealText";
-import { FEATURED_PROJECTS, PROJECTS, WORKS, type Project } from "@/lib/data";
+import { FEATURED_PROJECTS, WORKS, type Project } from "@/lib/data";
 
 function ArrowUpRight({ className = "" }: { className?: string }) {
   return (
@@ -22,34 +22,6 @@ function ArrowUpRight({ className = "" }: { className?: string }) {
       <path d="M7 17 17 7" />
       <path d="M8 7h9v9" />
     </svg>
-  );
-}
-
-/* ---------------------------------------------------------------------------
-   Uniform grid card — /projects index
---------------------------------------------------------------------------- */
-function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Link
-      href={`/projects/${project.slug}`}
-      data-card
-      data-cursor="view"
-      className="group flex flex-col opacity-0 lg:col-span-3"
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          sizes="(min-width: 1200px) 50vw, 100vw"
-          className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.06]"
-        />
-      </div>
-      <div className="mt-2.5 flex flex-col gap-2">
-        <h6 className="title-sm">{project.title}</h6>
-        <p className="category">{project.category}</p>
-      </div>
-    </Link>
   );
 }
 
@@ -94,7 +66,7 @@ function CarouselCard({ project }: { project: Project }) {
           <h6 className="text-[22px] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
             {project.title}
           </h6>
-          <p className="category !text-white/75">{project.category}</p>
+          <p className="category text-white/75">{project.category}</p>
         </div>
       </div>
     </Link>
@@ -102,8 +74,6 @@ function CarouselCard({ project }: { project: Project }) {
 }
 
 type WorksProps = {
-  /** "carousel" = light panel + horizontal slider (home). "grid" = uniform 2-per-row (work index). */
-  variant?: "carousel" | "grid";
   eyebrow?: string;
   heading?: string;
   subheading?: string;
@@ -111,14 +81,12 @@ type WorksProps = {
 };
 
 export default function Works({
-  variant = "carousel",
   eyebrow = WORKS.eyebrow,
   heading = WORKS.heading,
   subheading = WORKS.subheading,
   showCta = true,
 }: WorksProps) {
-  const uniform = variant === "grid";
-  const projects = uniform ? PROJECTS : FEATURED_PROJECTS;
+  const projects = FEATURED_PROJECTS;
   const gridRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
@@ -158,11 +126,10 @@ export default function Works({
   }, []);
 
   useEffect(() => {
-    if (uniform) return;
     syncArrows();
     window.addEventListener("resize", syncArrows);
     return () => window.removeEventListener("resize", syncArrows);
-  }, [uniform, syncArrows]);
+  }, [syncArrows]);
 
   const scrollByCard = (direction: 1 | -1) => {
     const el = trackRef.current;
@@ -172,37 +139,15 @@ export default function Works({
     el.scrollBy({ left: step * direction, behavior: "smooth" });
   };
 
-  /* ---------------- /projects index: uniform 2-per-row grid ---------------- */
-  if (uniform) {
-    return (
-      <section id="works" className="section-row pt-[100px]">
-        <div className="grid grid-cols-12 gap-2.5 py-[60px] pb-12">
-          <RevealText as="h3" className="heading-xl col-span-12" split="lines">
-            {heading}
-          </RevealText>
-        </div>
-
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 gap-x-2.5 gap-y-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-y-[100px]"
-        >
-          {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
-      </section>
-    );
-  }
-
   /* ------------------- home: light panel + carousel ----------------------- */
   return (
     <section id="works" className="section-row pt-[100px]">
-      <div className="rounded-[28px] bg-[#f1f6fa] px-5 py-14 md:rounded-[40px] md:px-10 md:py-20 lg:px-14">
+      <div className="rounded-[28px] bg-surface px-5 py-14 md:rounded-[40px] md:px-10 md:py-20 lg:px-14">
         {/* Eyebrow */}
         <div className="flex justify-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-[0_1px_3px_rgba(15,14,14,0.08)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#2f7cf6]" />
-            <span className="font-ui text-[13px] font-semibold tracking-[-0.01em] text-ink">
+            <span className="font-ui text-[13px] font-semibold tracking-[-0.01em] text-fg">
               {eyebrow}
             </span>
           </span>
@@ -210,10 +155,10 @@ export default function Works({
 
         {/* Heading + sub */}
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
-          <RevealText as="h3" className="heading-xl !text-ink" split="lines">
+          <RevealText as="h3" className="heading-xl" split="lines">
             {heading}
           </RevealText>
-          <p className="max-w-[46ch] font-ui text-[15px] leading-[1.5] text-ink/60 md:text-[17px]">
+          <p className="max-w-[46ch] font-ui text-[15px] leading-[1.5] text-fg/60 md:text-[17px]">
             {subheading}
           </p>
         </div>
@@ -238,7 +183,7 @@ export default function Works({
             onClick={() => scrollByCard(-1)}
             disabled={atStart}
             data-cursor="grow"
-            className="absolute left-0 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-ink text-white shadow-[0_6px_20px_rgba(15,14,14,0.18)] transition-all duration-300 hover:scale-105 disabled:pointer-events-none disabled:opacity-25 md:flex"
+            className="absolute left-0 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-fg text-bg shadow-[0_6px_20px_rgba(15,14,14,0.18)] transition-all duration-300 hover:scale-105 disabled:pointer-events-none disabled:opacity-25 md:flex"
           >
             <svg
               viewBox="0 0 24 24"
@@ -260,7 +205,7 @@ export default function Works({
             onClick={() => scrollByCard(1)}
             disabled={atEnd}
             data-cursor="grow"
-            className="absolute right-0 top-1/2 hidden h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-2xl bg-ink text-white shadow-[0_6px_20px_rgba(15,14,14,0.18)] transition-all duration-300 hover:scale-105 disabled:pointer-events-none disabled:opacity-25 md:flex"
+            className="absolute right-0 top-1/2 hidden h-14 w-14 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-2xl bg-fg text-bg shadow-[0_6px_20px_rgba(15,14,14,0.18)] transition-all duration-300 hover:scale-105 disabled:pointer-events-none disabled:opacity-25 md:flex"
           >
             <svg
               viewBox="0 0 24 24"
@@ -284,7 +229,7 @@ export default function Works({
             <Link
               href="/projects"
               data-cursor="grow"
-              className="inline-flex items-center justify-center rounded-[50px] bg-ink px-5 py-3 font-ui text-[12px] font-semibold tracking-[-0.01em] text-white transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-105"
+              className="inline-flex items-center justify-center rounded-[50px] bg-fg px-5 py-3 font-ui text-[12px] font-semibold tracking-[-0.01em] text-bg transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-105"
             >
               see them all
             </Link>

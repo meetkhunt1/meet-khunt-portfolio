@@ -39,6 +39,25 @@ export const HERO = {
   ],
 };
 
+/**
+ * /projects filter row. "All Projects" is the default tab and is never stored
+ * on a project — it simply skips the filter.
+ */
+export const WORK_FILTERS = [
+  "All Projects",
+  "Shopify",
+  "WordPress",
+  "Landing Pages",
+] as const;
+
+export type WorkFilter = Exclude<(typeof WORK_FILTERS)[number], "All Projects">;
+
+/** Copy for the /projects index */
+export const WORK_INDEX = {
+  headline: "Ecommerce work built to sell, not just to look good.",
+  filterLabel: "Filter Work:",
+};
+
 export type GalleryImage = {
   src: string;
   alt: string;
@@ -57,6 +76,12 @@ export type Project = {
   title: string;
   category: string;
   image: string;
+  /** Short client name — the card title on /projects, where `title` is too long */
+  brand: string;
+  /** One-line pitch under the card title on /projects */
+  summary: string;
+  /** Which /projects filter tabs this project belongs to (see WORK_FILTERS) */
+  filters: WorkFilter[];
   /** Shown in the home-page "Selected work" grid; every project shows on /projects */
   featured?: boolean;
   /** Small tag above the case-study headline */
@@ -78,6 +103,10 @@ export const PROJECTS: Project[] = [
     title: "Luma Nutrition: Advertorials built to convert",
     category: "ADVERTORIALS · LANDING PAGES",
     image: "/projects/luma-cover.webp",
+    brand: "Luma Nutrition",
+    summary:
+      "Five editorial advertorials built to carry cold paid traffic for a DTC supplement brand.",
+    filters: ["Landing Pages"],
     featured: true,
     tag: "DTC Supplement Brand (Advertorial Development)",
     headline: "Five Editorial Advertorials for Cold Paid Traffic",
@@ -138,6 +167,10 @@ export const PROJECTS: Project[] = [
     title: "Hume Health: Advertorials that scale",
     category: "FUNNELISH · ADVERTORIALS",
     image: "/projects/hume-cover.webp",
+    brand: "Hume Health",
+    summary:
+      "A high-volume Funnelish program of advertorials and interactive calculator funnels.",
+    filters: ["Landing Pages"],
     featured: true,
     tag: "Smart Health Wearables Brand (Funnelish Development)",
     headline: "Advertorials & Interactive Calculator Funnels for Paid Traffic",
@@ -223,6 +256,10 @@ export const PROJECTS: Project[] = [
     title: "Aavilo: Pet wellness that converts",
     category: "PRODUCT PAGE DESIGN · STORE REDESIGN",
     image: "/projects/aavilo-card.webp",
+    brand: "Aavilo",
+    summary:
+      "A Shopify redesign plus landing pages that make a pet wellness range easy to buy.",
+    filters: ["Shopify", "Landing Pages"],
     featured: true,
     tag: "DTC Pet Wellness Brand (Shopify Development)",
     headline: "Shopify Store Redesign & High-Converting Landing Pages",
@@ -273,6 +310,10 @@ export const PROJECTS: Project[] = [
     title: "Baby Gains: Strong bodies, bright minds",
     category: "SHOPIFY REDESIGN",
     image: "/projects/baby-gains-card.webp",
+    brand: "Baby Gains",
+    summary:
+      "A full Shopify redesign for a children’s fitness brand, from collection page to PDP.",
+    filters: ["Shopify"],
     featured: true,
     tag: "Children's Fitness Equipment Brand (Shopify Development)",
     headline: "Complete Shopify Store Redesign",
@@ -337,6 +378,10 @@ export const PROJECTS: Project[] = [
     title: "Hanson of Sonoma: Premium spirits online",
     category: "SHOPIFY REDESIGN",
     image: "/projects/hanson-card.webp",
+    brand: "Hanson of Sonoma",
+    summary:
+      "A premium Shopify rebuild that finally matches the shopping experience to the brand.",
+    filters: ["Shopify"],
     featured: true,
     tag: "Premium Wine & Lifestyle Brand (Shopify Development)",
     headline: "Premium Shopify Store Redesign",
@@ -393,6 +438,10 @@ export const PROJECTS: Project[] = [
     title: "Kitchen Corner: Craftsmanship online",
     category: "WORDPRESS",
     image: "/projects/kitchen-corner-card.webp",
+    brand: "Kitchen Corner",
+    summary:
+      "A corporate WordPress site that turns a twenty-year company story into credibility.",
+    filters: ["WordPress"],
     featured: true,
     tag: "Kitchen Solutions Brand (WordPress Development)",
     headline: "Corporate Website Design & Development",
@@ -455,6 +504,40 @@ export const PROJECTS: Project[] = [
 /** Home page shows a curated subset; /projects shows every project. */
 export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
 
+/**
+ * The offer, in the words used to sell it. Single source for both the header's
+ * Services dropdown and the About block, so the two can't drift apart — the
+ * dropdown links into that block. Landing Pages is the exception: it has its
+ * own page at /d2c, so it points there instead.
+ */
+export const SERVICES = [
+  { label: "White-Label Development", href: "/#about", hash: "#about" },
+  { label: "Figma to Shopify", href: "/#about", hash: "#about" },
+  { label: "Landing Pages", href: "/d2c/" },
+  { label: "Product Pages", href: "/#about", hash: "#about" },
+  { label: "Store Redesign & Migration", href: "/#about", hash: "#about" },
+  { label: "Conversion Optimization", href: "/#about", hash: "#about" },
+];
+
+/**
+ * Top bar. An entry with `items` renders as a caret dropdown; one without is a
+ * plain link. `hash` marks a target that lives on the home page, so the header
+ * can smooth-scroll to it when it is already there and fall back to a normal
+ * /#hash navigation when it is not.
+ */
+export const NAV = {
+  cta: "Work with me",
+  items: [
+    {
+      label: "Services",
+      href: "/#about",
+      hash: "#about",
+      items: SERVICES,
+    },
+    { label: "Case Studies", href: "/projects/" },
+  ],
+};
+
 /** Copy for the home-page work carousel */
 export const WORKS = {
   eyebrow: "Case Studies",
@@ -467,16 +550,7 @@ export const ABOUT = {
   headingLines: ["Hello there", "I’m Meet Khunt"],
   paragraph:
     "I’m an ecommerce frontend specialist who designs, develops, and optimizes high-performing storefronts for DTC brands across the globe. From complete Shopify redesigns to landing pages built for paid traffic, my work focuses on what actually moves the needle — faster load times, clearer information hierarchy, stronger product presentation, and shopping experiences that turn visitors into customers on any device.",
-  services: [
-    "Shopify Development",
-    "Store Redesign",
-    "Landing Page Design",
-    "UI/UX Design",
-    "Conversion Optimization",
-    "WordPress Development",
-    "Responsive Development",
-    "Performance Optimization",
-  ],
+  services: SERVICES.map((s) => s.label),
   clients: [
     "Aavilo",
     "Baby Gains",

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { PROJECTS, type GalleryImage } from "@/lib/data";
 
@@ -38,7 +37,9 @@ function GalleryRow({ images }: { images: GalleryImage[] }) {
             width={img.width}
             height={img.height}
             sizes={images.length > 1 ? "(min-width: 768px) 50vw, 100vw" : "100vw"}
-            className="h-auto w-full"
+            /* Most shots are full-page screenshots that run to a white edge —
+               without a frame they bleed into the page background. */
+            className="h-auto w-full rounded-[10px] border border-fg/20"
           />
           {img.caption && <figcaption className="category">{img.caption}</figcaption>}
         </figure>
@@ -69,17 +70,16 @@ export default async function ProjectPage({
 
   return (
     <>
-      <Header />
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
         {/* Case-study hero */}
         <section className="section-row flex flex-col gap-12 pt-[60px] lg:flex-row lg:gap-16">
           <div className="flex flex-[3] flex-col items-start gap-6">
             <p className="category">{project.tag}</p>
-            <h1 className="heading-xl">{project.headline}</h1>
+            <h1 className="heading-md">{project.headline}</h1>
             {project.description.map((paragraph) => (
               <p
                 key={paragraph.slice(0, 24)}
-                className="label max-w-[640px] normal-case leading-[1.6] text-paper/80"
+                className="label max-w-[640px] normal-case leading-[1.6] text-fg/80"
               >
                 {paragraph}
               </p>
@@ -104,12 +104,12 @@ export default async function ProjectPage({
                     target="_blank"
                     rel="noreferrer"
                     data-cursor="view"
-                    className="group flex items-baseline justify-between gap-6 border-t border-paper/15 py-4 last:border-b"
+                    className="group flex items-baseline justify-between gap-6 border-t border-line py-4 last:border-b"
                   >
-                    <span className="label normal-case leading-[1.5] text-paper transition-colors group-hover:text-muted">
+                    <span className="label normal-case leading-[1.5] text-fg transition-colors group-hover:text-muted">
                       {link.label}
                     </span>
-                    <span className="label shrink-0 text-paper/60 transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="label shrink-0 text-fg/60 transition-transform duration-300 group-hover:translate-x-1">
                       ↗
                     </span>
                   </a>
@@ -121,7 +121,7 @@ export default async function ProjectPage({
           <div className="flex flex-[2] gap-12 lg:justify-end lg:pt-24">
             <div className="flex flex-col gap-5">
               <p className="label">Services</p>
-              <p className="label text-paper">
+              <p className="label text-fg">
                 {project.services.map((s) => (
                   <span key={s} className="block">
                     {s}
@@ -131,7 +131,7 @@ export default async function ProjectPage({
             </div>
             <div className="flex flex-col gap-5">
               <p className="label">Industries</p>
-              <p className="label text-paper">
+              <p className="label text-fg">
                 {project.industries.map((i) => (
                   <span key={i} className="block">
                     {i}

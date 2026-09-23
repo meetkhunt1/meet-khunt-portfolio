@@ -1,4 +1,3 @@
-import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Works from "@/components/sections/Works";
@@ -9,7 +8,6 @@ import FixedBadge from "@/components/ui/FixedBadge";
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="flex w-full flex-col items-center overflow-hidden">
         <Hero />
         <Works />
