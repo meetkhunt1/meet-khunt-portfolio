@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,4219,i=>{"use strict";i.i(65506);var e=i.i(89970),t=i.i(83495),l=i.i(75324),r=i.i(65747);i.s(["ScrollTrigger",()=>t.ScrollTrigger,"SplitText",()=>l.SplitText,"gsap",()=>e.default,"useGSAP",()=>r.useGSAP])}]);
