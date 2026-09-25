@@ -23,6 +23,25 @@ const inter = localFont({
   display: "swap",
 });
 
+/* Display serif, shared with sketfuture.com so the two sites read as one
+   brand. Used for the About pull quote. */
+const perfectlyNineties = localFont({
+  src: [
+    {
+      path: "./fonts/PerfectlyNineties-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/PerfectlyNineties-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+  ],
+  variable: "--font-perfectly-nineties",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://meetkhunt.com"),
   title: SITE.title,
@@ -47,7 +66,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${switzer.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${switzer.variable} ${inter.variable} ${perfectlyNineties.variable}`}
+    >
       <body className="min-h-screen bg-bg text-fg antialiased">
         <SiteChrome>
           <Header />

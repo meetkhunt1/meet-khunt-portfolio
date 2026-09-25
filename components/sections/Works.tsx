@@ -63,7 +63,7 @@ function CarouselCard({ project }: { project: Project }) {
 
         {/* Label */}
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-5">
-          <h6 className="text-[22px] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
+          <h6 className="text-[22px] font-medium leading-[1.1] tracking-[-0.02em] text-white">
             {project.title}
           </h6>
           <p className="category text-white/75">{project.category}</p>
@@ -155,7 +155,9 @@ export default function Works({
 
         {/* Heading + sub */}
         <div className="mt-6 flex flex-col items-center gap-4 text-center">
-          <RevealText as="h3" className="heading-xl" split="lines">
+          {/* A section heading inside the page, so it sits a step below the
+              hero rather than competing with it. */}
+          <RevealText as="h3" className="heading-md" split="lines">
             {heading}
           </RevealText>
           <p className="max-w-[46ch] font-ui text-[15px] leading-[1.5] text-fg/60 md:text-[17px]">
@@ -168,7 +170,12 @@ export default function Works({
           <div
             ref={trackRef}
             onScroll={syncArrows}
-            data-lenis-prevent
+            /* Horizontal only. `data-lenis-prevent` makes Lenis bail on every
+               gesture over this element, so a vertical wheel here dropped the
+               page out of smooth scroll and back to native jumps. Lenis derives
+               the axis per event, so the -horizontal form hands sideways
+               gestures to the carousel and leaves vertical ones smooth. */
+            data-lenis-prevent-horizontal
             className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth"
           >
             {projects.map((project) => (

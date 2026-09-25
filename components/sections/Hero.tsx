@@ -1,156 +1,114 @@
-"use client";
+import Image from "next/image";
+import RevealText from "@/components/anim/RevealText";
+import FadeIn from "@/components/anim/FadeIn";
+import { CONTACT, HERO } from "@/lib/data";
 
-import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import Slideshow from "@/components/ui/Slideshow";
-import { HERO, SITE } from "@/lib/data";
+/* Cards cycle through these so a column reads as a collage rather than a
+   column of identical tiles. The shape is picked from the position in the
+   ORIGINAL list, never the doubled one — if the two copies differed in height,
+   the -50% translate would no longer land cleanly and the loop would jump. */
+const CARD_SHAPES = ["aspect-[3/5]", "aspect-[4/5]", "aspect-[3/4]"];
 
-/** Cursor travel (px) between trail image spawns */
-const TRAIL_THRESHOLD = 110;
+/** Seconds for one full loop. Slower on the outer columns so they desync. */
+const COLUMN_DURATIONS = [82, 64, 94];
 
-/**
- * Immersive hero:
- * - Giant "MEET KHUNT" wordmark (live text), revealed by a left-to-right
- *   wipe, sitting against the dark background above the image trail.
- * - Desktop: moving the mouse spawns project images at the cursor that
- *   scale in and fade away (image-trail effect).
- * - Below 1200px: the wordmark splits in two halves with a mini slideshow
- *   window between them.
- */
-export default function Hero() {
-  const rootRef = useRef<HTMLElement>(null);
-  const trailRef = useRef<HTMLDivElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const trailState = useRef({ x: 0, y: 0, idx: 0, z: 1, primed: false });
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({ delay: 0.3 });
-      if (logoRef.current) {
-        tl.fromTo(
-          logoRef.current,
-          { scale: 0.7, autoAlpha: 0 },
-          { scale: 1, autoAlpha: 1, duration: 1.4, ease: "expo.out" },
-          0.2,
-        );
-      }
-      if (taglineRef.current) {
-        tl.fromTo(
-          taglineRef.current,
-          { y: 20, autoAlpha: 0 },
-          { y: 0, autoAlpha: 1, duration: 0.8, ease: "power3.out" },
-          "-=0.7",
-        );
-      }
-    },
-    { scope: rootRef },
-  );
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (!window.matchMedia("(min-width: 1200px)").matches) return;
-    const container = trailRef.current;
-    if (!container) return;
-
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const s = trailState.current;
-
-    if (!s.primed) {
-      s.primed = true;
-      s.x = x;
-      s.y = y;
-      return;
-    }
-    if (Math.hypot(x - s.x, y - s.y) < TRAIL_THRESHOLD) return;
-    s.x = x;
-    s.y = y;
-
-    const el = container.children[s.idx % container.children.length] as HTMLElement;
-    s.idx += 1;
-
-    gsap.killTweensOf(el);
-    gsap
-      .timeline()
-      .set(el, { xPercent: -50, yPercent: -50, x, y, zIndex: s.z++ })
-      .fromTo(
-        el,
-        { scale: 0.55, autoAlpha: 0, rotation: gsap.utils.random(-8, 8) },
-        { scale: 1, autoAlpha: 1, rotation: 0, duration: 0.45, ease: "expo.out" },
-      )
-      .to(el, { scale: 0.92, autoAlpha: 0, duration: 0.55, ease: "power2.in" }, "+=0.25");
-  };
+function CollageColumn({
+  images,
+  index,
+}: {
+  images: readonly string[];
+  index: number;
+}) {
+  /* Rendered twice: the animation translates the track by -50%, which lands
+     copy two exactly where copy one began. */
+  const doubled = [...images, ...images];
 
   return (
-    <section
-      id="hero"
-      ref={rootRef}
-      className="relative flex h-svh w-full flex-col items-center justify-center overflow-hidden pt-20 lg:pt-12"
-      onMouseMove={onMouseMove}
+    <div
+      className={index === 2 ? "hidden overflow-hidden lg:block" : "overflow-hidden"}
     >
-      {/* Image trail layer (desktop), behind the wordmark */}
       <div
-        ref={trailRef}
-        className="pointer-events-none absolute inset-0 z-[1] hidden lg:block"
-        aria-hidden
+        className={`hero-drift${index === 1 ? " hero-drift--reverse" : ""}`}
+        style={
+          { "--hero-drift-dur": `${COLUMN_DURATIONS[index]}s` } as React.CSSProperties
+        }
       >
-        {HERO.trail.map((src) => (
+        {doubled.map((src, i) => (
           <div
-            key={src}
-            className="absolute left-0 top-0 aspect-square w-[clamp(140px,12vw,210px)] overflow-hidden opacity-0 will-change-transform"
+            key={`${src}-${i}`}
+            className={`relative mb-4 w-full overflow-hidden rounded-[5px] border border-fg/35 bg-surface ${
+              CARD_SHAPES[(i % images.length) % CARD_SHAPES.length]
+            }`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={src}
               alt=""
-              className="h-full w-full object-cover object-center"
-              loading="eager"
-              decoding="async"
-              draggable={false}
+              fill
+              sizes="(min-width: 1200px) 17vw, 45vw"
+              /* Top-anchored: these are full-page shots, and the top of a page
+                 is the part worth recognising. */
+              className="object-cover object-top"
             />
           </div>
         ))}
       </div>
+    </div>
+  );
+}
 
-      {/* Desktop wordmark, wipe-revealed, above the trail */}
-      <div className="section-row relative z-[2] hidden w-full items-center justify-center lg:flex">
-        <div ref={logoRef} className="relative opacity-0">
-          <h1 className="whitespace-nowrap text-center text-[11.5vw] font-medium uppercase leading-[0.9] tracking-[-0.04em] text-fg opacity-90">
-            {HERO.wordmark}
-          </h1>
+/**
+ * Home hero: the pitch on the left, a drifting collage of shipped work on the
+ * right. The collage runs to the container edge and is clipped top and bottom
+ * by the section, so it reads as a window onto a larger wall of work.
+ */
+export default function Hero() {
+  return (
+    <section
+      id="hero"
+      className="relative w-full overflow-hidden pt-[var(--header-h)]"
+    >
+      <div className="mx-auto grid w-full max-w-[var(--max-w)] grid-cols-1 items-center lg:grid-cols-2">
+        {/* Pitch */}
+        <div className="flex flex-col items-start px-[var(--gutter)] pb-14 pt-14 lg:py-24">
+          <RevealText as="h1" className="heading-lg max-w-[22ch]" split="lines">
+            {HERO.headline}
+          </RevealText>
+
+          <FadeIn delay={0.15} className="w-full">
+            <p className="mt-6 max-w-[46ch] font-ui text-[16px] leading-[1.6] text-fg/70 lg:text-[18px]">
+              {HERO.sub}
+            </p>
+
+            <div className="mt-9 flex flex-col items-start gap-5">
+              <a
+                href={CONTACT.href}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="grow"
+                className="pill rounded-[10px] px-7 py-4 text-[14px] tracking-[-0.01em]"
+              >
+                {HERO.cta}
+              </a>
+
+              <p className="font-ui text-[13px] leading-[1.5] text-muted">
+                {HERO.proof}
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Collage */}
+        <div
+          aria-hidden
+          className="h-[420px] overflow-hidden pb-16 lg:h-[calc(100svh-var(--header-h))] lg:max-h-[900px] lg:min-h-[620px] lg:pb-0"
+        >
+          <div className="grid h-full grid-cols-2 gap-4 pl-[var(--gutter)] lg:grid-cols-3 lg:pl-0">
+            {HERO.collage.map((images, i) => (
+              <CollageColumn key={i} images={images} index={i} />
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Tablet / phone: split wordmark with mini slideshow between */}
-      <div className="flex w-full flex-col items-center gap-4 px-5 lg:hidden">
-        <h1 className="sr-only">{HERO.wordmark}</h1>
-        <span
-          aria-hidden
-          className="text-[26vw] font-medium uppercase leading-[0.85] tracking-[-0.04em] text-fg opacity-90"
-        >
-          {HERO.wordmarkTop}
-        </span>
-        <Slideshow
-          images={HERO.slides}
-          className="h-[130px] w-[200px] shrink-0 md:h-[150px]"
-          sizes="200px"
-        />
-        <span
-          aria-hidden
-          className="text-[26vw] font-medium uppercase leading-[0.85] tracking-[-0.04em] text-fg opacity-90"
-        >
-          {HERO.wordmarkBottom}
-        </span>
-      </div>
-
-      {/* Tagline pinned to the bottom */}
-      <p
-        ref={taglineRef}
-        className="absolute bottom-10 z-[3] w-full max-w-[490px] px-5 text-center text-[13px] font-medium uppercase leading-[1.4] tracking-[0.02em] text-fg opacity-0 lg:text-sm"
-      >
-        {SITE.tagline}
-      </p>
     </section>
   );
 }

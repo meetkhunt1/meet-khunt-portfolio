@@ -44,6 +44,7 @@
   --color-scrim: var(--color-scrim);
   --font-sans: var(--font-switzer);
   --font-ui: var(--font-inter);
+  --font-serif: var(--font-perfectly-nineties);
 
   /* Template breakpoints: phone < 810 <= tablet < 1200 <= desktop */
   --breakpoint-md: 810px;
@@ -101,7 +102,8 @@
   .lenis.lenis-smooth {
     scroll-behavior: auto !important;
   }
-  .lenis.lenis-smooth [data-lenis-prevent] {
+  .lenis.lenis-smooth [data-lenis-prevent],
+  .lenis.lenis-smooth [data-lenis-prevent-horizontal] {
     overscroll-behavior: contain;
   }
 }
@@ -233,6 +235,17 @@
     transform: scale(1.05);
   }
 
+  /* Outlined counterpart to .pill, for a secondary action beside a solid one.
+     Declared after .pill so it wins inside this layer. */
+  .pill-ghost {
+    background: transparent;
+    color: var(--color-fg);
+  }
+  .pill-ghost:hover {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+
   /* Header / phone-menu CTA: the same pill at button scale. Declared after
      .pill so it wins inside this layer. */
   .pill-lg {
@@ -252,6 +265,28 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .header-in {
+      animation: none;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Hero collage
+
+     Each column renders its images twice, so translating the track by exactly
+     -50% lands the second copy where the first started and the loop is
+     seamless. The cards carry their own margin-bottom rather than the track
+     carrying a flex `gap`, because a gap is not duplicated after the last item
+     and -50% would then drift by half a gap on every cycle.
+  ------------------------------------------------------------------------- */
+  .hero-drift {
+    animation: hero-drift var(--hero-drift-dur, 70s) linear infinite;
+    will-change: transform;
+  }
+  .hero-drift--reverse {
+    animation-direction: reverse;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-drift {
       animation: none;
     }
   }
@@ -299,6 +334,15 @@
   .reveal-line-mask {
     padding-bottom: 0.14em;
     margin-bottom: -0.14em;
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
   }
 }
 

@@ -37,7 +37,7 @@ function WorkCard({ project }: { project: Project }) {
 
       <p className="category mt-8">{project.category}</p>
 
-      <h2 className="mt-2.5 font-sans text-[28px] font-bold leading-[1.1] tracking-[-0.02em] text-fg transition-colors duration-300 group-hover:text-muted lg:text-[34px]">
+      <h2 className="mt-2.5 font-sans text-[28px] font-medium leading-[1.1] tracking-[-0.02em] text-fg transition-colors duration-300 group-hover:text-muted lg:text-[34px]">
         {project.brand}
       </h2>
 
@@ -92,7 +92,7 @@ export default function WorkIndex() {
     <section id="works" className="section-row pt-[90px] lg:pt-[130px]">
       <RevealText
         as="h1"
-        className="heading-lg max-w-[26ch] font-bold"
+        className="heading-lg max-w-[26ch]"
         split="lines"
       >
         {WORK_INDEX.headline}

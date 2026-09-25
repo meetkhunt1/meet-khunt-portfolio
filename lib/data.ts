@@ -11,31 +11,38 @@ export const SITE = {
 };
 
 export const HERO = {
-  /* Giant wordmark rendered as live text; split across the mini slideshow below 1200px */
-  wordmark: "MEET KHUNT",
-  wordmarkTop: "MEET",
-  wordmarkBottom: "KHUNT",
-  slides: [
-    "/projects/baby-gains-before-after.webp",
-    "/projects/hanson-before-after.webp",
-    "/projects/kitchen-corner-before-after.webp",
-    "/projects/aavilo-logo.webp",
-    "/projects/baby-gains-mobile.webp",
-  ],
-  /* Pool for the desktop mouse-trail effect; mixed aspect ratios on purpose */
-  trail: [
-    "/projects/aavilo-card.webp",
-    "/projects/baby-gains-1.webp",
-    "/projects/hanson-card.webp",
-    "/projects/kitchen-corner-3.webp",
-    "/projects/aavilo-pdp-green.webp",
-    "/projects/hanson-1.webp",
-    "/projects/baby-gains-mobile.webp",
-    "/projects/baby-gains-2.webp",
-    "/projects/aavilo-logo.webp",
-    "/projects/hanson-3.webp",
-    "/projects/kitchen-corner-2.webp",
-    "/projects/baby-gains-3.webp",
+  headline: "Storefronts & landing pages built to convert",
+  sub: "Faster load times, clearer hierarchy and stronger product presentation — the frontend work that actually moves revenue for DTC brands.",
+  cta: "Let’s talk",
+  /** Real client names, not an invented rating. Every one has a case study. */
+  proof: "Shipping for Luma Nutrition, Hume Health, Aavilo, Baby Gains & more",
+  /**
+   * Decorative collage beside the headline — three columns that drift at
+   * different speeds. Storefront work only: Shopify (Aavilo, Baby Gains,
+   * Hanson) and WordPress (Kitchen Corner). No advertorial or landing-page
+   * shots, so the hero shows the build work rather than the paid-traffic work.
+   * Purely visual (rendered aria-hidden with empty alts); the work is
+   * presented properly in the carousel below. Each column is duplicated at
+   * render time for a seamless loop, so keep these lists short.
+   */
+  collage: [
+    [
+      "/projects/aavilo-pdp-green.webp",
+      "/projects/hanson-2.webp",
+      "/projects/kitchen-corner-2.webp",
+      "/projects/baby-gains-2.webp",
+    ],
+    [
+      "/projects/kitchen-corner-fullpage.webp",
+      "/projects/baby-gains-3.webp",
+      "/projects/aavilo-pdp-purple.webp",
+      "/projects/hanson-1.webp",
+    ],
+    [
+      "/projects/hanson-3.webp",
+      "/projects/kitchen-corner-1.webp",
+      "/projects/kitchen-corner-3.webp",
+    ],
   ],
 };
 
@@ -506,18 +513,100 @@ export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
 
 /**
  * The offer, in the words used to sell it. Single source for both the header's
- * Services dropdown and the About block, so the two can't drift apart — the
- * dropdown links into that block. Landing Pages is the exception: it has its
- * own page at /d2c, so it points there instead.
+ * Services dropdown and the About block, so the two can't drift apart. Every
+ * entry scrolls to the services section and nowhere else — deliberately, so
+ * the dropdown is navigation within the page rather than a set of exits.
  */
 export const SERVICES = [
-  { label: "White-Label Development", href: "/#about", hash: "#about" },
-  { label: "Figma to Shopify", href: "/#about", hash: "#about" },
-  { label: "Landing Pages", href: "/d2c/" },
-  { label: "Product Pages", href: "/#about", hash: "#about" },
-  { label: "Store Redesign & Migration", href: "/#about", hash: "#about" },
-  { label: "Conversion Optimization", href: "/#about", hash: "#about" },
+  {
+    label: "White-Label Development",
+    href: "/#services",
+    hash: "#services",
+    blurb:
+      "Production capacity for agencies. I build under your brand, to your process, and stay invisible to your client.",
+  },
+  {
+    label: "Figma to Shopify",
+    href: "/#services",
+    hash: "#services",
+    blurb:
+      "Your design file built as a real storefront — sections, states and breakpoints, not an approximation of the comp.",
+  },
+  {
+    label: "Landing Pages",
+    href: "/#services",
+    hash: "#services",
+    blurb:
+      "Standalone pages and advertorials built to take paid traffic. Send a reference link, get a live page in about an hour.",
+  },
+  {
+    label: "Product Pages",
+    href: "/#services",
+    hash: "#services",
+    blurb:
+      "The page that has to do the selling: clearer hierarchy, stronger product presentation, and fast on a phone.",
+  },
+  {
+    label: "Store Redesign & Migration",
+    href: "/#services",
+    hash: "#services",
+    blurb:
+      "Complete storefront rebuilds, or a move onto Shopify that keeps what already works and fixes what doesn’t.",
+  },
+  {
+    label: "Conversion Optimization",
+    href: "/#services",
+    hash: "#services",
+    blurb:
+      "Find what the current page is costing you, fix it, and measure the difference instead of guessing at it.",
+  },
 ];
+
+/**
+ * The stack, as a logo wall.
+ *
+ * `src` is a logo file; `mark` narrows the box for square icons so they do not
+ * float in a wordmark-sized slot. Three tools (Klaviyo, Unbounce, GoHighLevel)
+ * have no usable logo — Simple Icons does not carry them and the only favicons
+ * available are solid tiles that would render as black squares once the wall's
+ * monochrome filter is applied — so they are set as type instead. Drop a
+ * transparent logo into public/tools/ and add a `src` to promote them.
+ */
+export const TOOLS_SECTION = {
+  heading: "Tools I’ve worked with",
+  tools: [
+    { label: "Shopify", src: "/tools/shopify.webp" },
+    { label: "WordPress", src: "/tools/wordpress.svg", mark: true },
+    { label: "WooCommerce", src: "/tools/woocommerce.svg", mark: true },
+    { label: "Webflow", src: "/tools/webflow.svg", mark: true },
+    { label: "Wix", src: "/tools/wix.svg", mark: true },
+    { label: "Figma", src: "/tools/figma.svg", mark: true },
+    { label: "Replo", src: "/tools/replo.webp" },
+    { label: "PageFly", src: "/tools/pagefly.webp" },
+    { label: "GemPages", src: "/tools/gempages.webp" },
+    { label: "Funnelish", src: "/tools/funnelish.svg" },
+    { label: "CheckoutChamp", src: "/tools/checkout-champ.png" },
+    { label: "Klaviyo" },
+    { label: "Unbounce" },
+    { label: "GoHighLevel" },
+  ] as { label: string; src?: string; mark?: boolean }[],
+};
+
+/** Copy for the home-page services section. First person: this is a portfolio. */
+export const SERVICES_SECTION = {
+  heading: "Services",
+  sub: "I design, build and optimize storefronts and landing pages for DTC brands. That includes:",
+  shots: [
+    {
+      src: "/projects/aavilo-pdp-purple.webp",
+      alt: "Aavilo mobile ordering experience",
+    },
+    {
+      src: "/projects/luma-turmeric.webp",
+      alt: "Luma Nutrition turmeric curcumin advertorial",
+    },
+  ],
+};
 
 /**
  * Top bar. An entry with `items` renders as a caret dropdown; one without is a
@@ -547,9 +636,24 @@ export const WORKS = {
 };
 
 export const ABOUT = {
-  headingLines: ["Hello there", "I’m Meet Khunt"],
+  /** Two-line pull quote; rendered in the editorial serif. */
+  quote: ["Design wins the click.", "Clarity wins the sale."],
+  /* Trimmed to roughly five lines: the column has to finish level with the
+     portrait beside it. */
   paragraph:
-    "I’m an ecommerce frontend specialist who designs, develops, and optimizes high-performing storefronts for DTC brands across the globe. From complete Shopify redesigns to landing pages built for paid traffic, my work focuses on what actually moves the needle — faster load times, clearer information hierarchy, stronger product presentation, and shopping experiences that turn visitors into customers on any device.",
+    "I’m an ecommerce frontend specialist who designs, develops and optimizes high-performing storefronts for DTC brands worldwide — from complete Shopify redesigns to landing pages built for paid traffic. My focus is what actually moves the needle: faster load times, clearer hierarchy, stronger product presentation.",
+  ctaPrimary: "Let’s talk",
+  ctaSecondary: "See the work",
+  /**
+   * Only figures this site can stand behind. The reference this section is
+   * modelled on leads with "100+ brands helped / €24M+ extra revenue"; those
+   * are claims only Meet can make, so they are not invented here. The first
+   * number is derived from PROJECTS so it cannot go stale.
+   */
+  stats: [
+    { value: String(PROJECTS.length), label: "case studies shipped" },
+    { value: "~1 hr", label: "reference link to live page" },
+  ],
   services: SERVICES.map((s) => s.label),
   clients: [
     "Aavilo",
@@ -558,6 +662,8 @@ export const ABOUT = {
     "Kitchen Corner",
   ],
   portrait: "/portrait.webp",
+  portraitName: "Meet Khunt",
+  portraitRole: "Ecommerce Frontend Specialist",
 };
 
 export const CONTACT = {

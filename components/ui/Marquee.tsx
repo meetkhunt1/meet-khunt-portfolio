@@ -25,6 +25,7 @@ export default function Marquee({
     () => {
       const track = trackRef.current;
       if (!track) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const item = track.children[0] as HTMLElement;
       if (!item) return;
 
