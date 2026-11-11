@@ -29,8 +29,14 @@ function ChevronDown({ className = "" }: { className?: string }) {
  * open for a pointer and for the keyboard without any measuring in JS. The
  * only state here is the phone menu, which needs a toggle and a scroll lock.
  */
-export default function Header() {
+/** Top-level link added once the blog has a published article. */
+const BLOG_NAV = { label: "Blog", href: "/blog/", hash: undefined, items: undefined };
+
+export default function Header({ showBlog = false }: { showBlog?: boolean }) {
   const [open, setOpen] = useState(false);
+  const navItems: (typeof NAV.items)[number][] = showBlog
+    ? [...NAV.items, BLOG_NAV]
+    : NAV.items;
   const lenis = useLenis();
 
   /* Lock the page behind the phone menu; the panel is its own scroll area. */
@@ -72,7 +78,7 @@ export default function Header() {
             aria-label="Main"
             className="ml-auto hidden h-[var(--header-h)] items-stretch gap-8 md:flex"
           >
-            {NAV.items.map((entry) => (
+            {navItems.map((entry) => (
               <div
                 key={entry.label}
                 className="group relative flex items-center"
@@ -158,7 +164,7 @@ export default function Header() {
         }`}
       >
         <div className="section-row flex flex-col gap-6 py-6">
-          {NAV.items.map((entry) =>
+          {navItems.map((entry) =>
             entry.items ? (
               <div key={entry.label}>
                 <p className="category pb-2">{entry.label}</p>

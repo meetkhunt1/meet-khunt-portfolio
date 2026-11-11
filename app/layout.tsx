@@ -4,6 +4,7 @@ import "./globals.css";
 import SiteChrome from "@/components/providers/SiteChrome";
 import Header from "@/components/layout/Header";
 import { SITE } from "@/lib/data";
+import { getPosts } from "@/lib/blog/posts";
 
 const switzer = localFont({
   src: [
@@ -60,11 +61,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  /* The header links to /blog/ only once there is something published to read. */
+  const showBlog = (await getPosts()).some((p) => !p.draft);
+
   return (
     <html
       lang="en"
@@ -72,7 +76,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-bg text-fg antialiased">
         <SiteChrome>
-          <Header />
+          <Header showBlog={showBlog} />
           {children}
         </SiteChrome>
       </body>

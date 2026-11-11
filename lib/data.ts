@@ -814,7 +814,18 @@ export const NAV = {
       label: "Services",
       href: "/#about",
       hash: "#about",
-      items: SERVICES,
+      /* Specialised service pages sit after the home-page anchors. Kept
+         out of SERVICES so the home Services list and About block are
+         unchanged. */
+      items: [
+        ...SERVICES,
+        {
+          label: "Checkout Champ Development",
+          href: "/checkout-champ-developer/",
+          hash: undefined,
+          blurb: "",
+        },
+      ],
     },
     { label: "Case Studies", href: "/projects/" },
   ],
