@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CC_ICEBERG } from "@/lib/checkout-champ";
 
 /*
@@ -153,9 +154,15 @@ export default function IcebergInfographic() {
 
         <div className="mt-6 flex items-center justify-between gap-3 border-t border-[#d5e4f3] pt-4">
           <span className="category">{above.label}</span>
-          <span className="rounded-full border border-[#c6daef] bg-white px-2.5 py-1 font-ui text-[11px] font-semibold text-fg">
-            {above.platform}
-          </span>
+          {/* The file is a white logo for dark backgrounds; brightness-0
+              inks it for the light sky, as the Tools wall does. */}
+          <Image
+            src={above.logo.src}
+            alt={above.platform}
+            width={above.logo.width}
+            height={above.logo.height}
+            className="h-6 w-auto brightness-0 sm:h-7"
+          />
         </div>
 
         <div className={`${ROW} mt-4`}>
@@ -231,9 +238,13 @@ export default function IcebergInfographic() {
           <span className="font-ui text-[12px] font-medium uppercase tracking-[0.03em] text-white/60">
             {below.label}
           </span>
-          <span className="rounded-full border border-white/25 bg-white/10 px-2.5 py-1 font-ui text-[11px] font-semibold text-white">
-            {below.platform}
-          </span>
+          <Image
+            src={below.logo.src}
+            alt={below.platform}
+            width={below.logo.width}
+            height={below.logo.height}
+            className="h-6 w-auto sm:h-7"
+          />
         </div>
         <p className="mt-4 flex items-center justify-center gap-1.5 font-ui text-[12px] font-semibold text-white/80 sm:hidden">
           <span aria-hidden>⇅</span>
