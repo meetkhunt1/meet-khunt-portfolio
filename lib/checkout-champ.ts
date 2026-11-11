@@ -229,6 +229,19 @@ export const CC_RELATED = {
 
 /* ------------------------------------------------------------------- Why */
 
+/**
+ * Blog articles this page links back to ("Checkout Champ Guides"). List
+ * published article slugs; the build fails on a slug that isn't one. While
+ * the list is empty the section isn't rendered at all.
+ */
+export const CC_GUIDES = {
+  heading: "Checkout Champ Guides",
+  description:
+    "Practical write-ups on building, customizing and troubleshooting Checkout Champ funnels.",
+  allLabel: "All Checkout Champ articles",
+  slugs: [] as string[],
+};
+
 export const CC_WHY = {
   heading: "Why Hire Me as Your Checkout Champ Developer?",
   items: [

@@ -52,8 +52,11 @@ export default function Footer() {
             {SITE.year} ® {SITE.footerName}
           </p>
           <a
-            href={FOOTER.contactHref}
+            href={`/${FOOTER.contactHref}`}
             onClick={(e) => {
+              /* Pages without a contact section (case studies, the blog)
+                 send the visitor to the home page's instead. */
+              if (!document.querySelector(FOOTER.contactHref)) return;
               e.preventDefault();
               lenis?.scrollTo(FOOTER.contactHref);
             }}

@@ -3,15 +3,19 @@ import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import FadeIn from "@/components/anim/FadeIn";
 import RevealText from "@/components/anim/RevealText";
+import PostCard from "@/components/blog/PostCard";
 import FunnelProjectCard from "@/components/sections/FunnelProjectCard";
 import Accordion from "@/components/ui/Accordion";
 import FixedBadge from "@/components/ui/FixedBadge";
 import ScrollLink from "@/components/ui/ScrollLink";
+import { categoryPath } from "@/lib/blog/config";
+import { getPost } from "@/lib/blog/posts";
 import { CONTACT } from "@/lib/data";
 import {
   CC_CTA,
   CC_EXPERTISE,
   CC_FAQ,
+  CC_GUIDES,
   CC_HERO,
   CC_INTRO,
   CC_META,
@@ -161,7 +165,17 @@ function SectionHeading({
   );
 }
 
-export default function CheckoutChampDeveloperPage() {
+export default async function CheckoutChampDeveloperPage() {
+  const guides = await Promise.all(
+    CC_GUIDES.slugs.map(async (slug) => {
+      const post = await getPost(slug);
+      if (!post || post.draft) {
+        throw new Error(`CC_GUIDES lists "${slug}", which isn't a published article.`);
+      }
+      return post;
+    }),
+  );
+
   return (
     <>
       <script
@@ -461,6 +475,27 @@ export default function CheckoutChampDeveloperPage() {
             ))}
           </ol>
         </section>
+
+        {/* Guides — renders only once CC_GUIDES lists published articles. */}
+        {guides.length > 0 && (
+          <section className="section-row pt-[100px] lg:pt-[160px]">
+            <SectionHeading heading={CC_GUIDES.heading} description={CC_GUIDES.description} />
+            <ul className="mt-12 grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-x-14">
+              {guides.map((post) => (
+                <li key={post.slug}>
+                  <PostCard post={post} headingLevel="h3" />
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={categoryPath("checkout-champ")}
+              data-cursor="grow"
+              className="pill pill-ghost mt-12 rounded-full"
+            >
+              {CC_GUIDES.allLabel}
+            </Link>
+          </section>
+        )}
 
         {/* 7. FAQ -------------------------------------------------------- */}
         <section
