@@ -47,6 +47,35 @@ export const CC_HERO = {
 };
 
 /**
+ * Hero infographic: the storefront customers see (Shopify) is the tip; the
+ * funnel and checkout infrastructure (Checkout Champ) is what sits below it.
+ * Labels are rendered as real text, so they stay readable and crawlable.
+ */
+export const CC_ICEBERG = {
+  headline: "Your Storefront Is Only the Tip of the Iceberg.",
+  supporting:
+    "Behind every smooth buying experience is a connected system of funnels, checkout flows, offers, and tracking.",
+  above: {
+    label: "Above the water",
+    platform: "Shopify",
+    items: ["Online Store", "Product Pages", "Collections", "Brand Experience"],
+  },
+  below: {
+    label: "Below the water",
+    platform: "Checkout Champ",
+    items: [
+      "Landing Pages & Sales Funnels",
+      "Checkout & Order Processing",
+      "Upsells & Downsells",
+      "Subscription Offers",
+      "Payment Configuration",
+      "Tracking & Conversion Events",
+    ],
+  },
+  connector: "One connected buying journey",
+};
+
+/**
  * A standalone, quotable summary of who Meet is and what this service covers.
  * Written to read correctly when lifted out of the page on its own (search
  * snippets, AI answers), so it names the person, the platform and the client

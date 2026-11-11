@@ -5,6 +5,7 @@ import FadeIn from "@/components/anim/FadeIn";
 import RevealText from "@/components/anim/RevealText";
 import PostCard from "@/components/blog/PostCard";
 import FunnelProjectCard from "@/components/sections/FunnelProjectCard";
+import IcebergInfographic from "@/components/sections/IcebergInfographic";
 import Accordion from "@/components/ui/Accordion";
 import FixedBadge from "@/components/ui/FixedBadge";
 import ScrollLink from "@/components/ui/ScrollLink";
@@ -186,7 +187,7 @@ export default async function CheckoutChampDeveloperPage() {
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
         {/* 1. Hero ------------------------------------------------------- */}
         <section
-          className="section-row grid grid-cols-1 gap-12 pt-[50px] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16 lg:pt-[90px]"
+          className="section-row grid grid-cols-1 items-center gap-12 pt-[50px] lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-x-16 lg:gap-y-20 lg:pt-[90px]"
         >
           <div className="flex flex-col items-start">
             <nav aria-label="Breadcrumb">
@@ -251,50 +252,57 @@ export default async function CheckoutChampDeveloperPage() {
             </FadeIn>
           </div>
 
+          {/* Infographic: Shopify is the tip, Checkout Champ the infrastructure */}
+          <FadeIn delay={0.25} className="w-full lg:max-w-[640px] lg:justify-self-end">
+            <IcebergInfographic />
+          </FadeIn>
+
           {/* Standalone summary — written to be quoted on its own. */}
-          <FadeIn delay={0.25} className="lg:self-end">
+          <FadeIn className="lg:col-span-2">
             <aside
               aria-label="About Meet Khunt"
-              className="rounded-[12px] border border-line bg-surface p-6 lg:p-8"
+              className="grid grid-cols-1 gap-6 border-t border-line pt-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,9fr)] lg:gap-16"
             >
               <p className="label">{CC_INTRO.label}</p>
-              <p className="mt-4 font-ui text-[15px] leading-[1.65] text-fg/80 lg:text-[16px]">
-                {CC_INTRO.text}
-              </p>
-              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-6">
-                <div>
-                  <dt className="category">Platform</dt>
-                  <dd className="mt-1.5 font-ui text-[14px] text-fg">
-                    Checkout Champ (Konnektive CRM)
-                  </dd>
-                </div>
-                <div>
-                  <dt className="category">Clients</dt>
-                  <dd className="mt-1.5 font-ui text-[14px] text-fg">
-                    DTC brands &amp; agencies
-                  </dd>
-                </div>
-                <div>
-                  <dt className="category">Location</dt>
-                  <dd className="mt-1.5 font-ui text-[14px] text-fg">
-                    Working worldwide
-                  </dd>
-                </div>
-                <div>
-                  <dt className="category">Contact</dt>
-                  <dd className="mt-1.5 font-ui text-[14px] text-fg">
-                    <a
-                      href={CONTACT.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      data-cursor="grow"
-                      className="underline decoration-fg/30 underline-offset-4 transition-colors hover:text-muted"
-                    >
-                      LinkedIn
-                    </a>
-                  </dd>
-                </div>
-              </dl>
+              <div>
+                <p className="max-w-[80ch] font-ui text-[15px] leading-[1.65] text-fg/80 lg:text-[16px]">
+                  {CC_INTRO.text}
+                </p>
+                <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 md:grid-cols-4">
+                  <div>
+                    <dt className="category">Platform</dt>
+                    <dd className="mt-1.5 font-ui text-[14px] text-fg">
+                      Checkout Champ (Konnektive CRM)
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="category">Clients</dt>
+                    <dd className="mt-1.5 font-ui text-[14px] text-fg">
+                      DTC brands &amp; agencies
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="category">Location</dt>
+                    <dd className="mt-1.5 font-ui text-[14px] text-fg">
+                      Working worldwide
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="category">Contact</dt>
+                    <dd className="mt-1.5 font-ui text-[14px] text-fg">
+                      <a
+                        href={CONTACT.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cursor="grow"
+                        className="underline decoration-fg/30 underline-offset-4 transition-colors hover:text-muted"
+                      >
+                        LinkedIn
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </aside>
           </FadeIn>
         </section>
