@@ -19,7 +19,7 @@ export const CC_META = {
   title:
     "Checkout Champ Developer | Custom Funnels & Integrations – Meet Khunt",
   description:
-    "Hire Meet Khunt for Checkout Champ funnel development, custom checkout pages, advertorials, upsells, Shopify integrations, and technical support.",
+    "Hire Meet Khunt, a Checkout Champ developer who builds DTC funnels end to end: advertorials, VSL pages, checkouts, upsells, subscriptions, tracking and A/B tests.",
   /**
    * 1200x630 PNG served as a plain static file — same reasoning as the /d2c
    * OG image: the `opengraph-image` route convention emits an extensionless
@@ -36,7 +36,7 @@ export const CC_HERO = {
   eyebrow: "Checkout Champ Development",
   headline: "Checkout Champ Developer for High-Converting eCommerce Funnels",
   description:
-    "I’m Meet Khunt, a developer specializing in custom Checkout Champ funnels, advertorials, listicles, checkout pages, upsells, and integrations. I help DTC brands and marketing agencies build, customize, and maintain conversion-focused eCommerce experiences.",
+    "I’m Meet Khunt. I take a Figma design and approved copy and turn it into a live Checkout Champ funnel — advertorials, VSL pages, quizzes, order forms, checkouts, upsells and subscription offers — with the campaign, offers, step paths and tracking configured, and the whole customer journey tested with real orders before paid traffic hits it.",
   ctaPrimary: "Hire Me",
   ctaSecondary: "Explore My Work",
   /** Breadcrumb trail shown above the eyebrow and mirrored in JSON-LD. */
@@ -67,12 +67,12 @@ export const CC_ICEBERG = {
     platform: "Checkout Champ",
     logo: { src: "/tools/checkout-champ.png", width: 327, height: 65 },
     items: [
-      "Landing Pages & Sales Funnels",
-      "Checkout & Order Processing",
-      "Upsells & Downsells",
-      "Subscription Offers",
-      "Payment Configuration",
-      "Tracking & Conversion Events",
+      "Advertorials, VSLs & Quizzes",
+      "Order Forms & Checkout",
+      "Upsells, Downsells & Post-Purchase",
+      "Subscription Billing",
+      "Campaigns, Offers & Step Paths",
+      "Pixels, UTMs & A/B Tests",
     ],
   },
   connector: "One connected buying journey",
@@ -86,7 +86,7 @@ export const CC_ICEBERG = {
  */
 export const CC_INTRO = {
   label: "In short",
-  text: "Meet Khunt is an ecommerce frontend developer who builds and customizes Checkout Champ funnels for DTC brands and marketing agencies. His Checkout Champ work covers advertorials, listicles, sales pages, checkout pages, one-click upsells and downsells, thank-you pages, custom HTML, CSS and JavaScript, and Shopify integration support. He also builds Shopify storefronts and landing pages, and works with clients worldwide.",
+  text: "Meet Khunt is an ecommerce front-end developer who builds Checkout Champ funnels end to end for DTC brands and agencies. He turns Figma designs and approved copy into HTML, CSS and JavaScript pages — advertorials, landing and VSL pages, quizzes, order forms, checkouts, upsells, downsells and post-purchase offers — and configures the campaigns, offers, step paths and subscription billing inside Checkout Champ. He implements tracking pixels, UTMs and A/B tests, QAs every funnel with live test transactions, and also works in Funnelish, PageFly and Shopify Liquid. He takes on freelance projects, retainers and full-time remote roles.",
 };
 
 /* -------------------------------------------------------------- Services */
@@ -94,31 +94,31 @@ export const CC_INTRO = {
 export const CC_SERVICES = {
   heading: "Checkout Champ Development Services",
   description:
-    "From complete funnel builds to custom integrations and troubleshooting, I help businesses get more flexibility from Checkout Champ.",
+    "Front-end and platform work in one place: I build the pages, configure Checkout Champ behind them, and prove the whole funnel works before it goes live.",
   items: [
     {
-      title: "Complete Funnel Development",
-      text: "Advertorials, listicles, lead pages, product pages, checkout pages, upsells, downsells, and thank-you pages — built as one connected flow.",
+      title: "End-to-End Funnel Builds",
+      text: "Advertorials, landing pages, VSL pages, quizzes, product pages, order forms, checkouts, upsells, downsells and post-purchase flows — built from your brief as one connected funnel.",
     },
     {
-      title: "Custom Page Development",
-      text: "Custom HTML, CSS, and JavaScript implementation for Checkout Champ pages when the standard page builder can’t produce the design or behaviour you need.",
+      title: "Figma to Checkout Champ",
+      text: "Your Figma design and approved copy built by hand in HTML, CSS and JavaScript: faithful to the design, responsive on every screen, and easy for your team to edit afterwards.",
     },
     {
-      title: "Checkout Customization",
-      text: "Checkout layouts, product and quantity selections, order bumps, and purchase-flow customization that stays tied to your configured products.",
+      title: "Campaign, Offer & Step-Path Setup",
+      text: "Campaigns, products, offers and step paths configured inside Checkout Champ, so every page submits the right product and every customer lands on the right next step.",
     },
     {
-      title: "Upsells & Downsells",
-      text: "Post-purchase offers, one-click upsells, and conditional funnel flows where Checkout Champ supports them.",
+      title: "Subscriptions & Recurring Billing",
+      text: "Subscription offers, billing intervals and subscription pricing set up — then checked with test orders so customers are billed the way the offer says they will be.",
     },
     {
-      title: "Shopify & API Integrations",
-      text: "Checkout Champ and Shopify integration setup, troubleshooting, and API-related development.",
+      title: "Tracking, Pixels & A/B Tests",
+      text: "Conversion pixels, UTMs and events implemented and verified, and split tests launched with correctly configured variants and tracking on each one.",
     },
     {
-      title: "Bug Fixes & Maintenance",
-      text: "Fixing broken layouts, JavaScript issues, mobile responsiveness, and funnel functionality on pages that are already live.",
+      title: "QA, Troubleshooting & Fixes",
+      text: "Full-journey QA with live test transactions, root-cause debugging of broken funnels, and clear, reproducible bug reports when platform support needs to be involved.",
     },
   ],
 };
@@ -129,41 +129,41 @@ export const CC_EXPERTISE = {
   eyebrow: "My Checkout Champ Expertise",
   heading: "More Than Just a Funnel Builder",
   intro: [
-    "A Checkout Champ funnel is a chain of pages that all depend on each other: the advertorial has to hand off to the right offer, the checkout has to submit the right products, and each upsell has to know what came before it. Most of the work is making that chain hold together.",
-    "I work at the code level as well as in the builder — writing the markup, styles and scripts a page needs, then testing the full path a customer actually takes, on the devices they actually use.",
+    "A funnel on paid traffic is a chain where every link matters: the advertorial hands off to the right offer, the order form submits the right product, each upsell knows what came before it, the subscription bills on the right interval, and the pixel fires once per purchase. Most of the work is making that chain hold — and proving it does.",
+    "So the job isn’t done when the page looks right. I build the front end, configure the platform behind it, and walk the full customer journey with real test orders before anyone else has to.",
   ],
   items: [
     {
-      title: "Custom frontend development",
-      text: "Hand-written HTML, CSS and JavaScript for sections and pages the builder can’t produce, structured so your team can still edit the copy afterwards.",
+      title: "Building from a brief",
+      text: "A Figma design and approved copy are all I need to start. I build original pages for your brand and offer, not copies of someone else’s funnel.",
     },
     {
-      title: "Funnel architecture and user flow",
-      text: "Mapping the path from presell content to checkout to post-purchase offers, so every step links to the right next page and offer.",
+      title: "HTML, CSS & JavaScript",
+      text: "Hand-written markup, styles and scripts for package selectors, quantity and bundle logic, quiz flows, countdowns and anything the builder can’t do on its own.",
     },
     {
-      title: "Responsive page implementation",
-      text: "Layouts built mobile-first, since that is where most paid traffic lands, then checked across common phone, tablet and desktop widths.",
+      title: "Checkout Champ configuration",
+      text: "Campaigns, products, offers and step paths set up so checkout, upsells, downsells and thank-you pages route correctly for every path a customer can take.",
     },
     {
-      title: "Checkout and product configuration",
-      text: "Wiring page elements to the campaign’s configured products, packages and pricing so what the customer selects is what gets submitted.",
+      title: "Subscription billing",
+      text: "Subscription offers, billing intervals and pricing configured and verified with test transactions, so rebills match what the customer agreed to.",
     },
     {
-      title: "Custom JavaScript functionality",
-      text: "Package selectors, quantity and bundle logic, countdowns, dynamic content and other interactive behaviour, written to fail gracefully.",
+      title: "Tracking & attribution",
+      text: "Pixels, UTMs and conversion events implemented and checked, and discrepancies traced to the cause instead of patched over.",
     },
     {
-      title: "Third-party integration troubleshooting",
-      text: "Tracing issues between Checkout Champ, Shopify and other connected tools — what was sent, what was received, and where it broke.",
+      title: "A/B testing",
+      text: "Variants for pages, offers, pricing and checkouts configured correctly, with tracking confirmed on each variant and the setup documented.",
     },
     {
-      title: "Conversion-focused implementation",
-      text: "Clear hierarchy, readable offers and fast-loading pages. I implement the strategy you or your agency set; I don’t promise conversion numbers.",
+      title: "Funnelish, PageFly & Shopify Liquid",
+      text: "Comfortable beyond Checkout Champ: funnels in Funnelish, pages in PageFly, and safe edits to Shopify theme files, sections and snippets in Liquid.",
     },
     {
-      title: "Testing and debugging",
-      text: "Walking the full funnel — including test orders where your setup allows — and checking console errors, form behaviour and page-to-page hand-offs.",
+      title: "Full-journey QA",
+      text: "Live test transactions that check products and pricing, subscriptions, upsells and downsells, tracking and the resulting order data — before launch, not after.",
     },
   ],
 };
@@ -278,28 +278,28 @@ export const CC_WHY = {
   heading: "Why Hire Me as Your Checkout Champ Developer?",
   items: [
     {
-      title: "Hands-on multi-step funnel experience",
-      text: "I’ve built Checkout Champ funnels end to end — advertorial, listicle, sales page, checkout, upsells and thank-you page — not just single pages.",
+      title: "Built from your brief, not cloned",
+      text: "I build funnels end to end from a Figma design and approved copy. Duplicating and adapting an existing funnel for a new offer is a separate, faster job I also handle.",
     },
     {
-      title: "Custom code beyond the page builder",
-      text: "When a layout or interaction isn’t possible with standard builder elements, I write the HTML, CSS and JavaScript to make it work.",
+      title: "Front end and platform in one person",
+      text: "The same person writes the HTML, CSS and JavaScript and configures the campaign, offers, step paths and subscriptions — so nothing gets lost in a hand-off.",
     },
     {
-      title: "eCommerce and DTC background",
-      text: "My wider work is Shopify storefronts, product pages and landing pages for DTC brands, so I understand how the funnel fits the rest of the store.",
+      title: "DTC and health & wellness experience",
+      text: "I’ve built advertorials and landing pages for paid traffic, including for health brands such as Hume Health and Luma Nutrition.",
     },
     {
-      title: "Advertorial-to-checkout thinking",
-      text: "I build presell content and checkout as one journey, keeping the message, offer and product selection consistent from the first click to the order.",
+      title: "QA before it reaches QA",
+      text: "I test my own work across the full customer journey with live test transactions, not just a visual check of the page.",
     },
     {
-      title: "Technical investigation",
-      text: "For bugs and integration problems I trace the actual cause — scripts, page settings, product configuration or the integration itself — before changing anything.",
+      title: "Root causes, not patches",
+      text: "When something breaks I find out why — scripts, configuration, tracking or the platform itself — and write clear, reproducible bug reports when support needs to be involved.",
     },
     {
-      title: "Direct communication",
-      text: "You talk to the developer doing the work. No account managers, no hand-offs, and questions get answered by the person who wrote the code.",
+      title: "Freelance or full-time",
+      text: "Available for funnel projects, ongoing retainers and full-time remote roles. Either way, you work directly with the developer doing the work.",
     },
   ],
 };
@@ -310,20 +310,20 @@ export const CC_PROCESS = {
   heading: "How I Work",
   steps: [
     {
-      title: "Requirements & Funnel Review",
-      text: "Understand the products, existing funnel, integrations, and desired functionality.",
+      title: "Brief & Funnel Map",
+      text: "Figma design, approved copy, products, offers, step paths, subscription terms and tracking requirements — mapped before anything is built.",
     },
     {
-      title: "Development",
-      text: "Build or customize the pages and required functionality.",
+      title: "Build & Configure",
+      text: "Pages built in HTML, CSS and JavaScript; campaign, offers, upsell paths and subscriptions configured in Checkout Champ; pixels and events implemented.",
     },
     {
-      title: "Testing & Optimization",
-      text: "Test responsiveness, purchase flow, JavaScript behavior, and relevant integrations.",
+      title: "QA the Full Journey",
+      text: "Live test transactions covering products and pricing, subscriptions, upsells and downsells, checkout, tracking and the resulting order data.",
     },
     {
-      title: "Delivery & Support",
-      text: "Deliver the implementation and address agreed post-launch issues.",
+      title: "Launch, Test & Iterate",
+      text: "Go live on traffic, set up A/B tests with verified tracking, and fix any issue at its root cause.",
     },
   ],
 };
@@ -335,43 +335,51 @@ export const CC_FAQ = {
   items: [
     {
       q: "What does a Checkout Champ developer do?",
-      a: "A Checkout Champ developer builds and customizes the pages and flows that run on Checkout Champ, the funnel and checkout platform from the team behind Konnektive CRM. That includes presell pages such as advertorials and listicles, sales and checkout pages, upsells and downsells, and the custom code, product configuration and integrations that connect them.",
+      a: "A Checkout Champ developer builds the pages of a funnel and configures the platform behind them. Checkout Champ is the funnel, checkout and CRM platform from the team behind Konnektive CRM. The work covers presell pages such as advertorials and VSL pages, order forms and checkouts, upsells and downsells, and the campaigns, offers, step paths, subscriptions and tracking that connect them.",
     },
     {
-      q: "Can you build a complete Checkout Champ sales funnel?",
-      a: "Yes. I can build the full flow — advertorial or listicle, sales page, checkout, upsells, downsells and thank-you page — and test it end to end. If your offers and products are already configured, I build on that setup; if not, we agree up front what needs configuring and who handles it.",
+      q: "Can you build a complete Checkout Champ funnel from a Figma design?",
+      a: "Yes. Give me the Figma design and approved copy and I build every page in HTML, CSS and JavaScript — advertorial, landing or VSL page, quiz, order form, checkout, upsells, downsells and thank-you page — then configure the campaign, offers and step paths so the funnel runs end to end.",
     },
     {
-      q: "Can you create custom advertorials and listicles in Checkout Champ?",
-      a: "Yes. I build advertorials and listicles from your copy and design, or from a reference page you want to match, using custom HTML and CSS where the builder’s standard elements aren’t enough. They’re built responsive and linked into the rest of the funnel.",
+      q: "Do you clone funnels or build them from scratch?",
+      a: "Most of my Checkout Champ work is built from a brief: a Figma design and approved copy turned into original pages for your brand and offer. Duplicating and adapting an existing funnel inside Checkout Champ — to launch a new offer, angle or test quickly — is a separate task I also handle. I’m always clear about which of the two a project is.",
+    },
+    {
+      q: "Can you configure campaigns, offers and upsell paths inside Checkout Champ?",
+      a: "Yes. I set up campaigns, products, offers and the step paths between checkout, upsells, downsells and the thank-you page, so every page submits the right product and every customer is routed to the right next step.",
+    },
+    {
+      q: "Can you set up subscriptions and recurring billing?",
+      a: "Yes. I configure subscription offers, billing intervals and subscription pricing, then confirm with test transactions that customers are billed the way the offer describes.",
+    },
+    {
+      q: "Do you set up tracking, pixels and A/B tests?",
+      a: "Yes. I implement conversion pixels, UTMs and events and check that they fire correctly — including on test purchases. For A/B tests I configure the variants, confirm tracking on each one, and document how the test is set up.",
+    },
+    {
+      q: "How do you QA a funnel before launch?",
+      a: "I walk the full customer journey with live test transactions: products and pricing, subscriptions, upsells and downsells, the checkout itself, tracking and attribution, and the order and customer data that ends up in the platform. Visual checks across devices are part of it, but they’re not the whole of it.",
     },
     {
       q: "Can Checkout Champ integrate with Shopify?",
-      a: "Yes. Checkout Champ offers a Shopify integration that brands commonly use to connect their store’s products and orders with their funnels. Exactly what it syncs, and how, depends on your account and the integration’s current options, so I check your setup before promising anything. Where a requirement falls outside the native integration, a custom solution through the available APIs may be possible — I confirm feasibility first rather than assuming it.",
-    },
-    {
-      q: "Can you customize Checkout Champ checkout pages?",
-      a: "Yes. I customize checkout layouts, product and package selections, order bumps, form presentation and mobile behaviour. Changes stay connected to your configured products and payment settings, and anything that depends on platform-level behaviour is confirmed before it’s built.",
+      a: "Yes. Checkout Champ offers a Shopify integration that brands commonly use to connect their store’s products and orders with their funnels. Exactly what it syncs depends on your account and the integration’s current options, so I check your setup before promising anything. I also work directly in Shopify — including theme edits in Liquid — when the storefront side needs changes too.",
     },
     {
       q: "Can you fix existing Checkout Champ funnel issues?",
-      a: "Yes. Typical fixes include broken layouts, JavaScript errors, pages that misbehave on mobile, incorrect links between funnel steps, and integration problems. I start by reproducing the issue and finding the cause, then fix it and retest the affected part of the flow.",
+      a: "Yes: broken layouts, JavaScript errors, mobile problems, wrong step paths, tracking that doesn’t fire and integration issues. I reproduce the problem, find the root cause, fix it and retest the affected part of the journey.",
     },
     {
-      q: "Do you work with DTC brands and marketing agencies?",
-      a: "Yes, both. I work directly with DTC brands, and with marketing agencies that need development capacity — including white-label work delivered under the agency’s name and process.",
+      q: "Are you available for full-time roles as well as projects?",
+      a: "Yes. I take on freelance funnel projects and ongoing retainers for DTC brands and agencies, and I’m open to full-time remote roles. Message me with the brief or the role.",
+    },
+    {
+      q: "Can you work with teams in US Eastern Time?",
+      a: "Yes. I work with clients and teams in different time zones, including the US. Working hours and overlap with US Eastern Time are agreed up front, whether it’s a project or a full-time role.",
     },
     {
       q: "How much does it cost to hire a Checkout Champ developer?",
-      a: "It depends on the scope and complexity. A single bug fix is a much smaller job than a complete multi-step funnel with custom functionality and integrations. Send me the details and I’ll review them and give you a quote for the agreed scope before any work starts.",
-    },
-    {
-      q: "Can you work with clients in US Eastern Time?",
-      a: "Yes. I work with clients in different time zones, including the US. We agree on communication channels, update cadence and any overlap for calls at the start of the project.",
-    },
-    {
-      q: "How do I hire you for a Checkout Champ project?",
-      a: "Message me on LinkedIn with a short description of the project — what you need built or fixed, a link to your current funnel if there is one, and your timeline. I’ll reply with questions or a proposed scope.",
+      a: "For projects, it depends on scope: a single fix is a much smaller job than a multi-step funnel with subscriptions and A/B tests. Send me the details and I’ll quote the agreed scope before any work starts. For full-time roles, we discuss terms directly.",
     },
   ],
 };
@@ -379,8 +387,8 @@ export const CC_FAQ = {
 /* ------------------------------------------------------------- Final CTA */
 
 export const CC_CTA = {
-  heading: "Need a Checkout Champ Developer for Your Next Project?",
+  heading: "Need a Checkout Champ Developer for Your Funnels?",
   description:
-    "Whether you’re building a new funnel, customizing an existing checkout, or troubleshooting a technical issue, let’s discuss your project.",
+    "Building a new funnel, fixing an existing one, or hiring for a full-time funnel role? Send me the brief and let’s talk.",
   cta: "Let’s Discuss Your Project",
 };
