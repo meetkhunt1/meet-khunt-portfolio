@@ -58,11 +58,14 @@ export const CC_ICEBERG = {
   above: {
     label: "Above the water",
     platform: "Shopify",
+    /* White-on-transparent file shared with the Tools wall; inked in CSS. */
+    logo: { src: "/tools/shopify.webp", width: 500, height: 181 },
     items: ["Online Store", "Product Pages", "Collections", "Brand Experience"],
   },
   below: {
     label: "Below the water",
     platform: "Checkout Champ",
+    logo: { src: "/tools/checkout-champ.png", width: 327, height: 65 },
     items: [
       "Landing Pages & Sales Funnels",
       "Checkout & Order Processing",
