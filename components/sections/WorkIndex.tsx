@@ -1,17 +1,20 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
 import RevealText from "@/components/anim/RevealText";
 import {
   PROJECTS,
+  WORK_CATEGORIES,
   WORK_FILTERS,
   WORK_INDEX,
+  workFilterPath,
   type Project,
 } from "@/lib/data";
 
+type Filter = (typeof WORK_FILTERS)[number];
 const ALL = WORK_FILTERS[0];
 
 /* ---------------------------------------------------------------------------
@@ -51,17 +54,21 @@ function WorkCard({ project }: { project: Project }) {
 /* ---------------------------------------------------------------------------
    /projects index
 --------------------------------------------------------------------------- */
-export default function WorkIndex() {
-  const [active, setActive] = useState<string>(ALL);
-  const gridRef = useRef<HTMLDivElement>(null);
+const inFilter = (filter: Filter) =>
+  filter === ALL
+    ? PROJECTS
+    : PROJECTS.filter((p) => (p.filters as string[]).includes(filter));
 
-  const projects = useMemo(
-    () =>
-      active === ALL
-        ? PROJECTS
-        : PROJECTS.filter((p) => (p.filters as string[]).includes(active)),
-    [active],
-  );
+/**
+ * The work index, showing one filter tab. Each tab is a real link to its own
+ * page (/projects/, /projects/shopify/, ...), so any tab can be shared or
+ * opened directly; the page passes in which one is active.
+ */
+export default function WorkIndex({ active = ALL }: { active?: Filter }) {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const projects = inFilter(active);
+  const headline =
+    active === ALL ? WORK_INDEX.headline : WORK_CATEGORIES[active].headline;
 
   /* Cards fade up on load and again on every filter change; `revertOnUpdate`
      clears the previous tween's inline styles first, so nothing gets stranded
@@ -95,37 +102,50 @@ export default function WorkIndex() {
         className="heading-lg max-w-[26ch]"
         split="lines"
       >
-        {WORK_INDEX.headline}
+        {headline}
       </RevealText>
 
-      {/* Filter row — label left, tabs right, rule underneath */}
-      <div className="mt-12 flex flex-col gap-5 border-b border-line pb-6 md:flex-row md:items-center md:justify-between lg:mt-[90px]">
+      {/* Filter row - label left, tabs right, rule underneath. Each tab is a
+          link to its own page; scroll={false} keeps the reader where they are
+          when switching tabs. */}
+      <nav
+        aria-label="Filter work"
+        className="mt-12 flex flex-col gap-5 border-b border-line pb-6 md:flex-row md:items-center md:justify-between lg:mt-[90px]"
+      >
         <p className="font-ui text-[14px] font-semibold tracking-[-0.01em] text-fg">
           {WORK_INDEX.filterLabel}
         </p>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+        <ul className="flex flex-wrap items-center gap-x-2 gap-y-2">
           {WORK_FILTERS.map((filter) => {
             const isActive = filter === active;
             return (
-              <button
-                key={filter}
-                type="button"
-                aria-pressed={isActive}
-                onClick={() => setActive(filter)}
-                data-cursor="grow"
-                className={`rounded-[10px] border px-4 py-2.5 font-ui text-[13px] font-semibold tracking-[-0.01em] text-fg transition-colors duration-300 ${
-                  isActive
-                    ? "border-line bg-bg"
-                    : "border-transparent hover:text-muted"
-                }`}
-              >
-                {filter}
-              </button>
+              <li key={filter}>
+                <Link
+                  href={workFilterPath(filter)}
+                  scroll={false}
+                  aria-current={isActive ? "page" : undefined}
+                  data-cursor="grow"
+                  className={`inline-flex items-center gap-2 rounded-[10px] border px-4 py-2.5 font-ui text-[13px] font-semibold tracking-[-0.01em] transition-colors duration-300 ${
+                    isActive
+                      ? "border-fg bg-fg text-bg"
+                      : "border-line text-fg hover:border-fg/40 hover:bg-surface"
+                  }`}
+                >
+                  {filter}
+                  <span
+                    className={`rounded-full px-1.5 py-px text-[11px] tabular-nums ${
+                      isActive ? "bg-bg/15 text-bg" : "bg-surface text-muted"
+                    }`}
+                  >
+                    {inFilter(filter).length}
+                  </span>
+                </Link>
+              </li>
             );
           })}
-        </div>
-      </div>
+        </ul>
+      </nav>
 
       <div
         ref={gridRef}

@@ -5,11 +5,12 @@
  */
 
 import { CC_PATH } from "@/lib/checkout-champ";
-import { PROJECTS } from "@/lib/data";
+import { PROJECTS, WORK_CATEGORIES } from "@/lib/data";
 
 export const SITE_ROUTES: string[] = [
   "/",
   "/projects/",
+  ...Object.values(WORK_CATEGORIES).map((c) => `/projects/${c.slug}/`),
   ...PROJECTS.map((p) => `/projects/${p.slug}/`),
   CC_PATH,
   "/d2c/",

@@ -3,12 +3,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
-import { PROJECTS, type GalleryImage } from "@/lib/data";
+import WorkIndex from "@/components/sections/WorkIndex";
+import FixedBadge from "@/components/ui/FixedBadge";
+import {
+  PROJECTS,
+  WORK_CATEGORIES,
+  workFilterBySlug,
+  type GalleryImage,
+} from "@/lib/data";
 
 type Params = { slug: string };
 
+export const dynamicParams = false;
+
+/**
+ * /projects/<slug>/ serves two kinds of page: a case study, or a filtered
+ * work index (/projects/shopify/, /projects/landing-pages/, ...). A slug may
+ * only mean one of them.
+ */
 export function generateStaticParams(): Params[] {
-  return PROJECTS.map(({ slug }) => ({ slug }));
+  const filterSlugs = Object.values(WORK_CATEGORIES).map((c) => c.slug);
+  const clash = PROJECTS.find((p) => filterSlugs.includes(p.slug));
+  if (clash) {
+    throw new Error(
+      `Project slug "${clash.slug}" collides with a /projects/ filter page. Rename one of them.`,
+    );
+  }
+  return [...PROJECTS.map(({ slug }) => ({ slug })), ...filterSlugs.map((slug) => ({ slug }))];
 }
 
 export async function generateMetadata({
@@ -17,6 +38,16 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const filter = workFilterBySlug(slug);
+  if (filter) {
+    const c = WORK_CATEGORIES[filter];
+    return {
+      title: { absolute: c.title },
+      description: c.description,
+      alternates: { canonical: `/projects/${c.slug}/` },
+      openGraph: { title: c.title, description: c.description, url: `/projects/${c.slug}/` },
+    };
+  }
   const project = PROJECTS.find((p) => p.slug === slug);
   return {
     title: project ? `${project.title} - Meet Khunt` : "Project",
@@ -54,6 +85,20 @@ export default async function ProjectPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
+
+  const filter = workFilterBySlug(slug);
+  if (filter) {
+    return (
+      <>
+        <main className="flex w-full flex-col items-center overflow-hidden pt-20">
+          <WorkIndex active={filter} />
+          <Footer />
+        </main>
+        <FixedBadge />
+      </>
+    );
+  }
+
   const index = PROJECTS.findIndex((p) => p.slug === slug);
   if (index === -1) notFound();
   const project = PROJECTS[index];

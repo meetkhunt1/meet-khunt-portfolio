@@ -63,7 +63,56 @@ export type WorkFilter = Exclude<(typeof WORK_FILTERS)[number], "All Projects">;
 export const WORK_INDEX = {
   headline: "Ecommerce work built to sell, not just to look good.",
   filterLabel: "Filter Work:",
+  title: "Work - Meet Khunt",
+  description:
+    "Ecommerce case studies by Meet Khunt: Shopify stores, landing pages, advertorials and WordPress sites built for DTC brands.",
 };
+
+/**
+ * Each filter tab has its own page at /projects/<slug>/, so a tab can be
+ * linked to directly (e.g. /projects/shopify/). Slugs share the /projects/
+ * namespace with case studies; the build fails if one ever collides.
+ */
+export const WORK_CATEGORIES: Record<
+  WorkFilter,
+  { slug: string; headline: string; title: string; description: string }
+> = {
+  Shopify: {
+    slug: "shopify",
+    headline: "Shopify stores and pages built to sell.",
+    title: "Shopify Development Projects - Meet Khunt",
+    description:
+      "Shopify case studies by Meet Khunt: store redesigns, collection and product pages, and landing pages built for DTC brands.",
+  },
+  WordPress: {
+    slug: "wordpress",
+    headline: "WordPress websites built to earn trust.",
+    title: "WordPress Development Projects - Meet Khunt",
+    description:
+      "WordPress case studies by Meet Khunt: business websites designed and built with clear structure, responsive layouts and easy navigation.",
+  },
+  "Landing Pages": {
+    slug: "landing-pages",
+    headline: "Landing pages and advertorials built for paid traffic.",
+    title: "Landing Page & Advertorial Projects - Meet Khunt",
+    description:
+      "Landing page and advertorial case studies by Meet Khunt: pages built for cold paid traffic on Shopify, Funnelish and more.",
+  },
+};
+
+/** URL of a filter tab; "All Projects" is the /projects/ index itself. */
+export function workFilterPath(filter: (typeof WORK_FILTERS)[number]) {
+  return filter === "All Projects"
+    ? "/projects/"
+    : `/projects/${WORK_CATEGORIES[filter].slug}/`;
+}
+
+/** The filter whose page lives at /projects/<slug>/, if any. */
+export function workFilterBySlug(slug: string): WorkFilter | undefined {
+  return (Object.keys(WORK_CATEGORIES) as WorkFilter[]).find(
+    (f) => WORK_CATEGORIES[f].slug === slug,
+  );
+}
 
 export type GalleryImage = {
   src: string;
