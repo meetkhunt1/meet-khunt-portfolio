@@ -33,10 +33,19 @@ export const BLOG = {
     "Explore practical tutorials and insights on Checkout Champ, Shopify, eCommerce funnels, and web development by Meet Khunt.",
   ogImage: "/og/blog-og.png",
   ogImageAlt: "Insights, tutorials and development guides by Meet Khunt",
-  featuredLabel: "Featured article",
-  latestLabel: "Latest articles",
-  filterLabel: "Browse by topic:",
+  featuredLabel: "Featured",
   allLabel: "All articles",
+  /**
+   * The card that sits in the article grid, after the fifth article. Brands
+   * are real clients, each with a case study on the site.
+   */
+  ctaCard: {
+    heading: "Need this built for your brand?",
+    text: "Storefronts, landing pages and Checkout Champ funnels for DTC brands.",
+    brandsLabel: "Shipped for",
+    brands: ["Hume Health", "Luma Nutrition", "Aavilo", "Baby Gains"],
+    label: "Work with me",
+  },
 };
 
 /* ---------------------------------------------------------- Service CTAs */
@@ -46,6 +55,8 @@ export type ServiceCta = {
   text: string;
   label: string;
   href: string;
+  /** Optional checklist shown on the article sidebar card. */
+  points?: string[];
 };
 
 /**
@@ -60,6 +71,14 @@ export const SERVICE_CTAS = {
     text: "Looking for custom funnels, checkout customization, or integration support? Explore my Checkout Champ development services.",
     label: "Hire a Checkout Champ Developer",
     href: CC_PATH,
+    /* Service titles from the Checkout Champ page (CC_SERVICES). */
+    points: [
+      "End-to-end funnel builds",
+      "Campaign, offer & step-path setup",
+      "Subscriptions & recurring billing",
+      "Tracking, pixels & A/B tests",
+      "QA with live test orders",
+    ],
   },
   shopify: {
     heading: "Need a Shopify Developer?",
@@ -172,6 +191,8 @@ export function listingPath(category: string | null, page: number) {
 export type Author = {
   key: string;
   name: string;
+  /** One line under the name on article cards */
+  role: string;
   bio: string;
   /** Where the author name links: the About section on the home page */
   href: string;
@@ -183,9 +204,11 @@ export const AUTHORS: Author[] = [
   {
     key: "meet-khunt",
     name: ABOUT.portraitName,
+    role: "Ecommerce Frontend Developer",
+    /* Blog-only headshot. The home page keeps its own portrait (ABOUT). */
+    image: "/images/blog/authors/meet-khunt.webp",
     bio: "Web Developer specializing in eCommerce development, custom sales funnels, Checkout Champ, Shopify, and frontend development.",
     href: "/#about",
-    image: ABOUT.portrait,
     profiles: [{ label: "LinkedIn", href: CONTACT.href }],
   },
 ];

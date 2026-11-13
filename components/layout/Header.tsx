@@ -101,7 +101,7 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
                   <div className="invisible absolute left-1/2 top-full min-w-[248px] -translate-x-1/2 translate-y-1.5 rounded-[14px] border border-line bg-bg p-2 opacity-0 shadow-[0_24px_48px_-24px_rgba(16,24,40,0.45)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     {entry.items.map((item) => (
                       <Link
-                        key={item.href}
+                        key={item.label}
                         href={item.href}
                         onClick={scrollTo(item.hash)}
                         data-cursor="grow"
@@ -170,7 +170,7 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
                 <p className="category pb-2">{entry.label}</p>
                 {entry.items.map((item) => (
                   <Link
-                    key={item.href}
+                    key={item.label}
                     href={item.href}
                     onClick={scrollTo(item.hash)}
                     className="block py-2 font-sans text-[18px] font-medium leading-[1.3] text-fg"

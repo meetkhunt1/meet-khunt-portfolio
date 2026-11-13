@@ -4,7 +4,8 @@ import { useId, useState } from "react";
 import Image from "next/image";
 import RevealText from "@/components/anim/RevealText";
 import FadeIn from "@/components/anim/FadeIn";
-import { SERVICES, SERVICES_SECTION } from "@/lib/data";
+import Link from "next/link";
+import { HOME_SERVICES, SERVICES_SECTION } from "@/lib/data";
 
 function ArrowDown({ className = "" }: { className?: string }) {
   return (
@@ -100,7 +101,9 @@ export default function Services() {
         {/* List */}
         <FadeIn className="order-1 lg:order-2" delay={0.1}>
           <div className="border-t border-line">
-            {SERVICES.map((service, i) => {
+            {HOME_SERVICES.map((service, i) => {
+              /* No home-page anchor means the service has a page of its own. */
+              const page = service.hash ? null : service.href;
               const isOpen = open === i;
               const panelId = `${base}-panel-${i}`;
               const btnId = `${base}-btn-${i}`;
@@ -141,6 +144,15 @@ export default function Services() {
                       <p className="max-w-[52ch] pb-6 font-ui text-[15px] leading-[1.6] text-fg/70">
                         {service.blurb}
                       </p>
+                      {page && (
+                        <Link
+                          href={page}
+                          data-cursor="grow"
+                          className="mb-6 inline-block font-ui text-[15px] font-medium text-fg underline decoration-1 underline-offset-4 transition-colors duration-300 hover:text-muted"
+                        >
+                          See {service.label} →
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

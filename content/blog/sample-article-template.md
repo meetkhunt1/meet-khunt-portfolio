@@ -10,7 +10,7 @@ draft: true
 cta: "general"
 ---
 
-This is an internal draft used to check the article template. It is never published, has no publication date, and is excluded from listings and the sitemap. Preview it with `BLOG_DRAFTS=1 npm run dev`. It contains formatting examples only — no factual or technical claims.
+This is an internal draft used to check the article template. It is never published, has no publication date, and is excluded from listings and the sitemap. Preview it with `BLOG_DRAFTS=1 npm run dev`. It contains formatting examples only - no factual or technical claims.
 
 ## Text and links
 

@@ -5,9 +5,11 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import AuthorBox from "@/components/blog/AuthorBox";
 import PostCard from "@/components/blog/PostCard";
-import { formatDate } from "@/components/blog/PostMeta";
+import { CalendarIcon, ClockIcon, formatDate } from "@/components/blog/PostMeta";
 import ServiceCtaBlock from "@/components/blog/ServiceCtaBlock";
-import TableOfContents from "@/components/blog/TableOfContents";
+import ShareLinks from "@/components/blog/ShareLinks";
+import TableOfContents, { TocCard } from "@/components/blog/TableOfContents";
+import TopicsCard from "@/components/blog/TopicsCard";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
 import Prose from "@/components/content/Prose";
 import { BLOG, BLOG_PATH, categoryPath } from "@/lib/blog/config";
@@ -93,7 +95,6 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
 
   const trail = trailFor(post);
   const related = await getRelatedPosts(post);
-  const hasToc = post.toc.length >= 2;
 
   return (
     <>
@@ -103,136 +104,157 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
       />
 
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
-        <article className="w-full">
-          {post.draft && (
-            <p
-              role="status"
-              className="section-row bg-accent py-3 text-center font-ui text-[13px] font-semibold text-fg"
-            >
-              Draft preview — not published, not indexed, not in the sitemap.
-            </p>
-          )}
+        {post.draft && (
+          <p
+            role="status"
+            className="section-row bg-accent py-3 text-center font-ui text-[13px] font-semibold text-fg"
+          >
+            Draft preview - not published, not indexed, not in the sitemap.
+          </p>
+        )}
 
-          {/* Header ------------------------------------------------------ */}
-          <header className="section-row pt-[50px] lg:pt-[90px]">
+        {/* Article column + sidebar. The sidebar follows the article on
+            phones (its table of contents is replaced by a disclosure above
+            the body there). */}
+        <div className="section-row pt-[40px] lg:pt-[60px]">
+          <div className="mx-auto w-full max-w-[1200px]">
             <Breadcrumbs trail={trail} />
 
-            <div className="mt-10 max-w-[900px] lg:mt-14">
-              <Link
-                href={categoryPath(post.category.slug)}
-                data-cursor="grow"
-                className="category transition-colors duration-200 hover:text-fg"
-              >
-                {post.category.name}
-              </Link>
-              <h1 className="heading-md mt-4">{post.title}</h1>
-              <p className="mt-6 max-w-[68ch] font-ui text-[17px] leading-[1.6] text-fg/75 lg:text-[19px]">
-                {post.excerpt}
-              </p>
+            <div className="mt-8 grid grid-cols-1 gap-12 lg:mt-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_360px] xl:gap-20">
+              <article className="min-w-0">
+                {/* Header ---------------------------------------------- */}
+                <header>
+                  <Link
+                    href={categoryPath(post.category.slug)}
+                    data-cursor="grow"
+                    className="category transition-colors duration-200 hover:text-fg"
+                  >
+                    {post.category.name}
+                  </Link>
+                  <h1 className="mt-3 font-sans text-[30px] font-semibold leading-[1.15] tracking-[-0.025em] text-fg lg:text-[40px]">
+                    {post.title}
+                  </h1>
 
-              <dl className="mt-8 flex flex-wrap gap-x-8 gap-y-4 border-t border-line pt-6 font-ui text-[14px]">
-                <div>
-                  <dt className="category">Author</dt>
-                  <dd className="mt-1.5 text-fg">
-                    <Link
-                      href={post.author.href}
-                      rel="author"
-                      data-cursor="grow"
-                      className="underline decoration-fg/30 underline-offset-4 transition-colors hover:text-muted"
-                    >
-                      {post.author.name}
-                    </Link>
-                  </dd>
+                  <div className="mt-7 flex flex-wrap items-center justify-between gap-x-8 gap-y-4">
+                    <div className="flex items-center gap-3">
+                      <Image
+                        src={post.author.image}
+                        alt=""
+                        width={48}
+                        height={48}
+                        className="size-12 shrink-0 rounded-full border border-line object-cover"
+                      />
+                      <div>
+                        <Link
+                          href={post.author.href}
+                          rel="author"
+                          data-cursor="grow"
+                          className="font-ui text-[14px] font-semibold text-fg transition-colors hover:text-muted"
+                        >
+                          {post.author.name}
+                        </Link>
+                        <p className="font-ui text-[12px] text-muted">{post.author.role}</p>
+                      </div>
+                    </div>
+
+                    <dl className="flex flex-col items-start gap-1 font-ui text-[12px] text-muted sm:items-end">
+                      <div className="flex items-center gap-1.5">
+                        <dt className="sr-only">Published</dt>
+                        <dd>
+                          {post.publishedAt ? (
+                            <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+                          ) : (
+                            "Not yet published"
+                          )}
+                        </dd>
+                        <CalendarIcon />
+                      </div>
+                      {post.updatedAt && post.updatedAt !== post.publishedAt && (
+                        <div className="flex items-center gap-1.5">
+                          <dt>Updated</dt>
+                          <dd>
+                            <time dateTime={post.updatedAt}>{formatDate(post.updatedAt)}</time>
+                          </dd>
+                          <CalendarIcon />
+                        </div>
+                      )}
+                      <div className="flex items-center gap-1.5">
+                        <dt className="sr-only">Reading time</dt>
+                        <dd>{post.readingMinutes} min read</dd>
+                        <ClockIcon />
+                      </div>
+                    </dl>
+                  </div>
+
+                  {post.featuredImage && (
+                    <Image
+                      src={post.featuredImage.src}
+                      alt={post.featuredImage.alt}
+                      width={post.featuredImage.width}
+                      height={post.featuredImage.height}
+                      priority
+                      sizes="(min-width: 1200px) 780px, 100vw"
+                      className="mt-8 h-auto w-full rounded-[14px] border border-line"
+                    />
+                  )}
+                </header>
+
+                {/* Body ------------------------------------------------ */}
+                <div className="mt-10 lg:hidden">
+                  <TableOfContents toc={post.toc} />
                 </div>
-                <div>
-                  <dt className="category">Published</dt>
-                  <dd className="mt-1.5 text-fg">
-                    {post.publishedAt ? (
-                      <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-                    ) : (
-                      "Not yet published"
-                    )}
-                  </dd>
+
+                <div className="mt-10 lg:mt-12">
+                  <Prose html={post.html} />
                 </div>
-                {post.updatedAt && post.updatedAt !== post.publishedAt && (
-                  <div>
-                    <dt className="category">Updated</dt>
-                    <dd className="mt-1.5 text-fg">
-                      <time dateTime={post.updatedAt}>{formatDate(post.updatedAt)}</time>
-                    </dd>
+
+                {post.tags.length > 0 && (
+                  <div className="mt-14 border-t border-line pt-6">
+                    <p className="label">Topics</p>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <li
+                          key={tag}
+                          className="rounded-[8px] border border-line px-2.5 py-1 font-ui text-[13px] text-fg"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
-                <div>
-                  <dt className="category">Reading time</dt>
-                  <dd className="mt-1.5 text-fg">{post.readingMinutes} min read</dd>
-                </div>
-              </dl>
-            </div>
 
-            {post.featuredImage && (
-              <Image
-                src={post.featuredImage.src}
-                alt={post.featuredImage.alt}
-                width={post.featuredImage.width}
-                height={post.featuredImage.height}
-                priority
-                sizes="(min-width: 1800px) 1704px, 100vw"
-                className="mt-12 h-auto w-full rounded-[14px] border border-fg/20 lg:mt-16"
-              />
-            )}
-          </header>
-
-          {/* Body -------------------------------------------------------- */}
-          <div
-            className={`section-row mt-12 grid grid-cols-1 gap-10 lg:mt-20 ${
-              hasToc ? "lg:grid-cols-[minmax(0,260px)_minmax(0,760px)] lg:gap-16 xl:gap-24" : ""
-            }`}
-          >
-            {hasToc && (
-              <aside className="lg:row-span-2">
-                <TableOfContents toc={post.toc} />
-              </aside>
-            )}
-
-            <div className="min-w-0 max-w-[760px]">
-              <Prose html={post.html} />
-
-              {post.tags.length > 0 && (
-                <div className="mt-14 border-t border-line pt-6">
-                  <p className="label">Topics</p>
-                  <ul className="mt-3 flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <li
-                        key={tag}
-                        className="rounded-[8px] border border-line px-2.5 py-1 font-ui text-[13px] text-fg"
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {post.cta && (
                 <div className="mt-12">
-                  <ServiceCtaBlock cta={post.cta} />
+                  <AuthorBox author={post.author} />
                 </div>
-              )}
+              </article>
 
-              <div className="mt-8">
-                <AuthorBox author={post.author} />
-              </div>
+              {/* Sidebar ----------------------------------------------- */}
+              <aside className="flex flex-col gap-6" aria-label="Article sidebar">
+                <TocCard
+                  toc={post.toc}
+                  actions={<ShareLinks url={absoluteUrl(post.path)} title={post.title} />}
+                />
+                <TopicsCard active={post.category.slug} />
+                {post.cta && (
+                  <div className="lg:sticky lg:top-[calc(var(--header-h)+24px)]">
+                    <ServiceCtaBlock cta={post.cta} />
+                  </div>
+                )}
+              </aside>
             </div>
           </div>
-        </article>
+        </div>
 
         {/* Related ------------------------------------------------------- */}
         {related.length > 0 && (
           <section aria-labelledby="related-heading" className="section-row pt-[100px] lg:pt-[140px]">
-            <h2 id="related-heading" className="heading-md">
-              Related articles
+            <h2 id="related-heading" className="heading-md text-center">
+              <span className="bg-[linear-gradient(transparent_62%,var(--color-accent)_62%)] px-1">
+                Related Content You Might Like
+              </span>
             </h2>
-            <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-x-14">
+            <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-8">
               {related.map((p) => (
                 <li key={p.slug}>
                   <PostCard post={p} headingLevel="h3" />

@@ -1,7 +1,7 @@
 export const SITE = {
-  title: "Meet Khunt — Ecommerce Frontend Specialist",
+  title: "Meet Khunt - Ecommerce Frontend Specialist",
   description:
-    "Meet Khunt — ecommerce frontend specialist designing, developing, and optimizing high-performing Shopify storefronts and landing pages for DTC brands across the globe.",
+    "Meet Khunt - ecommerce frontend specialist designing, developing, and optimizing high-performing Shopify storefronts and landing pages for DTC brands across the globe.",
   ogImage: "/projects/baby-gains-before-after.webp",
   headerName: "MEET KHUNT",
   footerName: "MEET KHUNT",
@@ -12,7 +12,7 @@ export const SITE = {
 
 export const HERO = {
   headline: "Storefronts & landing pages built to convert",
-  sub: "Faster load times, clearer hierarchy and stronger product presentation — the frontend work that actually moves revenue for DTC brands.",
+  sub: "Faster load times, clearer hierarchy and stronger product presentation - the frontend work that actually moves revenue for DTC brands.",
   cta: "Let’s talk",
   /** Real client names, not an invented rating. Every one has a case study. */
   proof: "Shipping for Luma Nutrition, Hume Health, Aavilo, Baby Gains & more",
@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
         alt: "Athletic Annex collection hero and shop-by-category grid",
         width: 1200,
         height: 2133,
-        caption: "Collection hero — Every Sport. Every Surface.",
+        caption: "Collection hero - Every Sport. Every Surface.",
       },
       {
         src: "/projects/annex-2.webp",
@@ -151,7 +151,7 @@ export const PROJECTS: Project[] = [
         width: 1200,
         height: 2133,
         newRow: true,
-        caption: "More than a running store — fittings, community, race guides",
+        caption: "More than a running store - fittings, community, race guides",
       },
       {
         src: "/projects/annex-4.webp",
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
         width: 1200,
         height: 2133,
         newRow: true,
-        caption: "Three steps, five minutes — and real results",
+        caption: "Three steps, five minutes - and real results",
       },
       {
         src: "/projects/riversol-4.webp",
@@ -272,7 +272,7 @@ export const PROJECTS: Project[] = [
         alt: "Jadu Beauty comparison table and founder story",
         width: 1200,
         height: 1680,
-        caption: "Why Jadu is better — comparison and founder story",
+        caption: "Why Jadu is better - comparison and founder story",
       },
       {
         src: "/projects/jadu-3.webp",
@@ -311,9 +311,9 @@ export const PROJECTS: Project[] = [
     tag: "DTC Supplement Brand (Advertorial Development)",
     headline: "Five Editorial Advertorials for Cold Paid Traffic",
     description: [
-      "Luma Nutrition is a direct-to-consumer supplement brand — magnesium glycinate, berberine 1,200 mg and turmeric curcumin with BioPerine. The work was a set of five long-form advertorials, each built as a standalone page outside the main store so a different product and a different problem could be tested against its own traffic.",
+      "Luma Nutrition is a direct-to-consumer supplement brand - magnesium glycinate, berberine 1,200 mg and turmeric curcumin with BioPerine. The work was a set of five long-form advertorials, each built as a standalone page outside the main store so a different product and a different problem could be tested against its own traffic.",
       "Every page is dressed as editorial rather than as an ad: a publication masthead and disclaimer bar, an author byline with a last-updated stamp, and a numbered argument that walks the reader from the problem to the dose that actually solves it. Comparison tables, supplement-facts callouts, verified-review pull quotes and product blocks are placed at the points where the reader is most likely to act.",
-      "The commerce layer is threaded through the scroll instead of parked at the end — sticky product bars that follow the reader, inline CTAs after each section, and offer buttons that hand off to the Luma Nutrition store. Each page is built mobile-first and kept light so it holds up under paid traffic.",
+      "The commerce layer is threaded through the scroll instead of parked at the end - sticky product bars that follow the reader, inline CTAs after each section, and offer buttons that hand off to the Luma Nutrition store. Each page is built mobile-first and kept light so it holds up under paid traffic.",
     ],
     services: [
       "Advertorial Design & Build",
@@ -329,21 +329,21 @@ export const PROJECTS: Project[] = [
         alt: "Luma Turmeric Curcumin advertorial for joint relief",
         width: 1200,
         height: 4228,
-        caption: "Advertorial — Turmeric Curcumin for Joint Relief",
+        caption: "Advertorial - Turmeric Curcumin for Joint Relief",
       },
       {
         src: "/projects/luma-cholesterol.webp",
         alt: "Luma Nutrition berberine advertorial about cholesterol",
         width: 1200,
         height: 4228,
-        caption: "Advertorial — Why Your Berberine Isn’t Doing Anything for Your Cholesterol",
+        caption: "Advertorial - Why Your Berberine Isn’t Doing Anything for Your Cholesterol",
       },
       {
         src: "/projects/luma-blood-sugar.webp",
         alt: "Luma Nutrition berberine advertorial about afternoon blood sugar crashes",
         width: 1200,
         height: 4228,
-        caption: "Advertorial — 5 Reasons Your Blood Sugar Crashes Every Afternoon",
+        caption: "Advertorial - 5 Reasons Your Blood Sugar Crashes Every Afternoon",
       },
       {
         src: "/projects/luma-berberine.webp",
@@ -351,14 +351,14 @@ export const PROJECTS: Project[] = [
         width: 1200,
         height: 4407,
         newRow: true,
-        caption: "Advertorial — 7 Things To Know Before You Buy Berberine",
+        caption: "Advertorial - 7 Things To Know Before You Buy Berberine",
       },
       {
         src: "/projects/luma-magnesium.webp",
         alt: "Luma Nutrition magnesium glycinate advertorial about sleep",
         width: 1200,
         height: 4407,
-        caption: "Advertorial — How to Choose a Magnesium for Sleep",
+        caption: "Advertorial - How to Choose a Magnesium for Sleep",
       },
     ],
   },
@@ -375,9 +375,9 @@ export const PROJECTS: Project[] = [
     tag: "Smart Health Wearables Brand (Funnelish Development)",
     headline: "Advertorials & Interactive Calculator Funnels for Paid Traffic",
     description: [
-      "Hume Health builds smart health hardware — the Hume Band 2.0 wearable and the Hume Body Pod body-composition scanner. The work was a high-volume landing page program on Funnelish: long-form advertorials and interactive health calculators built as dedicated entry points for cold paid traffic on Meta and native.",
-      "Each advertorial is engineered as a scroll — a curiosity hook, a problem the reader recognises in themselves, then the product introduced as the mechanism that solves it, backed by spec blocks, testimonials, comparison tables, FAQs and repeated CTAs placed at the exact points where intent peaks.",
-      "The calculator pages lead with a working tool instead of a pitch. Readers enter their own numbers — blood pressure, height and weight, waist and hip — and get an instant result scored against real clinical ranges, which earns the attention the offer then converts. Every page is built mobile-first, loads fast on ad traffic, and ships in tracked variants so headlines, hooks and offer blocks can be tested without touching the main store.",
+      "Hume Health builds smart health hardware - the Hume Band 2.0 wearable and the Hume Body Pod body-composition scanner. The work was a high-volume landing page program on Funnelish: long-form advertorials and interactive health calculators built as dedicated entry points for cold paid traffic on Meta and native.",
+      "Each advertorial is engineered as a scroll - a curiosity hook, a problem the reader recognises in themselves, then the product introduced as the mechanism that solves it, backed by spec blocks, testimonials, comparison tables, FAQs and repeated CTAs placed at the exact points where intent peaks.",
+      "The calculator pages lead with a working tool instead of a pitch. Readers enter their own numbers - blood pressure, height and weight, waist and hip - and get an instant result scored against real clinical ranges, which earns the attention the offer then converts. Every page is built mobile-first, loads fast on ad traffic, and ships in tracked variants so headlines, hooks and offer blocks can be tested without touching the main store.",
     ],
     services: [
       "Funnelish Development",
@@ -392,23 +392,23 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://humehealth.com",
     links: [
       {
-        label: "Advertorial — Why You're Always Tired (It's Not Sleep)",
+        label: "Advertorial - Why You're Always Tired (It's Not Sleep)",
         href: "https://insights.smartscalesreviews.com/why-you-are-always-tired-its-not-sleep",
       },
       {
-        label: "Advertorial — Still Tired After 8 Hours of Sleep",
+        label: "Advertorial - Still Tired After 8 Hours of Sleep",
         href: "https://insights.smartscalesreviews.com/still-tired-after-8-hours-of-sleep",
       },
       {
-        label: "Calculator — Blood Pressure & MAP",
+        label: "Calculator - Blood Pressure & MAP",
         href: "https://insights.smartscalesreviews.com/blood-pressure-calculator-vstd-273",
       },
       {
-        label: "Calculator — BMI & Weight Loss",
+        label: "Calculator - BMI & Weight Loss",
         href: "https://buy.humehealth.com/bmi-calculator-and-weight-loss",
       },
       {
-        label: "Calculator — Waist-to-Hip Ratio",
+        label: "Calculator - Waist-to-Hip Ratio",
         href: "https://buy.humehealth.com/waist-to-hip-ratio-calculator-vstd-380",
       },
     ],
@@ -425,14 +425,14 @@ export const PROJECTS: Project[] = [
         alt: "Hume Band 2.0 advertorial, full page: why you're always tired",
         width: 933,
         height: 4921,
-        caption: "Advertorial — Why You’re Always Tired (It’s Not Sleep)",
+        caption: "Advertorial - Why You’re Always Tired (It’s Not Sleep)",
       },
       {
         src: "/projects/hume-advertorial-sleep.webp",
         alt: "Hume Band 2.0 advertorial, full page: still tired after eight hours of sleep",
         width: 933,
         height: 6846,
-        caption: "Advertorial — Still Tired After 8 Hours of Sleep",
+        caption: "Advertorial - Still Tired After 8 Hours of Sleep",
       },
       {
         src: "/projects/hume-calculator-bp.webp",
@@ -440,14 +440,14 @@ export const PROJECTS: Project[] = [
         width: 933,
         height: 4616,
         newRow: true,
-        caption: "Calculator — Blood Pressure & MAP",
+        caption: "Calculator - Blood Pressure & MAP",
       },
       {
         src: "/projects/hume-calculator-bmi.webp",
         alt: "Hume Body Pod BMI and weight loss calculator page",
         width: 933,
         height: 2478,
-        caption: "Calculator — BMI & Weight Loss",
+        caption: "Calculator - BMI & Weight Loss",
       },
     ],
   },
@@ -723,7 +723,7 @@ export const SERVICES = [
     href: "/#services",
     hash: "#services",
     blurb:
-      "Your design file built as a real storefront — sections, states and breakpoints, not an approximation of the comp.",
+      "Your design file built as a real storefront - sections, states and breakpoints, not an approximation of the comp.",
   },
   {
     label: "Landing Pages",
@@ -754,6 +754,22 @@ export const SERVICES = [
       "Find what the current page is costing you, fix it, and measure the difference instead of guessing at it.",
   },
 ];
+
+/**
+ * A service with its own page rather than a home-page anchor. Kept out of
+ * SERVICES so that list stays "scrolls to #services"; the header dropdown and
+ * the home Services list each append it, and the list links out to the page.
+ */
+export const CHECKOUT_CHAMP_SERVICE = {
+  label: "Checkout Champ Development",
+  href: "/checkout-champ-developer/",
+  hash: undefined,
+  blurb:
+    "Funnels built end to end on Checkout Champ - advertorials, VSL pages, checkouts, upsells and subscriptions - with offers and tracking configured and tested before traffic hits.",
+};
+
+/** The home-page Services list: the anchors, then the services with pages. */
+export const HOME_SERVICES = [...SERVICES, CHECKOUT_CHAMP_SERVICE];
 
 /**
  * The stack, as a logo wall.
@@ -814,18 +830,8 @@ export const NAV = {
       label: "Services",
       href: "/#about",
       hash: "#about",
-      /* Specialised service pages sit after the home-page anchors. Kept
-         out of SERVICES so the home Services list and About block are
-         unchanged. */
-      items: [
-        ...SERVICES,
-        {
-          label: "Checkout Champ Development",
-          href: "/checkout-champ-developer/",
-          hash: undefined,
-          blurb: "",
-        },
-      ],
+      /* Specialised service pages sit after the home-page anchors. */
+      items: [...SERVICES, CHECKOUT_CHAMP_SERVICE],
     },
     { label: "Case Studies", href: "/projects/" },
   ],
@@ -836,7 +842,7 @@ export const WORKS = {
   eyebrow: "Case Studies",
   heading: "Selected work",
   subheading:
-    "I don’t just talk about what I can build — here’s what I’ve already shipped.",
+    "I don’t just talk about what I can build - here’s what I’ve already shipped.",
 };
 
 export const ABOUT = {
@@ -845,7 +851,7 @@ export const ABOUT = {
   /* Trimmed to roughly five lines: the column has to finish level with the
      portrait beside it. */
   paragraph:
-    "I’m an ecommerce frontend specialist who designs, develops and optimizes high-performing storefronts for DTC brands worldwide — from complete Shopify redesigns to landing pages built for paid traffic. My focus is what actually moves the needle: faster load times, clearer hierarchy, stronger product presentation.",
+    "I’m an ecommerce frontend specialist who designs, develops and optimizes high-performing storefronts for DTC brands worldwide - from complete Shopify redesigns to landing pages built for paid traffic. My focus is what actually moves the needle: faster load times, clearer hierarchy, stronger product presentation.",
   ctaPrimary: "Let’s talk",
   ctaSecondary: "See the work",
   /**

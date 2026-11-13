@@ -90,7 +90,7 @@ export default function About() {
         </div>
 
         {/* Right: portrait with the name card floated over it. On desktop it
-            has no ratio of its own — it stretches to whatever height the copy
+            has no ratio of its own - it stretches to whatever height the copy
             sets, which is what keeps the two columns level. */}
         <div className="relative aspect-[5/3] w-full lg:aspect-auto">
           {/* ParallaxImage pins its own root `position: relative` inline, so
@@ -108,7 +108,7 @@ export default function About() {
           </div>
 
           {/* Frosted over a photograph, so the text answers to the image
-              rather than to the theme — literal white, both modes. */}
+              rather than to the theme - literal white, both modes. */}
           <div className="absolute inset-x-[25px] bottom-[30px] rounded-[10px] border border-white/15 bg-black/35 px-6 py-[18px] backdrop-blur-md">
             <p className="font-sans text-[20px] font-bold leading-tight tracking-[-0.01em] text-white">
               {ABOUT.portraitName}

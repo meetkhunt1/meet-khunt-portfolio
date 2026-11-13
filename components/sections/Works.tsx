@@ -26,7 +26,7 @@ function ArrowUpRight({ className = "" }: { className?: string }) {
 }
 
 /* ---------------------------------------------------------------------------
-   Carousel card — home page
+   Carousel card - home page
 --------------------------------------------------------------------------- */
 function CarouselCard({ project }: { project: Project }) {
   return (

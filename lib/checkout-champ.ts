@@ -17,7 +17,7 @@ export const CC_PATH = "/checkout-champ-developer/";
 
 export const CC_META = {
   title:
-    "Checkout Champ Developer | Custom Funnels & Integrations – Meet Khunt",
+    "Checkout Champ Developer | Custom Funnels & Integrations - Meet Khunt",
   description:
     "Hire Meet Khunt, a Checkout Champ developer who builds DTC funnels end to end: advertorials, VSL pages, checkouts, upsells, subscriptions, tracking and A/B tests.",
   /**
@@ -27,7 +27,7 @@ export const CC_META = {
    */
   ogImage: "/og/checkout-champ-og.png",
   ogImageAlt:
-    "Checkout Champ Developer — custom funnels, checkout pages and integrations by Meet Khunt",
+    "Checkout Champ Developer - custom funnels, checkout pages and integrations by Meet Khunt",
 };
 
 /* ------------------------------------------------------------------ Hero */
@@ -36,7 +36,7 @@ export const CC_HERO = {
   eyebrow: "Checkout Champ Development",
   headline: "Checkout Champ Developer for High-Converting eCommerce Funnels",
   description:
-    "I’m Meet Khunt. I take a Figma design and approved copy and turn it into a live Checkout Champ funnel — advertorials, VSL pages, quizzes, order forms, checkouts, upsells and subscription offers — with the campaign, offers, step paths and tracking configured, and the whole customer journey tested with real orders before paid traffic hits it.",
+    "I’m Meet Khunt. I take a Figma design and approved copy and turn it into a live Checkout Champ funnel - advertorials, VSL pages, quizzes, order forms, checkouts, upsells and subscription offers - with the campaign, offers, step paths and tracking configured, and the whole customer journey tested with real orders before paid traffic hits it.",
   ctaPrimary: "Hire Me",
   ctaSecondary: "Explore My Work",
   /** Breadcrumb trail shown above the eyebrow and mirrored in JSON-LD. */
@@ -86,7 +86,7 @@ export const CC_ICEBERG = {
  */
 export const CC_INTRO = {
   label: "In short",
-  text: "Meet Khunt is an ecommerce front-end developer who builds Checkout Champ funnels end to end for DTC brands and agencies. He turns Figma designs and approved copy into HTML, CSS and JavaScript pages — advertorials, landing and VSL pages, quizzes, order forms, checkouts, upsells, downsells and post-purchase offers — and configures the campaigns, offers, step paths and subscription billing inside Checkout Champ. He implements tracking pixels, UTMs and A/B tests, QAs every funnel with live test transactions, and also works in Funnelish, PageFly and Shopify Liquid. He takes on freelance projects, retainers and full-time remote roles.",
+  text: "Meet Khunt is an ecommerce front-end developer who builds Checkout Champ funnels end to end for DTC brands and agencies. He turns Figma designs and approved copy into HTML, CSS and JavaScript pages - advertorials, landing and VSL pages, quizzes, order forms, checkouts, upsells, downsells and post-purchase offers - and configures the campaigns, offers, step paths and subscription billing inside Checkout Champ. He implements tracking pixels, UTMs and A/B tests, QAs every funnel with live test transactions, and also works in Funnelish, PageFly and Shopify Liquid. He takes on freelance projects, retainers and full-time remote roles.",
 };
 
 /* -------------------------------------------------------------- Services */
@@ -98,7 +98,7 @@ export const CC_SERVICES = {
   items: [
     {
       title: "End-to-End Funnel Builds",
-      text: "Advertorials, landing pages, VSL pages, quizzes, product pages, order forms, checkouts, upsells, downsells and post-purchase flows — built from your brief as one connected funnel.",
+      text: "Advertorials, landing pages, VSL pages, quizzes, product pages, order forms, checkouts, upsells, downsells and post-purchase flows - built from your brief as one connected funnel.",
     },
     {
       title: "Figma to Checkout Champ",
@@ -110,7 +110,7 @@ export const CC_SERVICES = {
     },
     {
       title: "Subscriptions & Recurring Billing",
-      text: "Subscription offers, billing intervals and subscription pricing set up — then checked with test orders so customers are billed the way the offer says they will be.",
+      text: "Subscription offers, billing intervals and subscription pricing set up - then checked with test orders so customers are billed the way the offer says they will be.",
     },
     {
       title: "Tracking, Pixels & A/B Tests",
@@ -129,7 +129,7 @@ export const CC_EXPERTISE = {
   eyebrow: "My Checkout Champ Expertise",
   heading: "More Than Just a Funnel Builder",
   intro: [
-    "A funnel on paid traffic is a chain where every link matters: the advertorial hands off to the right offer, the order form submits the right product, each upsell knows what came before it, the subscription bills on the right interval, and the pixel fires once per purchase. Most of the work is making that chain hold — and proving it does.",
+    "A funnel on paid traffic is a chain where every link matters: the advertorial hands off to the right offer, the order form submits the right product, each upsell knows what came before it, the subscription bills on the right interval, and the pixel fires once per purchase. Most of the work is making that chain hold - and proving it does.",
     "So the job isn’t done when the page looks right. I build the front end, configure the platform behind it, and walk the full customer journey with real test orders before anyone else has to.",
   ],
   items: [
@@ -163,7 +163,7 @@ export const CC_EXPERTISE = {
     },
     {
       title: "Full-journey QA",
-      text: "Live test transactions that check products and pricing, subscriptions, upsells and downsells, tracking and the resulting order data — before launch, not after.",
+      text: "Live test transactions that check products and pricing, subscriptions, upsells and downsells, tracking and the resulting order data - before launch, not after.",
     },
   ],
 };
@@ -180,13 +180,22 @@ export type FunnelProject = {
   /** Stable id, also used as the React key */
   id: string;
   title: string;
-  /** Cover screenshot. Optional: without one the card shows the funnel map. */
+  /**
+   * Cover photo, cropped to 16:10 so every card's cover is the same shape.
+   * Optional: without one the card draws the funnel as wireframes instead.
+   */
   image?: { src: string; alt: string; width: number; height: number };
   description: string;
   /** The funnel's pages, in order. Rendered as a step map on the card. */
   funnelSteps?: string[];
   technologies: string[];
   contributions: string[];
+  /**
+   * The funnel's public entry page. Only the entry is linked: checkout, upsell
+   * and thank-you steps depend on an order in progress and don't open cleanly
+   * on their own.
+   */
+  liveUrl?: string;
   /** Slug of a case study in PROJECTS. Leave unset until the page exists. */
   caseStudySlug?: string;
 };
@@ -198,10 +207,69 @@ export const CC_PROJECTS = {
   /** Shown in place of the CTA while a project has no case-study page. */
   pendingLabel: "Full case study coming soon",
   ctaLabel: "View Case Study",
+  liveLabel: "View Live Funnel",
+  /** Funnels with no public URL or card yet, named in a line under the grid. */
+  also: {
+    label: "Also built in Checkout Champ",
+    text: "Funnels for Sofyre and Serabel.",
+  },
   items: [
+    {
+      id: "hume-health-hume-band",
+      title: "Hume Health - Hume Band",
+      image: {
+        src: "/projects/cc-hume-band-cover.webp",
+        alt: "Hume Band wearable worn on a wrist",
+        width: 760,
+        height: 475,
+      },
+      description:
+        "A full Checkout Champ funnel for the Hume Band wearable: an advertorial that hands off to the product page, then checkout, a post-purchase upsell for the Hume Body Pod, and a thank-you page.",
+      funnelSteps: [
+        "Advertorial",
+        "Product page",
+        "Checkout",
+        "Upsell",
+        "Thank-you",
+      ],
+      technologies: ["Checkout Champ", "HTML", "CSS", "JavaScript"],
+      contributions: [
+        "Built the advertorial and the Hume Band product page",
+        "Developed the checkout page",
+        "Implemented the post-purchase upsell",
+        "Built the thank-you page and tested the full flow",
+      ],
+      liveUrl: "https://lp.thewearabletech.com/what-your-body-knows",
+    },
+    {
+      id: "plateful-food-warming-mat",
+      title: "Plateful - Food Warming Mat",
+      image: {
+        src: "/projects/cc-plateful-cover.webp",
+        alt: "Plateful food warming mat keeping four dishes warm on a kitchen counter",
+        width: 1140,
+        height: 713,
+      },
+      description:
+        "A Checkout Champ funnel for Plateful’s food warming mat: sales page, checkout, more than one post-purchase upsell path, and a thank-you page.",
+      funnelSteps: ["Sales page", "Checkout", "Upsell paths", "Thank-you"],
+      technologies: ["Checkout Champ", "HTML", "CSS", "JavaScript"],
+      contributions: [
+        "Built the sales page and checkout",
+        "Implemented multiple post-purchase upsell paths",
+        "Built the thank-you page and tested the full flow",
+      ],
+      liveUrl: "https://try.plateful.co/sp-fwm",
+    },
     {
       id: "pelsbarn-sofa-bed",
       title: "Pelsbarn Premium Cozy Sofa Bed",
+      image: {
+        src: "/projects/cc-pelsbarn-cover.webp",
+        alt: "A dog asleep on the Pelsbarn cozy sofa bed",
+        width: 1280,
+        height: 800,
+      },
       description:
         "A multi-step Checkout Champ funnel involving an advertorial, a listicle, a sales page, checkout, two upsells, and a thank-you page.",
       funnelSteps: [
@@ -219,17 +287,6 @@ export const CC_PROJECTS = {
         "Developed the sales page and checkout",
         "Implemented two post-purchase upsell pages",
         "Built the thank-you page and tested the full flow",
-      ],
-    },
-    {
-      id: "pelsbarn-calming-chews",
-      title: "Pelsbarn Calming Chews",
-      description:
-        "A Checkout Champ funnel involving multiple stages of the customer purchase journey.",
-      technologies: ["Checkout Champ", "HTML", "CSS", "JavaScript"],
-      contributions: [
-        "Developed funnel pages across the purchase journey",
-        "Responsive implementation and cross-device testing",
       ],
     },
   ] satisfies FunnelProject[],
@@ -271,7 +328,7 @@ export const CC_GUIDES = {
   description:
     "Practical write-ups on building, customizing and troubleshooting Checkout Champ funnels.",
   allLabel: "All Checkout Champ articles",
-  slugs: [] as string[],
+  slugs: ["checkout-champ-subscription-frontend-setup"] as string[],
 };
 
 export const CC_WHY = {
@@ -283,7 +340,7 @@ export const CC_WHY = {
     },
     {
       title: "Front end and platform in one person",
-      text: "The same person writes the HTML, CSS and JavaScript and configures the campaign, offers, step paths and subscriptions — so nothing gets lost in a hand-off.",
+      text: "The same person writes the HTML, CSS and JavaScript and configures the campaign, offers, step paths and subscriptions - so nothing gets lost in a hand-off.",
     },
     {
       title: "DTC and health & wellness experience",
@@ -295,7 +352,7 @@ export const CC_WHY = {
     },
     {
       title: "Root causes, not patches",
-      text: "When something breaks I find out why — scripts, configuration, tracking or the platform itself — and write clear, reproducible bug reports when support needs to be involved.",
+      text: "When something breaks I find out why - scripts, configuration, tracking or the platform itself - and write clear, reproducible bug reports when support needs to be involved.",
     },
     {
       title: "Freelance or full-time",
@@ -311,7 +368,7 @@ export const CC_PROCESS = {
   steps: [
     {
       title: "Brief & Funnel Map",
-      text: "Figma design, approved copy, products, offers, step paths, subscription terms and tracking requirements — mapped before anything is built.",
+      text: "Figma design, approved copy, products, offers, step paths, subscription terms and tracking requirements - mapped before anything is built.",
     },
     {
       title: "Build & Configure",
@@ -339,11 +396,11 @@ export const CC_FAQ = {
     },
     {
       q: "Can you build a complete Checkout Champ funnel from a Figma design?",
-      a: "Yes. Give me the Figma design and approved copy and I build every page in HTML, CSS and JavaScript — advertorial, landing or VSL page, quiz, order form, checkout, upsells, downsells and thank-you page — then configure the campaign, offers and step paths so the funnel runs end to end.",
+      a: "Yes. Give me the Figma design and approved copy and I build every page in HTML, CSS and JavaScript - advertorial, landing or VSL page, quiz, order form, checkout, upsells, downsells and thank-you page - then configure the campaign, offers and step paths so the funnel runs end to end.",
     },
     {
       q: "Do you clone funnels or build them from scratch?",
-      a: "Most of my Checkout Champ work is built from a brief: a Figma design and approved copy turned into original pages for your brand and offer. Duplicating and adapting an existing funnel inside Checkout Champ — to launch a new offer, angle or test quickly — is a separate task I also handle. I’m always clear about which of the two a project is.",
+      a: "Most of my Checkout Champ work is built from a brief: a Figma design and approved copy turned into original pages for your brand and offer. Duplicating and adapting an existing funnel inside Checkout Champ - to launch a new offer, angle or test quickly - is a separate task I also handle. I’m always clear about which of the two a project is.",
     },
     {
       q: "Can you configure campaigns, offers and upsell paths inside Checkout Champ?",
@@ -355,7 +412,7 @@ export const CC_FAQ = {
     },
     {
       q: "Do you set up tracking, pixels and A/B tests?",
-      a: "Yes. I implement conversion pixels, UTMs and events and check that they fire correctly — including on test purchases. For A/B tests I configure the variants, confirm tracking on each one, and document how the test is set up.",
+      a: "Yes. I implement conversion pixels, UTMs and events and check that they fire correctly - including on test purchases. For A/B tests I configure the variants, confirm tracking on each one, and document how the test is set up.",
     },
     {
       q: "How do you QA a funnel before launch?",
@@ -363,7 +420,7 @@ export const CC_FAQ = {
     },
     {
       q: "Can Checkout Champ integrate with Shopify?",
-      a: "Yes. Checkout Champ offers a Shopify integration that brands commonly use to connect their store’s products and orders with their funnels. Exactly what it syncs depends on your account and the integration’s current options, so I check your setup before promising anything. I also work directly in Shopify — including theme edits in Liquid — when the storefront side needs changes too.",
+      a: "Yes. Checkout Champ offers a Shopify integration that brands commonly use to connect their store’s products and orders with their funnels. Exactly what it syncs depends on your account and the integration’s current options, so I check your setup before promising anything. I also work directly in Shopify - including theme edits in Liquid - when the storefront side needs changes too.",
     },
     {
       q: "Can you fix existing Checkout Champ funnel issues?",

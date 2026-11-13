@@ -361,8 +361,14 @@ async function loadPosts(): Promise<Post[]> {
 
 let cache: Promise<Post[]> | null = null;
 
-/** Every article that is public in this build (plus drafts in preview). */
+/**
+ * Every article that is public in this build (plus drafts in preview).
+ * Read once per build; in `next dev` re-read on every call, so adding,
+ * editing or deleting a file in content/blog shows up on refresh without
+ * restarting the server.
+ */
 export function getPosts(): Promise<Post[]> {
+  if (process.env.NODE_ENV === "development") return loadPosts();
   return (cache ??= loadPosts());
 }
 

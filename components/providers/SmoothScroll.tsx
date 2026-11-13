@@ -24,7 +24,7 @@ export default function SmoothScroll({
   const rafId = useRef<((time: number) => void) | null>(null);
 
   /* Lenis and GSAP are pulled in after hydration so they stay out of the shared
-     layout chunk — routes that don't animate never download them. */
+     layout chunk - routes that don't animate never download them. */
   useEffect(() => {
     let cancelled = false;
     let instance: Lenis | null = null;
