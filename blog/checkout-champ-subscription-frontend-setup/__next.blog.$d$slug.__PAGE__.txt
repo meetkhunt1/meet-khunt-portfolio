@@ -1,0 +1,318 @@
+1:"$Sreact.fragment"
+3:I[22016,["/_next/static/chunks/43rafcgnsid3f.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/1pbpljt33d_w4.js","/_next/static/chunks/1ype04pd83gy-.js"],""]
+d:I[5500,["/_next/static/chunks/43rafcgnsid3f.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/1pbpljt33d_w4.js","/_next/static/chunks/1ype04pd83gy-.js"],"Image"]
+29:I[87392,["/_next/static/chunks/43rafcgnsid3f.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/1pbpljt33d_w4.js","/_next/static/chunks/1ype04pd83gy-.js"],"default"]
+2a:I[97367,["/_next/static/chunks/43rafcgnsid3f.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+2b:"$Sreact.suspense"
+:HL["/_next/static/chunks/0n_l2fyvpz2g_.css","style"]
+2:Ta51,{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://meetkhunt.com/#person","name":"Meet Khunt","jobTitle":"Ecommerce Frontend Specialist","url":"https://meetkhunt.com/#about","image":"https://meetkhunt.com/portrait.webp","sameAs":["https://www.linkedin.com/in/meetkhunt1/"]},{"@type":"WebSite","@id":"https://meetkhunt.com/#website","url":"https://meetkhunt.com/","name":"Meet Khunt","publisher":{"@id":"https://meetkhunt.com/#person"}},{"@type":"Blog","@id":"https://meetkhunt.com/blog/#blog","url":"https://meetkhunt.com/blog/","name":"Insights, Tutorials & Development Guides","description":"Explore practical tutorials and insights on Checkout Champ, Shopify, eCommerce funnels, and web development by Meet Khunt.","publisher":{"@id":"https://meetkhunt.com/#person"},"isPartOf":{"@id":"https://meetkhunt.com/#website"},"inLanguage":"en"},{"@type":"BlogPosting","@id":"https://meetkhunt.com/blog/checkout-champ-subscription-frontend-setup/#article","headline":"How to Set Up Subscriptions in Checkout Champ (Frontend Guide)","description":"Learn how to add subscription options to Checkout Champ funnels using Subscribe elements, Subscribe & Save checkboxes, and custom frontend styling.","url":"https://meetkhunt.com/blog/checkout-champ-subscription-frontend-setup/","mainEntityOfPage":{"@type":"WebPage","@id":"https://meetkhunt.com/blog/checkout-champ-subscription-frontend-setup/","breadcrumb":{"@id":"https://meetkhunt.com/blog/checkout-champ-subscription-frontend-setup/#breadcrumb"}},"author":{"@id":"https://meetkhunt.com/#person"},"publisher":{"@id":"https://meetkhunt.com/#person"},"isPartOf":{"@id":"https://meetkhunt.com/blog/#blog"},"datePublished":"2026-11-13","dateModified":"2026-11-13","image":{"@type":"ImageObject","url":"https://meetkhunt.com/images/blog/checkout-champ-subscription-frontend-setup.webp","width":1600,"height":1000},"articleSection":"Checkout Champ","keywords":["Checkout Champ","Subscriptions","Subscribe & Save","Page Builder 2.0"],"wordCount":2112,"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://meetkhunt.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://meetkhunt.com/blog/"},{"@type":"ListItem","position":3,"name":"Checkout Champ","item":"https://meetkhunt.com/blog/category/checkout-champ/"},{"@type":"ListItem","position":4,"name":"How to Set Up Subscriptions in Checkout Champ (Frontend Guide)","item":"https://meetkhunt.com/blog/checkout-champ-subscription-frontend-setup/"}],"@id":"https://meetkhunt.com/blog/checkout-champ-subscription-frontend-setup/#breadcrumb"}]}0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","main",null,{"className":"flex w-full flex-col items-center overflow-hidden pt-20","children":[false,["$","div",null,{"className":"section-row pt-[40px] lg:pt-[60px]","children":["$","div",null,{"className":"mx-auto w-full max-w-[1200px]","children":[["$","nav",null,{"aria-label":"Breadcrumb","children":["$","ol",null,{"className":"flex flex-wrap items-center gap-x-2 gap-y-1 font-ui text-[13px] text-muted","children":[["$","li","/",{"className":"flex min-w-0 items-center gap-2","children":[["$","$L3",null,{"href":"/","data-cursor":"grow","className":"transition-colors duration-200 hover:text-fg","children":"Home"}],["$","span",null,{"aria-hidden":true,"children":"/"}]]}],"$L4","$L5","$L6"]}]}],"$L7"]}]}],false,"$L8"]}]],["$L9","$La","$Lb"],"$Lc"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"mSfJrnWSdTy3GlrICnQGA"}
+4:["$","li","/blog/",{"className":"flex min-w-0 items-center gap-2","children":[["$","$L3",null,{"href":"/blog/","data-cursor":"grow","className":"transition-colors duration-200 hover:text-fg","children":"Blog"}],["$","span",null,{"aria-hidden":true,"children":"/"}]]}]
+5:["$","li","/blog/category/checkout-champ/",{"className":"flex min-w-0 items-center gap-2","children":[["$","$L3",null,{"href":"/blog/category/checkout-champ/","data-cursor":"grow","className":"transition-colors duration-200 hover:text-fg","children":"Checkout Champ"}],["$","span",null,{"aria-hidden":true,"children":"/"}]]}]
+6:["$","li","/blog/checkout-champ-subscription-frontend-setup/",{"className":"flex min-w-0 items-center gap-2","children":["$","span",null,{"aria-current":"page","className":"line-clamp-1 text-fg","children":"How to Set Up Subscriptions in Checkout Champ (Frontend Guide)"}]}]
+7:["$","div",null,{"className":"mt-8 grid grid-cols-1 gap-12 lg:mt-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_360px] xl:gap-20","children":[["$","article",null,{"className":"min-w-0","children":[["$","header",null,{"children":[["$","$L3",null,{"href":"/blog/category/checkout-champ/","data-cursor":"grow","className":"category transition-colors duration-200 hover:text-fg","children":"Checkout Champ"}],["$","h1",null,{"className":"mt-3 font-sans text-[30px] font-semibold leading-[1.15] tracking-[-0.025em] text-fg lg:text-[40px]","children":"How to Set Up Subscriptions in Checkout Champ (Frontend Guide)"}],["$","div",null,{"className":"mt-7 flex flex-wrap items-center justify-between gap-x-8 gap-y-4","children":[["$","div",null,{"className":"flex items-center gap-3","children":[["$","$Ld",null,{"src":"/images/blog/authors/meet-khunt.webp","alt":"","width":48,"height":48,"className":"size-12 shrink-0 rounded-full border border-line object-cover"}],["$","div",null,{"children":[["$","$L3",null,{"href":"/#about","rel":"author","data-cursor":"grow","className":"font-ui text-[14px] font-semibold text-fg transition-colors hover:text-muted","children":"Meet Khunt"}],["$","p",null,{"className":"font-ui text-[12px] text-muted","children":"Ecommerce Frontend Developer"}]]}]]}],["$","dl",null,{"className":"flex flex-col items-start gap-1 font-ui text-[12px] text-muted sm:items-end","children":[["$","div",null,{"className":"flex items-center gap-1.5","children":[["$","dt",null,{"className":"sr-only","children":"Published"}],["$","dd",null,{"children":["$","time",null,{"dateTime":"2026-11-13","children":"November 13, 2026"}]}],["$","svg",null,{"viewBox":"0 0 16 16","fill":"none","stroke":"currentColor","strokeWidth":1.4,"strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"className":"size-3.5 shrink-0","children":[["$","rect",null,{"x":"2.25","y":"3.25","width":"11.5","height":"10.5","rx":"1.75"}],["$","path",null,{"d":"M2.25 6.5h11.5M5.5 1.75v3M10.5 1.75v3"}]]}]]}],"$undefined",["$","div",null,{"className":"flex items-center gap-1.5","children":[["$","dt",null,{"className":"sr-only","children":"Reading time"}],["$","dd",null,{"children":[9," min read"]}],["$","svg",null,{"viewBox":"0 0 16 16","fill":"none","stroke":"currentColor","strokeWidth":1.4,"strokeLinecap":"round","strokeLinejoin":"round","aria-hidden":true,"className":"size-3.5 shrink-0","children":[["$","circle",null,{"cx":"8","cy":"8","r":"6.25"}],["$","path",null,{"d":"M8 4.75V8l2.25 1.5"}]]}]]}]]}]]}],["$","$Ld",null,{"src":"/images/blog/checkout-champ-subscription-frontend-setup.webp","alt":"Illustrated checkout card with a one-time purchase option and a selected Subscribe & Save option billed every 30 days","width":1600,"height":1000,"priority":true,"sizes":"(min-width: 1200px) 780px, 100vw","className":"mt-8 h-auto w-full rounded-[14px] border border-line"}]]}],["$","div",null,{"className":"mt-10 lg:hidden","children":["$","details",null,{"className":"group rounded-[12px] border border-line bg-surface lg:hidden","children":[["$","summary",null,{"data-cursor":"grow","className":"flex cursor-pointer list-none items-center justify-between px-5 py-4 font-ui text-[14px] font-semibold text-fg [&::-webkit-details-marker]:hidden","children":["Table of Contents",["$","span",null,{"aria-hidden":true,"className":"transition-transform duration-300 group-open:rotate-180","children":"↓"}]]}],["$","nav",null,{"aria-label":"Table of contents","className":"border-t border-line px-5 py-4","children":["$","ol",null,{"className":"flex flex-col gap-0.5","children":[["$","li","1-understand-how-subscription-setup-works-in-checkout-champ",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#1-understand-how-subscription-setup-works-in-checkout-champ","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"1. Understand How Subscription Setup Works in Checkout Champ"}]]}],["$","li","2-prerequisites-configure-your-subscription-offers",{"className":"flex gap-3 ","children":[false,"$Le"]}],"$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a","$L1b","$L1c","$L1d","$L1e","$L1f","$L20","$L21","$L22","$L23","$L24"]}]}]]}]}],"$L25","$L26","$L27"]}],"$L28"]}]
+8:["$","$L29",null,{}]
+9:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0n_l2fyvpz2g_.css","precedence":"next"}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/1pbpljt33d_w4.js","async":true}]
+b:["$","script","script-1",{"src":"/_next/static/chunks/1ype04pd83gy-.js","async":true}]
+c:["$","$L2a",null,{"children":["$","$2b",null,{"name":"Next.MetadataOutlet","children":"$@2c"}]}]
+e:["$","a",null,{"href":"#2-prerequisites-configure-your-subscription-offers","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"2. Prerequisites: Configure Your Subscription Offers"}]
+f:["$","li","3-method-1-add-the-subscribe-element-to-a-product-page",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#3-method-1-add-the-subscribe-element-to-a-product-page","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"3. Method 1: Add the Subscribe Element to a Product Page"}]]}]
+10:["$","li","step-1-open-the-product-detail-page",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-1-open-the-product-detail-page","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 1: Open the Product Detail Page"}]]}]
+11:["$","li","step-2-find-the-subscribe-element",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-2-find-the-subscribe-element","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 2: Find the Subscribe Element"}]]}]
+12:["$","li","step-3-customize-the-appearance",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-3-customize-the-appearance","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 3: Customize the Appearance"}]]}]
+13:["$","li","step-4-save-and-publish",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-4-save-and-publish","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 4: Save and Publish"}]]}]
+14:["$","li","4-method-2-add-a-subscribe-and-save-checkbox-to-checkout",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#4-method-2-add-a-subscribe-and-save-checkbox-to-checkout","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"4. Method 2: Add a Subscribe & Save Checkbox to Checkout"}]]}]
+15:["$","li","step-1-confirm-your-one-time-and-recurring-offers",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-1-confirm-your-one-time-and-recurring-offers","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 1: Confirm Your One-Time and Recurring Offers"}]]}]
+16:["$","li","step-2-open-the-checkout-page",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-2-open-the-checkout-page","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 2: Open the Checkout Page"}]]}]
+17:["$","li","step-3-add-a-form-checkbox",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-3-add-a-form-checkbox","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 3: Add a Form Checkbox"}]]}]
+18:["$","li","step-4-customize-the-checkbox",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-4-customize-the-checkbox","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 4: Customize the Checkbox"}]]}]
+19:["$","li","step-5-save-and-publish",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#step-5-save-and-publish","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Step 5: Save and Publish"}]]}]
+1a:["$","li","5-method-3-use-subscribe-and-save-profiles",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#5-method-3-use-subscribe-and-save-profiles","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"5. Method 3: Use Subscribe & Save Profiles"}]]}]
+1b:["$","li","why-use-subscribe-and-save-profiles",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#why-use-subscribe-and-save-profiles","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Why Use Subscribe & Save Profiles?"}]]}]
+1c:["$","li","6-method-4-use-the-two-way-sub-subscription-element",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#6-method-4-use-the-two-way-sub-subscription-element","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"6. Method 4: Use the Two Way Sub Subscription Element"}]]}]
+1d:["$","li","7-can-you-customize-the-subscription-design-using-html-css-and-javascript",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#7-can-you-customize-the-subscription-design-using-html-css-and-javascript","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"7. Can You Customize the Subscription Design Using HTML, CSS, and JavaScript?"}]]}]
+1e:["$","li","important-don-t-replace-native-functionality-without-a-reason",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#important-don-t-replace-native-functionality-without-a-reason","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Important: Don't Replace Native Functionality Without a Reason"}]]}]
+1f:["$","li","8-how-to-test-your-subscription-setup",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#8-how-to-test-your-subscription-setup","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"8. How to Test Your Subscription Setup"}]]}]
+20:["$","li","one-time-purchase-test",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#one-time-purchase-test","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"One-Time Purchase Test"}]]}]
+21:["$","li","subscription-test",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#subscription-test","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Subscription Test"}]]}]
+22:["$","li","additional-checks",{"className":"flex gap-3 pl-4","children":[false,["$","a",null,{"href":"#additional-checks","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[13px] text-muted","children":"Additional Checks"}]]}]
+23:["$","li","9-common-subscription-setup-problems",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#9-common-subscription-setup-problems","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"9. Common Subscription Setup Problems"}]]}]
+24:["$","li","conclusion",{"className":"flex gap-3 ","children":[false,["$","a",null,{"href":"#conclusion","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"Conclusion"}]]}]
+2d:T59e7,<p>Subscription-based purchasing is an important part of many DTC eCommerce businesses, especially in health, wellness, supplements, skincare, and consumable products.</p>
+<p>Checkout Champ provides subscription and recurring billing functionality through its campaign and product configuration. However, setting up the recurring offer is only one part of the implementation.</p>
+<p>You also need to give customers a way to select a subscription option on the frontend.</p>
+<p>In this guide, we&#39;ll walk through how to add subscription options to Checkout Champ funnel pages using its native page builder elements, configure Subscribe &amp; Save functionality, customize the frontend experience, and test the complete subscription flow.</p>
+<h2 id="1-understand-how-subscription-setup-works-in-checkout-champ">1. Understand How Subscription Setup Works in Checkout Champ<a class="prose-anchor" href="#1-understand-how-subscription-setup-works-in-checkout-champ" aria-label="Link to this section: 1. Understand How Subscription Setup Works in Checkout Champ">#</a></h2>
+<p>Before editing the frontend, it&#39;s important to understand how the subscription setup is connected.</p>
+<p>A typical subscription implementation involves three parts:</p>
+<p><strong>1. Base Product and Campaign Offer</strong></p>
+<p>The product must have an appropriate recurring offer configured in the Checkout Champ campaign.</p>
+<p><strong>2. Subscription Configuration</strong></p>
+<p>The recurring offer defines the subscription price, billing frequency, and other billing settings.</p>
+<p><strong>3. Frontend Subscription Selection</strong></p>
+<p>The page builder provides elements that allow customers to choose between a one-time purchase and a recurring subscription.</p>
+<figure class="prose-figure"><img src="/images/blog/checkout-champ-subscription-parts.webp" alt="Diagram of the three parts of a Checkout Champ subscription setup: one-time and recurring campaign offers sharing a Base Product, the recurring offer's price and billing frequency, and a frontend selector choosing between the two offers" width="1600" height="900" loading="lazy" decoding="async"><figcaption>Illustration: the frontend element selects between offers that already exist in the campaign.</figcaption></figure>
+<p>The frontend element doesn&#39;t independently create a subscription. It works with the recurring offers already configured in the campaign.</p>
+<h2 id="2-prerequisites-configure-your-subscription-offers">2. Prerequisites: Configure Your Subscription Offers<a class="prose-anchor" href="#2-prerequisites-configure-your-subscription-offers" aria-label="Link to this section: 2. Prerequisites: Configure Your Subscription Offers">#</a></h2>
+<p>Before adding a subscription selector to your page, make sure the campaign has the required product configuration.</p>
+<p>In Checkout Champ, navigate to:</p>
+<p><strong>CRM → Campaigns → Edit Campaign → Campaign Products</strong></p>
+<p>Create or configure the relevant offers.</p>
+<p>For a basic Subscribe &amp; Save setup, you&#39;ll need:</p>
+<ul>
+<li>A one-time purchase offer.</li>
+<li>A recurring subscription offer.</li>
+<li>The same Base Product assigned to both offers.</li>
+<li>An active and appropriate Gateway Account.</li>
+<li>The correct product pricing and billing schedule.</li>
+</ul>
+<p>For example:</p>
+<div class="prose-table" role="region" aria-label="Table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>One-time offer</th>
+<th>Subscription offer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Product</td>
+<td>Daily Supplement</td>
+<td>Daily Supplement</td>
+</tr>
+<tr>
+<td>Base Product</td>
+<td>Supplement A</td>
+<td>Supplement A</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>$49.99</td>
+<td>$39.99</td>
+</tr>
+<tr>
+<td>Billing Type</td>
+<td>One Time</td>
+<td>Recurring</td>
+</tr>
+<tr>
+<td>Billing Frequency</td>
+<td>Not applicable</td>
+<td>Every 30 days</td>
+</tr>
+</tbody></table>
+</div>
+<p>The recurring offer determines how frequently the customer is billed.</p>
+<p>You can configure different recurring schedules depending on your offer requirements, such as every 30, 60, or 90 days.</p>
+<aside class="prose-callout prose-callout--important" role="note" aria-label="Important"><p class="prose-callout__label">Important</p><p>Both offers must share the same Base Product when using Subscribe &amp; Save Profiles.</p>
+</aside>
+<h2 id="3-method-1-add-the-subscribe-element-to-a-product-page">3. Method 1: Add the Subscribe Element to a Product Page<a class="prose-anchor" href="#3-method-1-add-the-subscribe-element-to-a-product-page" aria-label="Link to this section: 3. Method 1: Add the Subscribe Element to a Product Page">#</a></h2>
+<p>Checkout Champ Page Builder 2.0 includes a native Subscribe element for product detail pages.</p>
+<p>This is useful when you want customers to choose between a one-time purchase and a subscription while viewing the product.</p>
+<h3 id="step-1-open-the-product-detail-page">Step 1: Open the Product Detail Page<a class="prose-anchor" href="#step-1-open-the-product-detail-page" aria-label="Link to this section: Step 1: Open the Product Detail Page">#</a></h3>
+<ol>
+<li>Navigate to Funnel Builder.</li>
+<li>Open the relevant funnel.</li>
+<li>Edit your Product Detail page.</li>
+<li>Open the Building Blocks panel.</li>
+</ol>
+<h3 id="step-2-find-the-subscribe-element">Step 2: Find the Subscribe Element<a class="prose-anchor" href="#step-2-find-the-subscribe-element" aria-label="Link to this section: Step 2: Find the Subscribe Element">#</a></h3>
+<p>Navigate to:</p>
+<p><strong>Basic Elements → Products → Subscribe</strong></p>
+<p>Drag the Subscribe element onto your product page.</p>
+<p>Some Product Detail templates already include this element by default, so check the existing page before adding another one.</p>
+<h3 id="step-3-customize-the-appearance">Step 3: Customize the Appearance<a class="prose-anchor" href="#step-3-customize-the-appearance" aria-label="Link to this section: Step 3: Customize the Appearance">#</a></h3>
+<p>You can adjust the styling to match your store design.</p>
+<p>For example, you could display:</p>
+<ul>
+<li>One-time purchase</li>
+<li>Subscribe &amp; Save</li>
+<li>Subscription price</li>
+<li>Available subscription information</li>
+</ul>
+<aside class="prose-callout prose-callout--warning" role="note" aria-label="Warning"><p class="prose-callout__label">Warning</p><p>Make sure you preserve the original elements and classes of the native Subscribe element. You can add custom classes for styling, but don&#39;t remove the existing functionality.</p>
+</aside>
+<h3 id="step-4-save-and-publish">Step 4: Save and Publish<a class="prose-anchor" href="#step-4-save-and-publish" aria-label="Link to this section: Step 4: Save and Publish">#</a></h3>
+<p>Save the page and publish your funnel.</p>
+<p>Visit the live page and check whether the subscription option appears.</p>
+<p>The Subscribe element automatically displays the available product names and prices when the associated Base Product has a recurring option. If no recurring option is available, the element is hidden.</p>
+<aside class="prose-callout prose-callout--tip" role="note" aria-label="Tip"><p class="prose-callout__label">Tip</p><strong>When should you use this method?</strong></p>
+<p>Use the native Subscribe element when you want customers to select a subscription directly from a product detail page.</p>
+</aside>
+<h2 id="4-method-2-add-a-subscribe-and-save-checkbox-to-checkout">4. Method 2: Add a Subscribe &amp; Save Checkbox to Checkout<a class="prose-anchor" href="#4-method-2-add-a-subscribe-and-save-checkbox-to-checkout" aria-label="Link to this section: 4. Method 2: Add a Subscribe &amp; Save Checkbox to Checkout">#</a></h2>
+<p>Another common implementation is to let customers upgrade their one-time purchase to a subscription directly on the checkout page.</p>
+<p>For this method, Checkout Champ provides a specific checkbox configuration.</p>
+<h3 id="step-1-confirm-your-one-time-and-recurring-offers">Step 1: Confirm Your One-Time and Recurring Offers<a class="prose-anchor" href="#step-1-confirm-your-one-time-and-recurring-offers" aria-label="Link to this section: Step 1: Confirm Your One-Time and Recurring Offers">#</a></h3>
+<p>Make sure both offers exist in the same campaign and share the same Base Product.</p>
+<p>For example:</p>
+<ul>
+<li>One-time purchase: $49.99</li>
+<li>Subscription: $39.99 every 30 days</li>
+</ul>
+<p>If you have multiple products with different subscription frequencies, configure the appropriate Base Product relationships for each offer pair.</p>
+<h3 id="step-2-open-the-checkout-page">Step 2: Open the Checkout Page<a class="prose-anchor" href="#step-2-open-the-checkout-page" aria-label="Link to this section: Step 2: Open the Checkout Page">#</a></h3>
+<ol>
+<li>Go to Funnel Builder.</li>
+<li>Open your campaign funnel.</li>
+<li>Edit the checkout page.</li>
+<li>Open the Building Blocks panel.</li>
+</ol>
+<h3 id="step-3-add-a-form-checkbox">Step 3: Add a Form Checkbox<a class="prose-anchor" href="#step-3-add-a-form-checkbox" aria-label="Link to this section: Step 3: Add a Form Checkbox">#</a></h3>
+<p>Navigate to the Forms section and drag a Checkbox element onto the checkout page.</p>
+<p>Select the checkbox and open its settings in the Style Manager.</p>
+<p>Set the checkbox ID to exactly:</p>
+<p><code>Subscribe</code></p>
+<aside class="prose-callout prose-callout--important" role="note" aria-label="Important"><p class="prose-callout__label">Important</p><p>This ID is important because Checkout Champ uses it to recognize the Subscribe &amp; Save checkbox functionality.</p>
+</aside>
+<h3 id="step-4-customize-the-checkbox">Step 4: Customize the Checkbox<a class="prose-anchor" href="#step-4-customize-the-checkbox" aria-label="Link to this section: Step 4: Customize the Checkbox">#</a></h3>
+<p>You can customize the checkbox label and appearance.</p>
+<p>For example:</p>
+<p><strong>Subscribe &amp; Save - Get 20% off every delivery</strong></p>
+<p>You can also style the surrounding container to make the subscription option more noticeable.</p>
+<h3 id="step-5-save-and-publish">Step 5: Save and Publish<a class="prose-anchor" href="#step-5-save-and-publish" aria-label="Link to this section: Step 5: Save and Publish">#</a></h3>
+<p>Save your changes and publish the checkout page.</p>
+<p>When the customer checks the box, eligible one-time products in the cart are switched to their matching recurring offers.</p>
+<p>When the checkbox is unchecked, the cart reverts to its original state.</p>
+<figure class="prose-figure"><img src="/images/blog/checkout-champ-subscription-checkbox.webp" alt="Diagram of the Subscribe and Save checkbox: with the box unchecked the cart holds the one-time offer at $49.99, checking the box with the ID Subscribe switches it to the recurring offer at $39.99 every 30 days, and unchecking reverts the cart" width="1600" height="900" loading="lazy" decoding="async"><figcaption>Illustration: checking the box swaps eligible one-time items for their matching recurring offers.</figcaption></figure>
+<p>There are a few important behaviors to understand:</p>
+<ul>
+<li>The recurring offer must share the same Base Product.</li>
+<li>If the one-time product has variants, the selected variant is retained.</li>
+<li>Products without matching recurring offers remain unchanged.</li>
+<li>Products that are already recurring remain unchanged.</li>
+</ul>
+<aside class="prose-callout prose-callout--tip" role="note" aria-label="Tip"><p class="prose-callout__label">Tip</p><strong>When should you use this method?</strong></p>
+<p>Use the Subscribe &amp; Save checkbox when you want customers to upgrade their purchase without leaving the checkout page.</p>
+</aside>
+<h2 id="5-method-3-use-subscribe-and-save-profiles">5. Method 3: Use Subscribe &amp; Save Profiles<a class="prose-anchor" href="#5-method-3-use-subscribe-and-save-profiles" aria-label="Link to this section: 5. Method 3: Use Subscribe &amp; Save Profiles">#</a></h2>
+<p>If you need to connect multiple one-time offers to recurring offers, Subscribe &amp; Save Profiles provide another way to manage the relationship.</p>
+<p>Navigate to:</p>
+<p><strong>CRM → Campaigns → Edit Campaign → Subscribe &amp; Save Profiles</strong></p>
+<p>Create a profile and configure the following fields:</p>
+<p><strong>Campaign Product:</strong> Select the one-time purchase offer.</p>
+<p><strong>Recurring Product:</strong> Select the recurring offer that should replace the one-time purchase.</p>
+<p><strong>Default Product:</strong> Choose which offer should be selected by default in the Subscribe &amp; Save element.</p>
+<p><strong>Subscription Options:</strong> Configure the available delivery or billing frequencies.</p>
+<p>The frequency options must include the words day, week, or month.</p>
+<p>For example:</p>
+<ul>
+<li>Every 30 days</li>
+<li>Every 60 days</li>
+<li>Every 90 days</li>
+</ul>
+<figure class="prose-figure"><img src="/images/blog/checkout-champ-subscription-profile.webp" alt="Diagram of a Subscribe and Save Profile linking a one-time campaign product and a recurring product that share a Base Product, with the Default Product setting and subscription options of every 30, 60 and 90 days" width="1600" height="900" loading="lazy" decoding="async"><figcaption>Illustration: field names follow Checkout Champ's documentation. This is not a screenshot of the interface.</figcaption></figure>
+<p>Both the one-time and recurring products must share the same Base Product.</p>
+<p>You can also associate multiple one-time offers with one recurring offer, provided the required Base Product relationships are configured.</p>
+<h3 id="why-use-subscribe-and-save-profiles">Why Use Subscribe &amp; Save Profiles?<a class="prose-anchor" href="#why-use-subscribe-and-save-profiles" aria-label="Link to this section: Why Use Subscribe &amp; Save Profiles?">#</a></h3>
+<p>Profiles are useful when you want to manage subscription upgrades across different product sizes, bundles, or one-time offers.</p>
+<p>They also support the Two Way Sub Subscription element discussed below.</p>
+<h2 id="6-method-4-use-the-two-way-sub-subscription-element">6. Method 4: Use the Two Way Sub Subscription Element<a class="prose-anchor" href="#6-method-4-use-the-two-way-sub-subscription-element" aria-label="Link to this section: 6. Method 4: Use the Two Way Sub Subscription Element">#</a></h2>
+<p>Checkout Champ Page Builder 2.0 also includes a native element called <strong>Two Way Sub Subscription</strong>.</p>
+<p>This element can provide both subscription and one-time purchase options on the same page.</p>
+<p>To use it:</p>
+<ol>
+<li>Open your checkout page in Page Builder 2.0.</li>
+<li>Navigate to Building Blocks → Products.</li>
+<li>Find the Two Way Sub Subscription element.</li>
+<li>Drag it onto the page.</li>
+<li>Style it according to your design.</li>
+<li>Save and publish the page.</li>
+</ol>
+<p>This element uses the Subscribe &amp; Save Profiles configured in your campaign.</p>
+<p>When customers upgrade to a subscription, the element is hidden and the order summary provides an option to revert to the one-time product.</p>
+<p>This is useful when you want to give customers flexibility to switch between purchase types.</p>
+<h2 id="7-can-you-customize-the-subscription-design-using-html-css-and-javascript">7. Can You Customize the Subscription Design Using HTML, CSS, and JavaScript?<a class="prose-anchor" href="#7-can-you-customize-the-subscription-design-using-html-css-and-javascript" aria-label="Link to this section: 7. Can You Customize the Subscription Design Using HTML, CSS, and JavaScript?">#</a></h2>
+<p>Yes, you can customize the appearance of your Checkout Champ pages using the supported page builder styling options and custom code.</p>
+<p>For example, you may want a design like this:</p>
+<p><strong>Choose Your Purchase Option</strong></p>
+<ul>
+<li>One-time purchase - $49.99</li>
+<li>Subscribe &amp; Save - $39.99 / month</li>
+</ul>
+<p>You can create a more polished subscription selection experience with:</p>
+<ul>
+<li>Custom pricing cards.</li>
+<li>Highlighted Subscribe &amp; Save options.</li>
+<li>Discount labels.</li>
+<li>Custom borders and background colors.</li>
+<li>Responsive layouts.</li>
+<li>Additional explanatory text.</li>
+</ul>
+<p>Start by using the native subscription elements and customizing them through the Style Manager.</p>
+<p>If the native styling options are not sufficient, you can investigate custom CSS or HTML Blocks.</p>
+<h3 id="important-don-t-replace-native-functionality-without-a-reason">Important: Don&#39;t Replace Native Functionality Without a Reason<a class="prose-anchor" href="#important-don-t-replace-native-functionality-without-a-reason" aria-label="Link to this section: Important: Don't Replace Native Functionality Without a Reason">#</a></h3>
+<p>A custom radio button or checkbox does not automatically change the Checkout Champ cart to a recurring offer.</p>
+<p>The native Subscribe &amp; Save functionality depends on the correct product relationships and element configuration.</p>
+<p>If you build a completely custom subscription selector using HTML or JavaScript, you must also ensure that the selected option is connected to Checkout Champ&#39;s supported product-selection and cart behavior.</p>
+<aside class="prose-callout prose-callout--warning" role="note" aria-label="Warning"><p class="prose-callout__label">Warning</p><p>Avoid assuming that changing the visible price or checkbox state will change the actual billing configuration.</p>
+</aside>
+<h2 id="8-how-to-test-your-subscription-setup">8. How to Test Your Subscription Setup<a class="prose-anchor" href="#8-how-to-test-your-subscription-setup" aria-label="Link to this section: 8. How to Test Your Subscription Setup">#</a></h2>
+<p>Before publishing a subscription funnel, test the complete customer journey.</p>
+<h3 id="one-time-purchase-test">One-Time Purchase Test<a class="prose-anchor" href="#one-time-purchase-test" aria-label="Link to this section: One-Time Purchase Test">#</a></h3>
+<ul>
+<li>Confirm the one-time option is displayed.</li>
+<li>Select the one-time offer.</li>
+<li>Continue to checkout.</li>
+<li>Verify the correct product and price.</li>
+<li>Complete an approved test transaction.</li>
+</ul>
+<h3 id="subscription-test">Subscription Test<a class="prose-anchor" href="#subscription-test" aria-label="Link to this section: Subscription Test">#</a></h3>
+<ul>
+<li>Select the subscription option.</li>
+<li>Confirm the recurring offer is selected.</li>
+<li>Verify the subscription price.</li>
+<li>Check the billing frequency.</li>
+<li>Complete an approved test transaction.</li>
+<li>Verify that the order is recorded with the intended recurring configuration.</li>
+</ul>
+<h3 id="additional-checks">Additional Checks<a class="prose-anchor" href="#additional-checks" aria-label="Link to this section: Additional Checks">#</a></h3>
+<ul>
+<li>Confirm the checkout displays the correct subscription terms.</li>
+<li>Verify the selected product and variant.</li>
+<li>Check the order and customer records.</li>
+<li>Verify the next billing schedule.</li>
+<li>Test cancellation and subscription management workflows.</li>
+<li>Check the frontend on desktop and mobile.</li>
+</ul>
+<aside class="prose-callout prose-callout--important" role="note" aria-label="Important"><p class="prose-callout__label">Important</p><p>Use an approved test environment or test payment process whenever possible. Don&#39;t assume a successful checkout page display proves that recurring billing is configured correctly.</p>
+</aside>
+<h2 id="9-common-subscription-setup-problems">9. Common Subscription Setup Problems<a class="prose-anchor" href="#9-common-subscription-setup-problems" aria-label="Link to this section: 9. Common Subscription Setup Problems">#</a></h2>
+<p><strong>Problem 1: The Subscribe element isn&#39;t visible.</strong></p>
+<p>Check whether the Base Product has an associated recurring offer. The native element may remain hidden if no recurring option is available.</p>
+<p><strong>Problem 2: The Subscribe &amp; Save checkbox doesn&#39;t change the product.</strong></p>
+<p>Verify that the checkbox ID is exactly <code>Subscribe</code>, and confirm that the one-time and recurring offers share the same Base Product.</p>
+<p><strong>Problem 3: The wrong subscription option is selected.</strong></p>
+<p>Review the Subscribe &amp; Save Profile and its recurring product configuration.</p>
+<p><strong>Problem 4: The displayed price is incorrect.</strong></p>
+<p>Check the recurring offer price and the profile configuration. Don&#39;t rely only on frontend text or manually entered pricing.</p>
+<p><strong>Problem 5: The customer is charged incorrectly on rebilling.</strong></p>
+<p>Review the recurring offer&#39;s billing schedule, price, and gateway configuration. Verify the subscription record and subsequent billing behavior using an approved test process.</p>
+<h2 id="conclusion">Conclusion<a class="prose-anchor" href="#conclusion" aria-label="Link to this section: Conclusion">#</a></h2>
+<p>Setting up subscriptions in Checkout Champ involves more than creating a recurring offer.</p>
+<p>You need to connect the campaign products correctly, select the right frontend subscription element, and test the complete purchase journey.</p>
+<p>For most implementations, the native Subscribe element, Subscribe &amp; Save checkbox, Subscribe &amp; Save Profiles, and Two Way Sub Subscription element provide the functionality needed without requiring a completely custom JavaScript solution.</p>
+<p>Start with the native elements and use custom HTML, CSS, or JavaScript only when the design or functionality requires it.</p>
+<hr>
+<p><strong>Official Checkout Champ documentation</strong></p>
+<ul>
+<li><a href="https://help.checkoutchamp.com/funnel-builder/creating-and-editing-funnels-pages/funnel-visualizer-and-page-builder/page-builder-2.0/page-building-tips/subscribe-and-save" target="_blank" rel="noopener noreferrer">Subscribe &amp; Save<span class="sr-only"> (opens in a new tab)</span></a></li>
+<li><a href="https://help.checkoutchamp.com/crm/crm-setup/campaign-setup/subscribe-and-save-profiles" target="_blank" rel="noopener noreferrer">Subscribe &amp; Save Profiles<span class="sr-only"> (opens in a new tab)</span></a></li>
+<li><a href="https://help.checkoutchamp.com/funnel-builder/creating-and-editing-funnels-pages/funnel-visualizer-and-page-builder/page-builder-2.0/building-blocks/product-blocks" target="_blank" rel="noopener noreferrer">Product Blocks<span class="sr-only"> (opens in a new tab)</span></a></li>
+<li><a href="https://help.checkoutchamp.com/funnel-builder/creating-and-editing-funnels-pages/funnel-visualizer-and-page-builder/page-builder-2.0/building-blocks/form-blocks" target="_blank" rel="noopener noreferrer">Form Blocks<span class="sr-only"> (opens in a new tab)</span></a></li>
+</ul>
+<p><em>Checkout Champ interface labels and available features may vary by builder version.</em></p>
+25:["$","div",null,{"className":"mt-10 lg:mt-12","children":["$","div",null,{"className":"prose-content ","dangerouslySetInnerHTML":{"__html":"$2d"}}]}]
+26:["$","div",null,{"className":"mt-14 border-t border-line pt-6","children":[["$","p",null,{"className":"label","children":"Topics"}],["$","ul",null,{"className":"mt-3 flex flex-wrap gap-2","children":[["$","li","Checkout Champ",{"className":"rounded-[8px] border border-line px-2.5 py-1 font-ui text-[13px] text-fg","children":"Checkout Champ"}],["$","li","Subscriptions",{"className":"rounded-[8px] border border-line px-2.5 py-1 font-ui text-[13px] text-fg","children":"Subscriptions"}],["$","li","Subscribe & Save",{"className":"rounded-[8px] border border-line px-2.5 py-1 font-ui text-[13px] text-fg","children":"Subscribe & Save"}],["$","li","Page Builder 2.0",{"className":"rounded-[8px] border border-line px-2.5 py-1 font-ui text-[13px] text-fg","children":"Page Builder 2.0"}]]}]]}]
+27:["$","div",null,{"className":"mt-12","children":["$","section",null,{"aria-label":"About the author","className":"flex flex-col gap-6 rounded-[14px] border border-line bg-bg p-6 shadow-[0_18px_50px_-30px_rgba(16,24,40,0.35)] sm:flex-row sm:items-start lg:p-8","children":[["$","$Ld",null,{"src":"/images/blog/authors/meet-khunt.webp","alt":"Meet Khunt","width":160,"height":160,"className":"size-[120px] shrink-0 rounded-[12px] border border-line object-cover sm:size-[150px]"}],["$","div",null,{"className":"min-w-0","children":[["$","p",null,{"className":"font-ui text-[12px] font-semibold text-fg","children":"About the author:"}],["$","p",null,{"className":"mt-2 font-sans text-[24px] font-semibold leading-tight tracking-[-0.02em] text-fg","children":["$","$L3",null,{"href":"/#about","rel":"author","data-cursor":"grow","className":"transition-colors duration-200 hover:text-muted","children":"Meet Khunt"}]}],["$","p",null,{"className":"mt-1 font-ui text-[14px] text-muted","children":"Ecommerce Frontend Developer"}],["$","p",null,{"className":"mt-4 max-w-[60ch] font-ui text-[15px] leading-[1.65] text-fg/75","children":"Web Developer specializing in eCommerce development, custom sales funnels, Checkout Champ, Shopify, and frontend development."}],["$","div",null,{"className":"mt-5 flex items-center gap-3","children":[["$","span",null,{"className":"font-ui text-[12px] text-muted","children":"Follow:"}],["$","ul",null,{"className":"flex flex-wrap gap-3","children":[["$","li","https://www.linkedin.com/in/meetkhunt1/",{"children":["$","a",null,{"href":"https://www.linkedin.com/in/meetkhunt1/","target":"_blank","rel":"noreferrer me","data-cursor":"grow","className":"inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 font-ui text-[12px] font-semibold text-fg transition-colors duration-200 hover:bg-surface","children":[["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","aria-hidden":true,"className":"size-3.5","children":["$","path",null,{"d":"M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"}]}],"LinkedIn"]}]}]]}]]}]]}]]}]}]
+28:["$","aside",null,{"className":"flex flex-col gap-6","aria-label":"Article sidebar","children":[["$","nav",null,{"aria-label":"Table of contents","className":"hidden rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(16,24,40,0.35)] lg:block","children":[["$","div",null,{"className":"flex items-center justify-between gap-4 border-b-2 border-fg pb-3","children":[["$","p",null,{"className":"font-sans text-[17px] font-semibold tracking-[-0.01em] text-fg","children":"Table of Contents"}],["$","ul",null,{"className":"flex items-center gap-1.5","children":[["$","li","LinkedIn",{"children":["$","a",null,{"href":"https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeetkhunt.com%2Fblog%2Fcheckout-champ-subscription-frontend-setup%2F","target":"_blank","rel":"noopener noreferrer","data-cursor":"grow","aria-label":"Share on LinkedIn (opens in a new tab)","className":"grid size-7 place-items-center rounded-full text-fg/70 transition-colors duration-200 hover:bg-surface hover:text-fg","children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","aria-hidden":true,"className":"size-[15px]","children":["$","path",null,{"d":"M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.5-2.25 3.1V21H9z"}]}]}]}],["$","li","X",{"children":["$","a",null,{"href":"https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeetkhunt.com%2Fblog%2Fcheckout-champ-subscription-frontend-setup%2F&text=How%20to%20Set%20Up%20Subscriptions%20in%20Checkout%20Champ%20(Frontend%20Guide)","target":"_blank","rel":"noopener noreferrer","data-cursor":"grow","aria-label":"Share on X (opens in a new tab)","className":"grid size-7 place-items-center rounded-full text-fg/70 transition-colors duration-200 hover:bg-surface hover:text-fg","children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","aria-hidden":true,"className":"size-[15px]","children":["$","path",null,{"d":"M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77zm-1.08 16.2h1.7L7.4 4.73H5.58z"}]}]}]}],["$","li","Facebook",{"children":["$","a",null,{"href":"https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmeetkhunt.com%2Fblog%2Fcheckout-champ-subscription-frontend-setup%2F","target":"_blank","rel":"noopener noreferrer","data-cursor":"grow","aria-label":"Share on Facebook (opens in a new tab)","className":"grid size-7 place-items-center rounded-full text-fg/70 transition-colors duration-200 hover:bg-surface hover:text-fg","children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","aria-hidden":true,"className":"size-[15px]","children":["$","path",null,{"d":"M14 8.5V6.8c0-.8.5-1.3 1.4-1.3H17V2.2h-2.6C11.6 2.2 10.6 4 10.6 6.4v2.1H8v3.3h2.6V22H14V11.8h2.7l.4-3.3z"}]}]}]}]]}]]}],["$","div",null,{"className":"mt-4","children":["$","ol",null,{"className":"flex flex-col gap-0.5","children":[["$","li","1-understand-how-subscription-setup-works-in-checkout-champ",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#1-understand-how-subscription-setup-works-in-checkout-champ","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"1. Understand How Subscription Setup Works in Checkout Champ"}]]}],["$","li","2-prerequisites-configure-your-subscription-offers",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#2-prerequisites-configure-your-subscription-offers","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"2. Prerequisites: Configure Your Subscription Offers"}]]}],"$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35"]}]}]]}],"$L36","$L37"]}]
+2c:null
+2e:["$","li","3-method-1-add-the-subscribe-element-to-a-product-page",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#3-method-1-add-the-subscribe-element-to-a-product-page","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"3. Method 1: Add the Subscribe Element to a Product Page"}]]}]
+2f:["$","li","4-method-2-add-a-subscribe-and-save-checkbox-to-checkout",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#4-method-2-add-a-subscribe-and-save-checkbox-to-checkout","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"4. Method 2: Add a Subscribe & Save Checkbox to Checkout"}]]}]
+30:["$","li","5-method-3-use-subscribe-and-save-profiles",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#5-method-3-use-subscribe-and-save-profiles","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"5. Method 3: Use Subscribe & Save Profiles"}]]}]
+31:["$","li","6-method-4-use-the-two-way-sub-subscription-element",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#6-method-4-use-the-two-way-sub-subscription-element","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"6. Method 4: Use the Two Way Sub Subscription Element"}]]}]
+32:["$","li","7-can-you-customize-the-subscription-design-using-html-css-and-javascript",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#7-can-you-customize-the-subscription-design-using-html-css-and-javascript","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"7. Can You Customize the Subscription Design Using HTML, CSS, and JavaScript?"}]]}]
+33:["$","li","8-how-to-test-your-subscription-setup",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#8-how-to-test-your-subscription-setup","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"8. How to Test Your Subscription Setup"}]]}]
+34:["$","li","9-common-subscription-setup-problems",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#9-common-subscription-setup-problems","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"9. Common Subscription Setup Problems"}]]}]
+35:["$","li","conclusion",{"className":"flex gap-3 ","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","a",null,{"href":"#conclusion","data-cursor":"grow","className":"block rounded-[6px] py-1.5 font-ui leading-[1.45] transition-colors duration-200 hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg text-[14px] text-fg/80","children":"Conclusion"}]]}]
+36:["$","nav",null,{"aria-label":"Blog topics","className":"rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(16,24,40,0.35)]","children":[["$","p",null,{"className":"border-b-2 border-fg pb-3 font-sans text-[17px] font-semibold tracking-[-0.01em] text-fg","children":"Guides by Topic"}],["$","ul",null,{"className":"mt-4 flex flex-col gap-0.5","children":[["$","li","checkout-champ",{"className":"flex gap-3","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","$L3",null,{"href":"/blog/category/checkout-champ/","aria-current":"page","data-cursor":"grow","className":"block py-1.5 font-ui text-[14px] leading-[1.45] transition-colors duration-200 hover:text-fg font-semibold text-fg","children":"Checkout Champ"}]]}],["$","li","shopify",{"className":"flex gap-3","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","$L3",null,{"href":"/blog/category/shopify/","data-cursor":"grow","className":"block py-1.5 font-ui text-[14px] leading-[1.45] transition-colors duration-200 hover:text-fg text-fg/80","children":"Shopify"}]]}],["$","li","ecommerce-development",{"className":"flex gap-3","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","$L3",null,{"href":"/blog/category/ecommerce-development/","data-cursor":"grow","className":"block py-1.5 font-ui text-[14px] leading-[1.45] transition-colors duration-200 hover:text-fg text-fg/80","children":"eCommerce Development"}]]}],["$","li","web-development",{"className":"flex gap-3","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","$L3",null,{"href":"/blog/category/web-development/","data-cursor":"grow","className":"block py-1.5 font-ui text-[14px] leading-[1.45] transition-colors duration-200 hover:text-fg text-fg/80","children":"Web Development"}]]}],["$","li","tutorials-guides",{"className":"flex gap-3","children":[["$","span",null,{"aria-hidden":true,"className":"mt-[11px] size-[6px] shrink-0 bg-fg"}],["$","$L3",null,{"href":"/blog/category/tutorials-guides/","data-cursor":"grow","className":"block py-1.5 font-ui text-[14px] leading-[1.45] transition-colors duration-200 hover:text-fg text-fg/80","children":"Tutorials & Guides"}]]}]]}]]}]
+37:["$","div",null,{"className":"lg:sticky lg:top-[calc(var(--header-h)+24px)]","children":["$","aside",null,{"aria-label":"Related service","className":"relative overflow-hidden rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(16,24,40,0.35)]","children":[["$","span",null,{"aria-hidden":true,"className":"absolute -right-9 top-5 rotate-45 bg-accent px-10 py-1 font-ui text-[10px] font-bold uppercase tracking-[0.08em] text-fg","children":"Hire me"}],["$","p",null,{"className":"pr-10 font-sans text-[19px] font-semibold leading-[1.2] tracking-[-0.015em] text-fg","children":"Need Help With Checkout Champ Development?"}],["$","ul",null,{"className":"mt-5 flex flex-col gap-2.5","children":[["$","li","End-to-end funnel builds",{"className":"flex items-start gap-2.5 font-ui text-[14px] leading-[1.4] text-fg/80","children":[["$","svg",null,{"viewBox":"0 0 16 16","aria-hidden":true,"className":"mt-[1px] size-4 shrink-0","children":[["$","circle",null,{"cx":"8","cy":"8","r":"8","fill":"var(--color-accent)"}],["$","path",null,{"d":"M4.75 8.25l2.1 2.1 4.4-4.6","fill":"none","stroke":"var(--color-fg)","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]]}],"End-to-end funnel builds"]}],["$","li","Campaign, offer & step-path setup",{"className":"flex items-start gap-2.5 font-ui text-[14px] leading-[1.4] text-fg/80","children":[["$","svg",null,{"viewBox":"0 0 16 16","aria-hidden":true,"className":"mt-[1px] size-4 shrink-0","children":[["$","circle",null,{"cx":"8","cy":"8","r":"8","fill":"var(--color-accent)"}],["$","path",null,{"d":"M4.75 8.25l2.1 2.1 4.4-4.6","fill":"none","stroke":"var(--color-fg)","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]]}],"Campaign, offer & step-path setup"]}],["$","li","Subscriptions & recurring billing",{"className":"flex items-start gap-2.5 font-ui text-[14px] leading-[1.4] text-fg/80","children":[["$","svg",null,{"viewBox":"0 0 16 16","aria-hidden":true,"className":"mt-[1px] size-4 shrink-0","children":[["$","circle",null,{"cx":"8","cy":"8","r":"8","fill":"var(--color-accent)"}],["$","path",null,{"d":"M4.75 8.25l2.1 2.1 4.4-4.6","fill":"none","stroke":"var(--color-fg)","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]]}],"Subscriptions & recurring billing"]}],["$","li","Tracking, pixels & A/B tests",{"className":"flex items-start gap-2.5 font-ui text-[14px] leading-[1.4] text-fg/80","children":[["$","svg",null,{"viewBox":"0 0 16 16","aria-hidden":true,"className":"mt-[1px] size-4 shrink-0","children":[["$","circle",null,{"cx":"8","cy":"8","r":"8","fill":"var(--color-accent)"}],["$","path",null,{"d":"M4.75 8.25l2.1 2.1 4.4-4.6","fill":"none","stroke":"var(--color-fg)","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]]}],"Tracking, pixels & A/B tests"]}],["$","li","QA with live test orders",{"className":"flex items-start gap-2.5 font-ui text-[14px] leading-[1.4] text-fg/80","children":[["$","svg",null,{"viewBox":"0 0 16 16","aria-hidden":true,"className":"mt-[1px] size-4 shrink-0","children":[["$","circle",null,{"cx":"8","cy":"8","r":"8","fill":"var(--color-accent)"}],["$","path",null,{"d":"M4.75 8.25l2.1 2.1 4.4-4.6","fill":"none","stroke":"var(--color-fg)","strokeWidth":"1.6","strokeLinecap":"round","strokeLinejoin":"round"}]]}],"QA with live test orders"]}]]}],["$","$L3",null,{"href":"/checkout-champ-developer/","data-cursor":"grow","className":"pill pill-lg mt-6 w-full","children":"Hire a Checkout Champ Developer"}]]}]}]
