@@ -52,6 +52,10 @@ export async function generateMetadata({
   return {
     title: project ? `${project.title} - Meet Khunt` : "Project",
     description: project?.description[0],
+    /* Case studies stay out of search results (and out of the sitemap);
+       /projects/ and its filter pages are the indexed entry points. `follow`
+       still lets crawlers pass through the page's links. */
+    robots: { index: false, follow: true },
   };
 }
 
