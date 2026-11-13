@@ -405,11 +405,21 @@ export default async function CheckoutChampDeveloperPage() {
                     project={project}
                     ctaLabel={CC_PROJECTS.ctaLabel}
                     pendingLabel={CC_PROJECTS.pendingLabel}
+                    liveLabel={CC_PROJECTS.liveLabel}
                   />
                 </FadeIn>
               </li>
             ))}
           </ul>
+
+          <FadeIn className="mt-8 lg:mt-10">
+            <p className="font-ui text-[16px] leading-[1.6] text-fg/75">
+              <span className="font-semibold text-fg">
+                {CC_PROJECTS.also.label}:
+              </span>{" "}
+              {CC_PROJECTS.also.text}
+            </p>
+          </FadeIn>
 
           <FadeIn className="mt-12 border-t border-line pt-8 lg:mt-16">
             <p className="label">{CC_RELATED.label}</p>

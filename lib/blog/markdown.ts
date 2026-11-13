@@ -178,7 +178,7 @@ export async function renderMarkdown(source: string): Promise<RenderedMarkdown> 
         const inner = this.parser.parseInline(tokens);
         if (depth === 1) {
           errors.push(
-            `Body contains an H1 ("${stripTags(inner)}"). The title is the page's only H1 — start sections at ##.`,
+            `Body contains an H1 ("${stripTags(inner)}"). The title is the page's only H1 - start sections at ##.`,
           );
         }
         const custom = (token as Tokens.Heading & { customId?: string }).customId;

@@ -5,7 +5,7 @@ import { CONTACT, HERO } from "@/lib/data";
 
 /* Cards cycle through these so a column reads as a collage rather than a
    column of identical tiles. The shape is picked from the position in the
-   ORIGINAL list, never the doubled one — if the two copies differed in height,
+   ORIGINAL list, never the doubled one - if the two copies differed in height,
    the -50% translate would no longer land cleanly and the loop would jump. */
 const CARD_SHAPES = ["aspect-[3/5]", "aspect-[4/5]", "aspect-[3/4]"];
 

@@ -28,7 +28,7 @@ export const D2C_META = {
    */
   ogImage: "/og/d2c-og.png",
   ogImageAlt:
-    "Landing pages and advertorials for D2C brands, delivered in about an hour — Meet Khunt",
+    "Landing pages and advertorials for D2C brands, delivered in about an hour - Meet Khunt",
 };
 
 /* ------------------------------------------------------------------ 1. Hero */
@@ -42,7 +42,7 @@ export const D2C_HERO = {
     accent: "Ship Conversion-Ready Pages",
     after: "in About an Hour",
   },
-  sub: "I build landing pages and advertorials for D2C brands scaling paid traffic — already shipping pages for brands and agencies that launch new angles every single week.",
+  sub: "I build landing pages and advertorials for D2C brands scaling paid traffic - already shipping pages for brands and agencies that launch new angles every single week.",
   /** Label bar sitting on top of the video frame. */
   videoLabel: "Watch This Video For A Breakdown",
   /**
@@ -185,7 +185,7 @@ export const D2C_PROBLEM = {
     },
     {
       title: "You can’t plan the next test",
-      text: "Scaling spend, launching a new angle, opening a new market — all of it waits on a page that doesn’t exist yet.",
+      text: "Scaling spend, launching a new angle, opening a new market - all of it waits on a page that doesn’t exist yet.",
     },
   ],
   closing:
@@ -201,7 +201,7 @@ export const D2C_SYSTEM = {
   items: [
     {
       title: "Pixel-Perfect Reference Duplication",
-      text: "We start from a page that already works and rebuild it exactly — layout, sections, spacing, interactions. The reference is the spec, so there is no design round.",
+      text: "We start from a page that already works and rebuild it exactly - layout, sections, spacing, interactions. The reference is the spec, so there is no design round.",
     },
     {
       title: "Product Research, Not Guesswork",
@@ -232,10 +232,10 @@ export const D2C_HOW = {
     {
       title: "Step 1: Reference In, Pixel-Perfect Duplicate Out",
       intro:
-        "The system runs on Claude Code. An agent handles the build end to end — you send one link and it starts there.",
+        "The system runs on Claude Code. An agent handles the build end to end - you send one link and it starts there.",
       bullets: [
         "You drop the reference page link. That is the entire brief",
-        "The agent duplicates that page pixel for pixel — layout, sections, spacing, interactions",
+        "The agent duplicates that page pixel for pixel - layout, sections, spacing, interactions",
         "You get a preview URL to check the duplicate before anything is branded",
         "No design round and no revision loop, because the reference is the spec",
       ],
@@ -245,7 +245,7 @@ export const D2C_HOW = {
       title: "Step 2: Rebrand It Around Your Product",
       intro: "Next you hand over three things and the agent takes it from there.",
       bullets: [
-        "Your content angle — the hook the page has to carry",
+        "Your content angle - the hook the page has to carry",
         "Your product page URL, so the agent can research the product itself",
         "Any custom instructions: offer, claims, tone, must-have blocks",
         "The agent reads your product and existing content, then writes the whole page onto the reference's structure",
@@ -262,7 +262,7 @@ export const D2C_HOW = {
         "Page assembled, checked on real mobile widths, and handed over",
         "One reference link in, a finished page out",
       ],
-      outro: "Start to finish, a page takes about an hour — not weeks.",
+      outro: "Start to finish, a page takes about an hour - not weeks.",
     },
   ],
   roles: [
@@ -272,7 +272,7 @@ export const D2C_HOW = {
     },
     {
       title: "My Role:",
-      text: "Run the agent end to end — duplication, product research, copy, generated imagery, QA and handoff.",
+      text: "Run the agent end to end - duplication, product research, copy, generated imagery, QA and handoff.",
     },
   ],
 };
@@ -307,11 +307,11 @@ export const D2C_FAQ = {
     },
     {
       q: "How fast is it, really?",
-      a: "About an hour from the reference link to a finished page. Bigger flows — quizzes, multi-step checkouts — take a little longer.",
+      a: "About an hour from the reference link to a finished page. Bigger flows - quizzes, multi-step checkouts - take a little longer.",
     },
     {
       q: "It’s AI-built. Won’t it look generic?",
-      a: "The opposite. The page is a pixel-perfect duplicate of a reference that already converts, and the copy is written from your own product page — so it looks like the proven page and reads like your brand.",
+      a: "The opposite. The page is a pixel-perfect duplicate of a reference that already converts, and the copy is written from your own product page - so it looks like the proven page and reads like your brand.",
     },
     {
       q: "Which page builders do you work in?",

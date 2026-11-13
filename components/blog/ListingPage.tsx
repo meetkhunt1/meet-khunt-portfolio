@@ -7,12 +7,12 @@ import { CC_PATH } from "@/lib/checkout-champ";
 import {
   BLOG,
   BLOG_PATH,
+  CATEGORIES,
   categoryBySlug,
   categoryPath,
   listingPath,
 } from "@/lib/blog/config";
 import {
-  getActiveCategories,
   getPosts,
   getPostsInCategory,
   isListingIndexable,
@@ -43,7 +43,7 @@ export async function listingMetadata(
   const { category } = await resolve(categorySlug, page);
   const indexable = await isListingIndexable(categorySlug);
   const baseTitle = category ? category.seoTitle : BLOG.seoTitle;
-  const title = page > 1 ? baseTitle.replace(" | ", ` — Page ${page} | `) : baseTitle;
+  const title = page > 1 ? baseTitle.replace(" | ", ` - Page ${page} | `) : baseTitle;
   const description = category ? category.seoDescription : BLOG.seoDescription;
   const path = listingPath(categorySlug, page);
 
@@ -80,7 +80,9 @@ export default async function ListingPage({
   page: number;
 }) {
   const { category, listing } = await resolve(categorySlug, page);
-  const categories = await getActiveCategories();
+  /* Every topic is listed, even before it has articles: each has its own
+     page (with an empty state), and the full row shows what the blog covers. */
+  const categories = CATEGORIES;
   const blogHasPosts = (await getPosts()).length > 0;
 
   const trail = [
