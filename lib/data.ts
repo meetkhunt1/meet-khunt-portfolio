@@ -920,16 +920,6 @@ export const ABOUT = {
     "I’m an ecommerce frontend specialist who designs, develops and optimizes high-performing storefronts for DTC brands worldwide - from complete Shopify redesigns to landing pages built for paid traffic. My focus is what actually moves the needle: faster load times, clearer hierarchy, stronger product presentation.",
   ctaPrimary: "Let’s talk",
   ctaSecondary: "See the work",
-  /**
-   * Only figures this site can stand behind. The reference this section is
-   * modelled on leads with "100+ brands helped / €24M+ extra revenue"; those
-   * are claims only Meet can make, so they are not invented here. The first
-   * number is derived from PROJECTS so it cannot go stale.
-   */
-  stats: [
-    { value: String(PROJECTS.length), label: "case studies shipped" },
-    { value: "~1 hr", label: "reference link to live page" },
-  ],
   services: SERVICES.map((s) => s.label),
   clients: [
     "Aavilo",
