@@ -7,7 +7,7 @@
  * certifications.
  */
 
-import { ABOUT, FOOTER } from "@/lib/data";
+import { ABOUT, FOOTER, HIDDEN_PROFILES } from "@/lib/data";
 
 export const SITE_URL = "https://meetkhunt.com";
 export const PERSON_ID = `${SITE_URL}/#person`;
@@ -17,9 +17,15 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const absoluteUrl = (path: string) => new URL(path, SITE_URL).toString();
 
 /** Verified professional profiles. Only links already published on the site. */
-const SAME_AS = FOOTER.socials
-  .map((s) => s.href)
-  .filter((href) => /linkedin\.com|upwork\.com|contra\.com/.test(href));
+const SAME_AS = [
+  ...FOOTER.socials
+    .map((s) => s.href)
+    .filter((href) => /linkedin\.com|upwork\.com|contra\.com/.test(href)),
+  /* Marketplace profiles: in structured data only (and llms.txt), so search
+     engines and AI assistants can tie them to Meet. Deliberately not shown
+     anywhere in the page UI. */
+  ...HIDDEN_PROFILES.map((p) => p.href),
+];
 
 export function personSchema(knowsAbout: string[] = []) {
   return {

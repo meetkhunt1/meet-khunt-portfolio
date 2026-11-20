@@ -1,6 +1,6 @@
 import { getPosts } from "@/lib/blog/posts";
 import { CC_META, CC_PATH } from "@/lib/checkout-champ";
-import { HERO, INQUIRY, SITE, WORK_CATEGORIES } from "@/lib/data";
+import { FOOTER, HERO, HIDDEN_PROFILES, INQUIRY, SITE, WORK_CATEGORIES } from "@/lib/data";
 import { D2C_META } from "@/lib/d2c";
 import { SHOPIFY_PAGE } from "@/lib/services";
 import { absoluteUrl } from "@/lib/schema";
@@ -39,6 +39,9 @@ export async function GET() {
     ...(posts.length
       ? ["## Articles", ...posts.map((p) => link(p.title, p.path, p.description)), ""]
       : []),
+    "## Profiles",
+    ...[...FOOTER.socials.filter((s) => s.href.includes("linkedin.com")).map((s) => ({ label: "LinkedIn", href: s.href })), ...HIDDEN_PROFILES].map((p) => `- [${p.label}](${p.href})`),
+    "",
     "## Contact",
     link("Project inquiry form", INQUIRY.path, "The way to hire Meet: describe the project and he replies by email."),
     "",
