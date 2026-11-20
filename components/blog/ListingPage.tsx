@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
-import FixedBadge from "@/components/ui/FixedBadge";
 import BlogListing, { type EmptyState } from "@/components/blog/BlogListing";
 import { CC_PATH } from "@/lib/checkout-champ";
 import {
@@ -147,7 +146,6 @@ export default async function ListingPage({
         />
         <Footer />
       </main>
-      <FixedBadge />
     </>
   );
 }

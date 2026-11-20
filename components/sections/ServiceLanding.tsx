@@ -4,9 +4,8 @@ import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import FadeIn from "@/components/anim/FadeIn";
 import RevealText from "@/components/anim/RevealText";
-import Breadcrumbs from "@/components/content/Breadcrumbs";
+import ServiceHero from "@/components/sections/ServiceHero";
 import Accordion from "@/components/ui/Accordion";
-import FixedBadge from "@/components/ui/FixedBadge";
 import { CONTACT, PROJECTS } from "@/lib/data";
 import type { ServicePage } from "@/lib/services";
 import {
@@ -116,36 +115,7 @@ export default function ServiceLanding({ page }: { page: ServicePage }) {
 
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
         {/* Hero */}
-        <section className="section-row pt-[50px] lg:pt-[90px]">
-          <Breadcrumbs trail={trail} />
-          <div className="mt-10 max-w-[900px] lg:mt-14">
-            <p className="category">{page.hero.eyebrow}</p>
-            <RevealText as="h1" className="heading-lg mt-5" split="lines">
-              {page.hero.headline}
-            </RevealText>
-            <FadeIn delay={0.15}>
-              <p className="mt-6 max-w-[64ch] font-ui text-[16px] leading-[1.65] text-fg/75 lg:text-[18px]">
-                {page.hero.description}
-              </p>
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Link
-                  href={CONTACT.href}
-                  data-cursor="grow"
-                  className="pill h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
-                >
-                  Send a project inquiry
-                </Link>
-                <Link
-                  href={page.hero.ctaSecondary.href}
-                  data-cursor="grow"
-                  className="pill pill-ghost h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
-                >
-                  {page.hero.ctaSecondary.label}
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
+        <ServiceHero content={page.fold} />
 
         {/* Quotable summary */}
         <section className="section-row pt-[70px] lg:pt-[110px]">
@@ -260,7 +230,6 @@ export default function ServiceLanding({ page }: { page: ServicePage }) {
 
         <Footer />
       </main>
-      <FixedBadge />
     </>
   );
 }

@@ -7,6 +7,8 @@
  * Adding a page: add an entry below, then a one-line route under app/.
  */
 
+import type { ServiceHeroContent } from "@/components/sections/ServiceHero";
+
 export type ServicePage = {
   path: string;
   meta: { title: string; description: string };
@@ -18,6 +20,8 @@ export type ServicePage = {
     description: string;
     ctaSecondary: { label: string; href: string };
   };
+  /** Above-the-fold hero (ServiceHero). `hero` above still feeds metadata. */
+  fold: ServiceHeroContent;
   /** Standalone, quotable summary (reads correctly lifted out of the page) */
   intro: string;
   services: { heading: string; description: string; items: { title: string; text: string }[] };
@@ -42,6 +46,17 @@ export const SHOPIFY_PAGE: ServicePage = {
     description:
       "I'm Meet Khunt. I design and build Shopify storefronts for DTC brands: complete store redesigns, product and collection pages, and landing pages built for paid traffic. Every section is hand-built in Liquid, HTML, CSS and JavaScript, responsive on every screen and easy for your team to edit afterwards.",
     ctaSecondary: { label: "See Shopify work", href: "/projects/shopify/" },
+  },
+  fold: {
+    lines: ["Shopify developer.", "Stores built to sell."],
+    lead: [
+      { text: "Store redesigns, product pages and landing pages", bold: true },
+      { text: " hand-built in Liquid for DTC brands and agencies. From Figma file to live storefront, " },
+      { text: "every page is built to convert", bold: true },
+      { text: " and easy for your team to edit." },
+    ],
+    mark: "shopify",
+    cta: "Let's talk",
   },
   intro:
     "Meet Khunt is an ecommerce front-end developer who designs and builds Shopify stores for DTC brands and agencies. His Shopify work includes complete store redesigns for Baby Gains, Hanson of Sonoma and Aavilo, a collection page for Athletic Annex, and long-form landing pages for Riversol and Jadu Beauty. He builds custom theme sections in Liquid, HTML, CSS and JavaScript, turns Figma designs into working storefronts, and works directly with brands or white-label for agencies.",

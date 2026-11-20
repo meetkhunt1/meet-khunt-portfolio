@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import WorkIndex from "@/components/sections/WorkIndex";
-import FixedBadge from "@/components/ui/FixedBadge";
 import {
   PROJECTS,
   WORK_CATEGORIES,
@@ -98,7 +97,6 @@ export default async function ProjectPage({
           <WorkIndex active={filter} />
           <Footer />
         </main>
-        <FixedBadge />
       </>
     );
   }

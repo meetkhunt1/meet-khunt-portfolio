@@ -356,3 +356,16 @@
     transform: none;
   }
 }
+
+/* Footer wordmark: scrolls left forever. The track holds two identical
+   halves, so moving it by -50% lands exactly on the start of the second. */
+@keyframes footer-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.footer-marquee {
+  animation: footer-marquee 40s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-marquee { animation: none; }
+}

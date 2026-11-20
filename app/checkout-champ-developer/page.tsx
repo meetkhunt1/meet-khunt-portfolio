@@ -7,7 +7,7 @@ import PostCard from "@/components/blog/PostCard";
 import FunnelProjectCard from "@/components/sections/FunnelProjectCard";
 import IcebergInfographic from "@/components/sections/IcebergInfographic";
 import Accordion from "@/components/ui/Accordion";
-import FixedBadge from "@/components/ui/FixedBadge";
+import ServiceHero from "@/components/sections/ServiceHero";
 import ScrollLink from "@/components/ui/ScrollLink";
 import { categoryPath } from "@/lib/blog/config";
 import { getPost } from "@/lib/blog/posts";
@@ -193,72 +193,26 @@ export default async function CheckoutChampDeveloperPage() {
 
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
         {/* 1. Hero ------------------------------------------------------- */}
-        <section
-          className="section-row grid grid-cols-1 items-center gap-12 pt-[50px] lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-x-16 lg:gap-y-20 lg:pt-[90px]"
-        >
+        <ServiceHero content={CC_HERO.fold} />
+
+        {/* Iceberg infographic + quotable summary --------------------------- */}
+        <section className="section-row grid grid-cols-1 items-center gap-12 pt-[90px] lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-x-16 lg:gap-y-20 lg:pt-[140px]">
           <div className="flex flex-col items-start">
-            <nav aria-label="Breadcrumb">
-              <ol className="flex flex-wrap items-center gap-2 font-ui text-[13px] text-muted">
-                {CC_HERO.breadcrumb.map((crumb, i) => {
-                  const last = i === CC_HERO.breadcrumb.length - 1;
-                  return (
-                    <li key={crumb.href} className="flex items-center gap-2">
-                      {last ? (
-                        <span aria-current="page" className="text-fg">
-                          {crumb.label}
-                        </span>
-                      ) : (
-                        <>
-                          <Link
-                            href={crumb.href}
-                            data-cursor="grow"
-                            className="transition-colors duration-200 hover:text-fg"
-                          >
-                            {crumb.label}
-                          </Link>
-                          <span aria-hidden>/</span>
-                        </>
-                      )}
-                    </li>
-                  );
-                })}
-              </ol>
-            </nav>
-
-            <p className="category mt-10 lg:mt-14">{CC_HERO.eyebrow}</p>
-            <RevealText
-              as="h1"
-              className="heading-lg mt-5 max-w-[20ch]"
-              split="lines"
+            <p className="category">{CC_HERO.eyebrow}</p>
+            <h2 className="heading-md mt-5 max-w-[20ch]">{CC_HERO.headline}</h2>
+            <p className="mt-7 max-w-[58ch] font-ui text-[16px] leading-[1.6] text-fg/70 lg:text-[18px]">
+              {CC_HERO.description}
+            </p>
+            <ScrollLink
+              href="#projects"
+              className="pill pill-ghost mt-9 h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
             >
-              {CC_HERO.headline}
-            </RevealText>
-
-            <FadeIn delay={0.15} className="w-full">
-              <p className="mt-7 max-w-[58ch] font-ui text-[16px] leading-[1.6] text-fg/70 lg:text-[18px]">
-                {CC_HERO.description}
-              </p>
-
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <a
-                  href={CONTACT.href}
-                  data-cursor="grow"
-                  className="pill h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
-                >
-                  {CC_HERO.ctaPrimary}
-                </a>
-                <ScrollLink
-                  href="#projects"
-                  className="pill pill-ghost h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
-                >
-                  {CC_HERO.ctaSecondary}
-                </ScrollLink>
-              </div>
-            </FadeIn>
+              {CC_HERO.ctaSecondary}
+            </ScrollLink>
           </div>
 
           {/* Infographic: Shopify is the tip, Checkout Champ the infrastructure */}
-          <FadeIn delay={0.25} className="w-full lg:max-w-[640px] lg:justify-self-end">
+          <FadeIn delay={0.15} className="w-full lg:max-w-[640px] lg:justify-self-end">
             <IcebergInfographic />
           </FadeIn>
 
@@ -560,7 +514,6 @@ export default async function CheckoutChampDeveloperPage() {
 
         <Footer />
       </main>
-      <FixedBadge />
     </>
   );
 }

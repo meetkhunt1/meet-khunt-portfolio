@@ -834,8 +834,23 @@ export const SHOPIFY_SERVICE = {
     "Store redesigns, product and collection pages, landing pages and Figma to Shopify builds for DTC brands and agencies.",
 };
 
-/** The home-page Services list: the anchors, then the services with pages. */
-export const HOME_SERVICES = [...SERVICES, SHOPIFY_SERVICE, CHECKOUT_CHAMP_SERVICE];
+/**
+ * The four services shown anywhere in the UI (header dropdown, home Services
+ * list, About). Shopify and Checkout Champ are the main offers; Landing Pages
+ * and Conversion Optimization sit beside them. The other SERVICES entries are
+ * kinds of work, not separate offers, so they stay out of the UI and only
+ * feed structured data (and their own pages later).
+ */
+const byLabel = (label: string) => SERVICES.find((s) => s.label === label)!;
+export const MAIN_SERVICES = [
+  SHOPIFY_SERVICE,
+  CHECKOUT_CHAMP_SERVICE,
+  byLabel("Landing Pages"),
+  byLabel("Conversion Optimization"),
+];
+
+/** The home-page Services list. */
+export const HOME_SERVICES = MAIN_SERVICES;
 
 /**
  * The stack, as a logo wall.
@@ -896,8 +911,8 @@ export const NAV = {
       label: "Services",
       href: "/#about",
       hash: "#about",
-      /* Specialised service pages sit after the home-page anchors. */
-      items: [...SERVICES, SHOPIFY_SERVICE, CHECKOUT_CHAMP_SERVICE],
+      /* The four main services only (see MAIN_SERVICES). */
+      items: MAIN_SERVICES,
     },
     { label: "Case Studies", href: "/projects/" },
   ],
@@ -920,7 +935,7 @@ export const ABOUT = {
     "I’m an ecommerce frontend specialist who designs, develops and optimizes high-performing storefronts for DTC brands worldwide - from complete Shopify redesigns to landing pages built for paid traffic. My focus is what actually moves the needle: faster load times, clearer hierarchy, stronger product presentation.",
   ctaPrimary: "Let’s talk",
   ctaSecondary: "See the work",
-  services: SERVICES.map((s) => s.label),
+  services: MAIN_SERVICES.map((s) => s.label),
   clients: [
     "Aavilo",
     "Baby Gains",
@@ -948,9 +963,31 @@ export const INQUIRY = {
   path: "/contact/",
   endpoint: "https://formsubmit.co/ajax/khuntmeet9@gmail.com",
   eyebrow: "Contact",
-  heading: "Tell me about your project",
+  heading: "Let's build your next Shopify store or funnel",
   intro:
     "Share what you are building and I will reply by email with questions or a next step.",
+  /** Social proof above the heading: real clients only, no ratings. */
+  proof: {
+    title: "Trusted by DTC brands",
+    text: "Baby Gains, Hanson of Sonoma, Hume Health & more",
+    avatars: [
+      "/images/contact/client-1.webp",
+      "/images/contact/client-2.webp",
+      "/images/contact/client-3.webp",
+      "/images/contact/client-4.webp",
+    ],
+  },
+  /** Photo reel under the form: stacked, one shown per second, grain on top. */
+  reel: {
+    images: [1, 2, 3, 4, 5, 6].map((n) => `/images/contact/reel/reel-${n}.webp`),
+    grain: "/images/contact/reel/grain.png",
+  },
+  /** Recent work shown under the form. */
+  showcase: [
+    { slug: "baby-gains", name: "Baby Gains", type: "Shopify store redesign", src: "/projects/baby-gains-card.webp" },
+    { slug: "hanson-of-sonoma", name: "Hanson of Sonoma", type: "Shopify store redesign", src: "/projects/hanson-card.webp" },
+    { slug: "aavilo", name: "Aavilo", type: "Shopify store redesign", src: "/projects/aavilo-card.webp" },
+  ],
   services: [
     "Shopify development",
     "Checkout Champ funnel",
@@ -995,4 +1032,35 @@ export const FOOTER = {
   ],
   teaser: ["Do you like", "What you see?"],
   contactHref: "#contact",
+  /** Black footer: scrolling wordmark, three columns, availability line. */
+  wordmark: "Meet Khunt",
+  columns: [
+    {
+      title: "Meet Khunt",
+      links: [
+        { label: "Home", href: "/" },
+        { label: "Case Studies", href: "/projects/" },
+        { label: "Blog", href: "/blog/" },
+        { label: "Let's talk", href: "/contact/" },
+      ],
+    },
+    {
+      title: "Services",
+      links: [
+        { label: "Shopify Development", href: "/shopify-developer/" },
+        { label: "Checkout Champ Funnels", href: "/checkout-champ-developer/" },
+        { label: "Landing Pages", href: "/projects/landing-pages/" },
+        { label: "Conversion Optimization", href: "/#services" },
+      ],
+    },
+    {
+      title: "Contact",
+      links: [
+        { label: "Send a project inquiry", href: "/contact/" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/in/meetkhunt1/" },
+        { label: "Sket Future", href: "https://sketfuture.com" },
+      ],
+    },
+  ],
+  status: "Available for projects",
 };

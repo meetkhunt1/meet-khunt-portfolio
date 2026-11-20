@@ -5,7 +5,6 @@ import Services from "@/components/sections/Services";
 import Tools from "@/components/sections/Tools";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
-import FixedBadge from "@/components/ui/FixedBadge";
 import { SERVICES, SITE } from "@/lib/data";
 import { CC_PATH } from "@/lib/checkout-champ";
 import {
@@ -80,7 +79,6 @@ export default function Home() {
         <Contact />
         <Footer />
       </main>
-      <FixedBadge />
     </>
   );
 }
