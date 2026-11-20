@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import WorkIndex from "@/components/sections/WorkIndex";
-import FixedBadge from "@/components/ui/FixedBadge";
 import { WORK_INDEX } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -18,7 +17,6 @@ export default function ProjectsPage() {
         <WorkIndex />
         <Footer />
       </main>
-      <FixedBadge />
     </>
   );
 }

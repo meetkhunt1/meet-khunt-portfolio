@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Footer from "@/components/layout/Footer";
+import Image from "next/image";
 import ContactForm from "@/components/sections/ContactForm";
-import Breadcrumbs from "@/components/content/Breadcrumbs";
+import ImageReel from "@/components/sections/ImageReel";
 import { INQUIRY } from "@/lib/data";
 import {
   PERSON_ID,
@@ -44,50 +44,65 @@ const structuredData = jsonLd([
   breadcrumbSchema(trail),
 ]);
 
-/** Project inquiry page: the destination of every "Work with me" button. */
+/**
+ * Project inquiry page: the destination of every "Work with me" button.
+ * A centered lead-capture layout: client proof, one headline, a single-column
+ * form, then a photo reel that runs off the bottom of the page.
+ */
 export default function ContactPage() {
+  const { proof } = INQUIRY;
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
-        <section className="section-row pt-[40px] lg:pt-[60px]">
-          <div className="mx-auto w-full max-w-[1100px]">
-            <Breadcrumbs trail={trail} />
-
-            <div className="mt-10 grid grid-cols-1 gap-12 lg:mt-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-              <div>
-                <p className="category">{INQUIRY.eyebrow}</p>
-                <h1 className="mt-4 font-sans text-[34px] font-semibold leading-[1.1] tracking-[-0.025em] text-fg lg:text-[48px]">
-                  {INQUIRY.heading}
-                </h1>
-                <p className="mt-5 max-w-[46ch] font-ui text-[16px] leading-[1.6] text-fg/70 lg:text-[18px]">
-                  {INQUIRY.intro}
-                </p>
-
-                <ol className="mt-10 flex flex-col gap-6 border-t border-line pt-8">
-                  {INQUIRY.steps.map((step, i) => (
-                    <li key={step.title} className="flex gap-4">
-                      <span className="grid size-8 shrink-0 place-items-center rounded-full bg-fg font-ui text-[13px] font-bold text-bg">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <p className="font-ui text-[15px] font-semibold text-fg">{step.title}</p>
-                        <p className="mt-1 font-ui text-[14px] leading-[1.6] text-fg/70">
-                          {step.text}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
+        <section className="section-row">
+          {/* First screen: sized so the top 10% of the photo reel peeks in
+              under it (100svh minus the 80px header and 10% of the reel). */}
+          <div className="flex min-h-[calc(100svh-80px-34px)] flex-col justify-center py-5 sm:min-h-[calc(100svh-80px-42px)] lg:min-h-[calc(100svh-80px-48px)]">
+          <div className="mx-auto flex w-full max-w-[920px] flex-col items-center text-center">
+            {/* Client proof */}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-3">
+                {proof.avatars.map((src) => (
+                  <span
+                    key={src}
+                    className="relative size-11 overflow-hidden rounded-full border-2 border-bg bg-surface"
+                  >
+                    <Image src={src} alt="" fill sizes="44px" className="object-cover" />
+                  </span>
+                ))}
               </div>
-
-              <div className="rounded-[14px] border border-line bg-bg p-6 shadow-[0_18px_50px_-30px_rgba(16,24,40,0.35)] lg:p-8">
-                <ContactForm />
+              <div className="text-left">
+                <p className="font-ui text-[14px] font-semibold leading-tight text-fg">
+                  {proof.title}
+                </p>
+                <p className="mt-0.5 font-ui text-[14px] leading-tight text-fg/65">
+                  {proof.text}
+                </p>
               </div>
             </div>
+
+            <h1 className="mt-5 font-sans text-[34px] font-medium leading-[1.12] tracking-[-0.035em] text-balance text-fg sm:text-[44px] lg:text-[52px]">
+              {INQUIRY.heading}
+            </h1>
+            <p className="mt-4 max-w-[52ch] font-ui text-[16px] leading-[1.6] text-fg/65 lg:text-[17px]">
+              {INQUIRY.intro}
+            </p>
           </div>
+
+          <div className="mx-auto mt-6 w-full max-w-[760px]">
+            <ContactForm />
+          </div>
+          </div>
+
+          {/* Photo reel: stacked images, one cut in per second. It is the last thing
+              on the page and runs off the bottom edge, so the scroll ends here. */}
+          <ImageReel
+            images={INQUIRY.reel.images}
+            grain={INQUIRY.reel.grain}
+            className="mx-auto h-[340px] w-full max-w-[1180px] rounded-t-[16px] sm:h-[420px] lg:h-[480px]"
+          />
         </section>
-        <Footer />
       </main>
     </>
   );

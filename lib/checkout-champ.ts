@@ -11,6 +11,8 @@
  * shipped project, it doesn't go on the page.
  */
 
+import type { ServiceHeroContent } from "@/components/sections/ServiceHero";
+
 import { PROJECTS } from "@/lib/data";
 
 export const CC_PATH = "/checkout-champ-developer/";
@@ -39,6 +41,18 @@ export const CC_HERO = {
     "I’m Meet Khunt. I take a Figma design and approved copy and turn it into a live Checkout Champ funnel - advertorials, VSL pages, quizzes, order forms, checkouts, upsells and subscription offers - with the campaign, offers, step paths and tracking configured, and the whole customer journey tested with real orders before paid traffic hits it.",
   ctaPrimary: "Hire Me",
   ctaSecondary: "Explore My Work",
+  /** Above-the-fold hero (ServiceHero). The fields above sit just below it. */
+  fold: {
+    lines: ["Checkout Champ developer.", "Funnels built to convert."],
+    lead: [
+      { text: "Advertorials, checkouts, upsells and subscriptions", bold: true },
+      { text: " built end to end in Checkout Champ. Offers, step paths and tracking are configured and " },
+      { text: "tested with real orders", bold: true },
+      { text: " before paid traffic hits." },
+    ],
+    mark: "checkout-champ",
+    cta: "Let's talk",
+  } satisfies ServiceHeroContent,
   /** Breadcrumb trail shown above the eyebrow and mirrored in JSON-LD. */
   breadcrumb: [
     { label: "Home", href: "/" },
