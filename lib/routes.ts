@@ -17,7 +17,9 @@ export const INDEXED_ROUTES: string[] = [
   "/projects/",
   ...Object.values(WORK_CATEGORIES).map((c) => `/projects/${c.slug}/`),
   CC_PATH,
+  "/shopify-developer/",
   "/d2c/",
+  "/contact/",
 ];
 
 export const SITE_ROUTES: string[] = [

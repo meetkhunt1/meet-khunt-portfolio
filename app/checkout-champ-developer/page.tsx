@@ -242,8 +242,6 @@ export default async function CheckoutChampDeveloperPage() {
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <a
                   href={CONTACT.href}
-                  target="_blank"
-                  rel="noreferrer"
                   data-cursor="grow"
                   className="pill h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
                 >
@@ -299,12 +297,10 @@ export default async function CheckoutChampDeveloperPage() {
                     <dd className="mt-1.5 font-ui text-[14px] text-fg">
                       <a
                         href={CONTACT.href}
-                        target="_blank"
-                        rel="noreferrer"
                         data-cursor="grow"
                         className="underline decoration-fg/30 underline-offset-4 transition-colors hover:text-muted"
                       >
-                        LinkedIn
+                        Send a project inquiry
                       </a>
                     </dd>
                   </div>
@@ -553,8 +549,6 @@ export default async function CheckoutChampDeveloperPage() {
             <FadeIn delay={0.2}>
               <a
                 href={CONTACT.href}
-                target="_blank"
-                rel="noreferrer"
                 data-cursor="grow"
                 className="pill mt-10 rounded-[10px] px-7 py-4 text-[14px] tracking-[-0.01em]"
               >

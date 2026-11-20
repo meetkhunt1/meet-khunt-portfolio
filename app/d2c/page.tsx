@@ -93,7 +93,7 @@ function ShapeWave() {
 function Cta({ label, padded }: { label: string; padded?: boolean }) {
   return (
     <div className={`d2c-btnrow${padded ? " d2c-btnrow--pad" : ""}`}>
-      <a className="d2c-btn" href={D2C_CTA_HREF} target="_blank" rel="noreferrer">
+      <a className="d2c-btn" href={D2C_CTA_HREF}>
         {label}
       </a>
     </div>
@@ -401,8 +401,6 @@ export default function D2CPage() {
           <a
             className="d2c-sticky__btn"
             href={D2C_CTA_HREF}
-            target="_blank"
-            rel="noreferrer"
           >
             <span>{D2C_STICKY.cta}</span>
             <span className="d2c-sticky__tab">

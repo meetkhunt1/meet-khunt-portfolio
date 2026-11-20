@@ -1,7 +1,10 @@
 export const SITE = {
-  title: "Meet Khunt - Ecommerce Frontend Specialist",
+  /* Leads with what clients search for: the platforms and who it is for. */
+  title: "Meet Khunt - Shopify & Checkout Champ Developer for DTC Brands",
   description:
-    "Meet Khunt - ecommerce frontend specialist designing, developing, and optimizing high-performing Shopify storefronts and landing pages for DTC brands across the globe.",
+    "Meet Khunt builds Shopify stores, landing pages, advertorials and Checkout Champ and Funnelish funnels for DTC brands and agencies. Send a project inquiry.",
+  /** Google Tag Manager container ID. GA4 is set up inside the container. Empty = off. */
+  gtmId: "GTM-PG4RVBH5",
   ogImage: "/projects/baby-gains-before-after.webp",
   headerName: "MEET KHUNT",
   footerName: "MEET KHUNT",
@@ -817,8 +820,17 @@ export const CHECKOUT_CHAMP_SERVICE = {
     "Funnels built end to end on Checkout Champ - advertorials, VSL pages, checkouts, upsells and subscriptions - with offers and tracking configured and tested before traffic hits.",
 };
 
+/** Shopify service page (/shopify-developer/). */
+export const SHOPIFY_SERVICE = {
+  label: "Shopify Development",
+  href: "/shopify-developer/",
+  hash: undefined,
+  blurb:
+    "Store redesigns, product and collection pages, landing pages and Figma to Shopify builds for DTC brands and agencies.",
+};
+
 /** The home-page Services list: the anchors, then the services with pages. */
-export const HOME_SERVICES = [...SERVICES, CHECKOUT_CHAMP_SERVICE];
+export const HOME_SERVICES = [...SERVICES, SHOPIFY_SERVICE, CHECKOUT_CHAMP_SERVICE];
 
 /**
  * The stack, as a logo wall.
@@ -880,7 +892,7 @@ export const NAV = {
       href: "/#about",
       hash: "#about",
       /* Specialised service pages sit after the home-page anchors. */
-      items: [...SERVICES, CHECKOUT_CHAMP_SERVICE],
+      items: [...SERVICES, SHOPIFY_SERVICE, CHECKOUT_CHAMP_SERVICE],
     },
     { label: "Case Studies", href: "/projects/" },
   ],
@@ -926,8 +938,45 @@ export const ABOUT = {
 };
 
 export const CONTACT = {
-  href: "https://www.linkedin.com/in/meetkhunt1/",
+  /* Every "Let’s talk" / "Work with me" button opens the inquiry form. */
+  href: "/contact/",
   label: "Let’s talk",
+};
+
+/**
+ * Project inquiry form (/contact/). Submissions are relayed by FormSubmit to
+ * the inbox below. The first submission triggers a one-time activation
+ * email from FormSubmit; after activating, FormSubmit offers a random alias
+ * that can replace the address in `endpoint` to keep it out of page source.
+ */
+export const INQUIRY = {
+  path: "/contact/",
+  endpoint: "https://formsubmit.co/ajax/khuntmeet9@gmail.com",
+  eyebrow: "Contact",
+  heading: "Tell me about your project",
+  intro:
+    "Share what you are building and I will reply by email with questions or a next step.",
+  services: [
+    "Shopify development",
+    "Checkout Champ funnel",
+    "Funnelish funnel",
+    "Landing page or advertorial",
+    "Figma to Shopify",
+    "Store redesign or migration",
+    "Conversion optimization",
+    "White-label work for an agency",
+    "Something else",
+  ],
+  budgets: ["Under $1,000", "$1,000 - $3,000", "$3,000 - $10,000", "$10,000+"],
+  submit: "Send inquiry",
+  successTitle: "Thanks, your inquiry is in.",
+  successText: "I read every message myself and will reply by email shortly.",
+  errorText: "Something went wrong sending your inquiry. Please try again in a moment.",
+  steps: [
+    { title: "I reply by email", text: "I read your brief myself and reply with questions or a next step." },
+    { title: "Scope and quote", text: "You get a clear scope and a fixed quote before any work starts." },
+    { title: "Build and launch", text: "I build it, test the full journey and hand over a live page." },
+  ],
 };
 
 export const FOOTER = {

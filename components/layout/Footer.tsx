@@ -1,12 +1,10 @@
 "use client";
 
 import FadeIn from "@/components/anim/FadeIn";
-import { useLenis } from "@/components/providers/SmoothScroll";
-import { FOOTER, SITE } from "@/lib/data";
+import Link from "next/link";
+import { CONTACT, FOOTER, SITE } from "@/lib/data";
 
 export default function Footer() {
-  const lenis = useLenis();
-
   return (
     <footer className="section-row pt-[50px] lg:pt-[148px]">
       <FadeIn>
@@ -51,20 +49,9 @@ export default function Footer() {
           <p className="small-caps">
             {SITE.year} ® {SITE.footerName}
           </p>
-          <a
-            href={`/${FOOTER.contactHref}`}
-            onClick={(e) => {
-              /* Pages without a contact section (case studies, the blog)
-                 send the visitor to the home page's instead. */
-              if (!document.querySelector(FOOTER.contactHref)) return;
-              e.preventDefault();
-              lenis?.scrollTo(FOOTER.contactHref);
-            }}
-            className="pill rounded-[50px]"
-            data-cursor="grow"
-          >
+          <Link href={CONTACT.href} className="pill rounded-[50px]" data-cursor="grow">
             Let&apos;s connect
-          </a>
+          </Link>
         </div>
       </FadeIn>
     </footer>

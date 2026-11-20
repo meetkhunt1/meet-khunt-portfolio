@@ -10,7 +10,7 @@
  */
 
 import { CC_PATH } from "@/lib/checkout-champ";
-import { ABOUT, CONTACT } from "@/lib/data";
+import { ABOUT } from "@/lib/data";
 
 export const BLOG_PATH = "/blog/";
 
@@ -209,7 +209,7 @@ export const AUTHORS: Author[] = [
     image: "/images/blog/authors/meet-khunt.webp",
     bio: "Web Developer specializing in eCommerce development, custom sales funnels, Checkout Champ, Shopify, and frontend development.",
     href: "/#about",
-    profiles: [{ label: "LinkedIn", href: CONTACT.href }],
+    profiles: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/meetkhunt1/" }],
   },
 ];
 

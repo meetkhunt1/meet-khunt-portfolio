@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import SiteChrome from "@/components/providers/SiteChrome";
 import Header from "@/components/layout/Header";
+import Analytics from "@/components/providers/Analytics";
 import { SITE } from "@/lib/data";
 import { getPosts } from "@/lib/blog/posts";
 
@@ -79,6 +80,7 @@ export default async function RootLayout({
           <Header showBlog={showBlog} />
           {children}
         </SiteChrome>
+        <Analytics />
       </body>
     </html>
   );
