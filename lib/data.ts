@@ -3,8 +3,13 @@ export const SITE = {
   title: "Meet Khunt - Shopify & Checkout Champ Developer for DTC Brands",
   description:
     "Meet Khunt builds Shopify stores, landing pages, advertorials and Checkout Champ and Funnelish funnels for DTC brands and agencies. Send a project inquiry.",
-  /** Google Tag Manager container ID. GA4 is set up inside the container. Empty = off. */
+  /** Google Tag Manager container ID. Empty = off. */
   gtmId: "GTM-PG4RVBH5",
+  /**
+   * GA4 Measurement ID, tagged directly in code (page views). Do not also add
+   * a GA4 tag inside the GTM container, or every visit is counted twice.
+   */
+  gaId: "G-8S6JCV5TDE",
   ogImage: "/projects/baby-gains-before-after.webp",
   headerName: "MEET KHUNT",
   footerName: "MEET KHUNT",
