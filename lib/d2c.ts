@@ -11,7 +11,8 @@ export const D2C_LINKEDIN = "https://www.linkedin.com/in/meetkhunt1/";
 export const D2C_EMAIL = "khuntmeet9@gmail.com";
 
 /** Every CTA on the page points here. */
-export const D2C_CTA_HREF = D2C_LINKEDIN;
+/* The page’s CTAs open the site’s inquiry form. */
+export const D2C_CTA_HREF = "/contact/";
 
 export const D2C_META = {
   title:
@@ -343,7 +344,7 @@ export const D2C_FOOTER = {
   links: [
     { label: "Portfolio", href: "https://meetkhunt.com" },
     { label: "LinkedIn", href: D2C_LINKEDIN },
-    { label: "Contact", href: `mailto:${D2C_EMAIL}` },
+    { label: "Contact", href: "/contact/" },
   ],
   disclaimer:
     "This site is not a part of the Meta™ website or Meta™ Inc. Additionally, this site is NOT endorsed by Meta™ in any way. META™ is a trademark of META™, Inc. As stipulated by law, we cannot and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools, or strategies. We are here to help you by giving great content, direction and strategies that move you forward.",

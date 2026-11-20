@@ -33,13 +33,10 @@ export default function BlogCtaCard() {
       <div aria-hidden className="min-h-8 flex-1" />
       <a
         href={CONTACT.href}
-        target="_blank"
-        rel="noopener noreferrer"
         data-cursor="grow"
         className="pill pill-lg w-full"
       >
         {c.label}
-        <span className="sr-only"> (opens LinkedIn in a new tab)</span>
       </a>
     </aside>
   );

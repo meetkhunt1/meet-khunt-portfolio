@@ -42,8 +42,6 @@ export default function Contact() {
       <a
         ref={linkRef}
         href={CONTACT.href}
-        target="_blank"
-        rel="noreferrer"
         className="relative z-[1] will-change-transform"
         data-cursor="grow"
       >

@@ -117,8 +117,6 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
 
             <a
               href={CONTACT.href}
-              target="_blank"
-              rel="noreferrer"
               data-cursor="grow"
               className="pill pill-lg self-center"
             >
@@ -193,8 +191,6 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
 
           <a
             href={CONTACT.href}
-            target="_blank"
-            rel="noreferrer"
             onClick={() => setOpen(false)}
             className="pill pill-lg w-full"
           >

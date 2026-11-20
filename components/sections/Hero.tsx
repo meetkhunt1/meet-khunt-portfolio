@@ -82,8 +82,6 @@ export default function Hero() {
             <div className="mt-9 flex flex-col items-start gap-5">
               <a
                 href={CONTACT.href}
-                target="_blank"
-                rel="noreferrer"
                 data-cursor="grow"
                 className="pill rounded-[10px] px-7 py-4 text-[14px] tracking-[-0.01em]"
               >

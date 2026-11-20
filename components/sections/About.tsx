@@ -50,8 +50,6 @@ export default function About() {
             <div className="mt-[38px] flex flex-wrap items-center gap-4">
               <a
                 href={CONTACT.href}
-                target="_blank"
-                rel="noreferrer"
                 data-cursor="grow"
                 className="pill h-12 rounded-full px-7 text-[15px] tracking-[-0.01em]"
               >

@@ -19,7 +19,7 @@ export const absoluteUrl = (path: string) => new URL(path, SITE_URL).toString();
 /** Verified professional profiles. Only links already published on the site. */
 const SAME_AS = FOOTER.socials
   .map((s) => s.href)
-  .filter((href) => href.includes("linkedin.com"));
+  .filter((href) => /linkedin\.com|upwork\.com|contra\.com/.test(href));
 
 export function personSchema(knowsAbout: string[] = []) {
   return {
