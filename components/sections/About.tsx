@@ -31,8 +31,8 @@ export default function About() {
   return (
     <section id="about" className="section-row pt-[120px] lg:pt-[200px]">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,42fr)_minmax(0,58fr)] lg:gap-x-16 lg:gap-y-0 2xl:grid-cols-[minmax(0,36fr)_minmax(0,64fr)] 2xl:gap-x-[104px]">
-        {/* Left: quote, bio, actions, figures */}
-        <div className="flex flex-col items-start">
+        {/* Left: quote, bio, actions */}
+        <div className="flex flex-col items-start lg:self-center">
           <h2 className="font-serif text-[30px] leading-[1.26] tracking-[-0.01em] text-fg lg:text-[34px] xl:text-[38px] 2xl:text-[42px] min-[1700px]:text-[46px]">
             <RevealText as="span" split="lines" className="block">
               {`“${ABOUT.quote[0]}`}
@@ -63,34 +63,13 @@ export default function About() {
                 {ABOUT.ctaSecondary}
               </Link>
             </div>
-
-            {/* Cards size to their own label, as in the reference — they are
-                not two equal halves of a row. */}
-            <dl className="mt-[40px] flex flex-wrap gap-4">
-              {ABOUT.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-[10px] border border-line bg-surface px-[22px] py-5"
-                >
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd className="m-0">
-                    <span className="block font-sans text-[26px] font-bold leading-none tracking-[-0.02em] text-fg">
-                      {stat.value}
-                    </span>
-                    <span className="mt-2.5 block whitespace-nowrap font-ui text-[15px] leading-none text-muted">
-                      {stat.label}
-                    </span>
-                  </dd>
-                </div>
-              ))}
-            </dl>
           </FadeIn>
         </div>
 
         {/* Right: portrait with the name card floated over it. On desktop it
             has no ratio of its own - it stretches to whatever height the copy
             sets, which is what keeps the two columns level. */}
-        <div className="relative aspect-[5/3] w-full lg:aspect-auto">
+        <div className="relative aspect-[5/3] w-full lg:aspect-auto lg:min-h-[540px]">
           {/* ParallaxImage pins its own root `position: relative` inline, so
               the absolute frame has to be this wrapper, not the component. */}
           <div className="absolute inset-0 overflow-hidden rounded-[12px]">
