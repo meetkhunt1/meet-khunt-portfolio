@@ -984,6 +984,15 @@ export const INQUIRY = {
   ],
 };
 
+/**
+ * Professional profiles kept out of the page UI on purpose. They appear only
+ * in structured data (Person sameAs) and llms.txt, for crawlers.
+ */
+export const HIDDEN_PROFILES = [
+  { label: "Upwork", href: "https://www.upwork.com/freelancers/~0110c208fdf0361786" },
+  { label: "Contra", href: "https://contra.com/meetkhunt" },
+];
+
 export const FOOTER = {
   socials: [
     { label: "LINKEDIN", href: "https://www.linkedin.com/in/meetkhunt1/" },
