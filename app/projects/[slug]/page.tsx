@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import WorkIndex from "@/components/sections/WorkIndex";
 import CaseStudy from "@/components/sections/CaseStudy";
+import PageShowcase from "@/components/sections/PageShowcase";
+import { workSchema } from "@/lib/work-schema";
 import {
   PROJECTS,
   WORK_CATEGORIES,
@@ -47,7 +49,7 @@ export async function generateMetadata({
   }
   const project = PROJECTS.find((p) => p.slug === slug);
   return {
-    title: project ? `${project.title} - Meet Khunt` : "Project",
+    title: project ? `${project.title} | Meet Khunt` : "Project",
     description: project?.description[0],
     /* Case studies stay out of search results (and out of the sitemap);
        /projects/ and its filter pages are the indexed entry points. `follow`
@@ -67,6 +69,7 @@ export default async function ProjectPage({
   if (filter) {
     return (
       <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: workSchema(filter) }} />
         <main className="flex w-full flex-col items-center overflow-hidden pt-20">
           <WorkIndex active={filter} />
           <Footer />
@@ -82,7 +85,7 @@ export default async function ProjectPage({
   return (
     <>
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
-        <CaseStudy project={project} />
+        {project.showcase ? <PageShowcase project={project} /> : <CaseStudy project={project} />}
         <Footer />
       </main>
     </>

@@ -35,7 +35,7 @@ export type ServicePage = {
 export const SHOPIFY_PAGE: ServicePage = {
   path: "/shopify-developer/",
   meta: {
-    title: "Shopify Developer for DTC Brands | Redesigns, Product & Landing Pages - Meet Khunt",
+    title: "Shopify Developer for DTC Brands | Redesigns, Product & Landing Pages | Meet Khunt",
     description:
       "Hire Meet Khunt, a Shopify developer for DTC brands and agencies: store redesigns, product and collection pages, landing pages and Figma to Shopify builds.",
   },

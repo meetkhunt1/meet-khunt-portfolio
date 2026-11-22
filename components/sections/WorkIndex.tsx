@@ -7,11 +7,13 @@ import { gsap, useGSAP } from "@/lib/gsap";
 import RevealText from "@/components/anim/RevealText";
 import {
   PROJECTS,
+  UPCOMING_PROJECTS,
   WORK_CATEGORIES,
   WORK_FILTERS,
   WORK_INDEX,
   workFilterPath,
   type Project,
+  type UpcomingProject,
 } from "@/lib/data";
 
 type Filter = (typeof WORK_FILTERS)[number];
@@ -52,12 +54,45 @@ function WorkCard({ project }: { project: Project }) {
 }
 
 /* ---------------------------------------------------------------------------
+   Upcoming card: same look as WorkCard, but not a link (no case study yet)
+--------------------------------------------------------------------------- */
+function UpcomingCard({ project }: { project: UpcomingProject }) {
+  return (
+    <div data-card className="flex flex-col">
+      <div className="relative aspect-square w-full overflow-hidden rounded-[14px] border border-fg/20 bg-fg/5 shadow-[0_16px_40px_-18px_rgba(0,0,0,0.25)]">
+        <Image
+          src={project.image}
+          alt={project.brand}
+          fill
+          sizes="(min-width: 1200px) 33vw, (min-width: 810px) 50vw, 100vw"
+          className="object-cover object-center"
+        />
+        <span className="absolute left-4 top-4 rounded-full bg-bg/85 px-3 py-1.5 font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-fg backdrop-blur-sm">
+          Case study coming soon
+        </span>
+      </div>
+
+      <p className="category mt-8">{project.category}</p>
+
+      <h2 className="mt-2.5 font-sans text-[28px] font-medium leading-[1.1] tracking-[-0.02em] text-fg lg:text-[34px]">
+        {project.brand}
+      </h2>
+
+      <p className="mt-2.5 max-w-[34ch] font-ui text-[17px] leading-[1.6] text-fg/75 lg:text-[18px]">
+        {project.summary}
+      </p>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
    /projects index
 --------------------------------------------------------------------------- */
-const inFilter = (filter: Filter) =>
-  filter === ALL
-    ? PROJECTS
-    : PROJECTS.filter((p) => (p.filters as string[]).includes(filter));
+const matches = (filter: Filter) => (p: { filters: readonly string[] }) =>
+  filter === ALL || p.filters.includes(filter);
+
+const inFilter = (filter: Filter) => PROJECTS.filter(matches(filter));
+const upcomingIn = (filter: Filter) => UPCOMING_PROJECTS.filter(matches(filter));
 
 /**
  * The work index, showing one filter tab. Each tab is a real link to its own
@@ -67,6 +102,7 @@ const inFilter = (filter: Filter) =>
 export default function WorkIndex({ active = ALL }: { active?: Filter }) {
   const gridRef = useRef<HTMLDivElement>(null);
   const projects = inFilter(active);
+  const upcoming = upcomingIn(active);
   const headline =
     active === ALL ? WORK_INDEX.headline : WORK_CATEGORIES[active].headline;
 
@@ -133,13 +169,6 @@ export default function WorkIndex({ active = ALL }: { active?: Filter }) {
                   }`}
                 >
                   {filter}
-                  <span
-                    className={`rounded-full px-1.5 py-px text-[11px] tabular-nums ${
-                      isActive ? "bg-bg/15 text-bg" : "bg-surface text-muted"
-                    }`}
-                  >
-                    {inFilter(filter).length}
-                  </span>
                 </Link>
               </li>
             );
@@ -153,6 +182,9 @@ export default function WorkIndex({ active = ALL }: { active?: Filter }) {
       >
         {projects.map((project) => (
           <WorkCard key={project.slug} project={project} />
+        ))}
+        {upcoming.map((project) => (
+          <UpcomingCard key={project.key} project={project} />
         ))}
       </div>
     </section>

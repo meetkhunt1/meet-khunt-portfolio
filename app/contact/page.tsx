@@ -13,7 +13,7 @@ import {
   websiteSchema,
 } from "@/lib/schema";
 
-const TITLE = "Contact Meet Khunt - Hire a Shopify & Funnel Developer";
+const TITLE = "Contact Meet Khunt | Hire a Shopify & Funnel Developer";
 const DESCRIPTION =
   "Send a project inquiry to Meet Khunt for Shopify development, Checkout Champ and Funnelish funnels, landing pages and advertorials for DTC brands.";
 

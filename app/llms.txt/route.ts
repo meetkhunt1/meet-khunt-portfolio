@@ -1,6 +1,15 @@
 import { getPosts } from "@/lib/blog/posts";
 import { CC_META, CC_PATH } from "@/lib/checkout-champ";
-import { FOOTER, HERO, HIDDEN_PROFILES, INQUIRY, SITE, WORK_CATEGORIES } from "@/lib/data";
+import {
+  FOOTER,
+  HERO,
+  HIDDEN_PROFILES,
+  INQUIRY,
+  PROJECTS,
+  SITE,
+  UPCOMING_PROJECTS,
+  WORK_CATEGORIES,
+} from "@/lib/data";
 import { D2C_META } from "@/lib/d2c";
 import { SHOPIFY_PAGE } from "@/lib/services";
 import { CRO_PAGE, LANDING_PAGE } from "@/lib/services-landing-cro";
@@ -39,7 +48,13 @@ export async function GET() {
     "",
     "## Work",
     link("All projects", "/projects/", "Ecommerce case studies."),
-    ...Object.values(WORK_CATEGORIES).map((c) => link(c.title.replace(" - Meet Khunt", ""), `/projects/${c.slug}/`, c.description)),
+    ...Object.values(WORK_CATEGORIES).map((c) => link(c.title.replace(" | Meet Khunt", ""), `/projects/${c.slug}/`, c.description)),
+    "",
+    "## Projects",
+    ...PROJECTS.map((p) => link(`${p.brand} (${p.category.toLowerCase().replace(" · ", ", ")})`, `/projects/${p.slug}/`, p.summary)),
+    ...(UPCOMING_PROJECTS.length
+      ? [`- Also built, case studies coming soon: ${UPCOMING_PROJECTS.map((p) => `${p.brand} (${p.category.toLowerCase().replace(" · ", ", ")})`).join("; ")}.`]
+      : []),
     "",
     ...(posts.length
       ? ["## Articles", ...posts.map((p) => link(p.title, p.path, p.description)), ""]

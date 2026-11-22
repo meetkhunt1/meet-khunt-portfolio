@@ -29,7 +29,7 @@ export const D2C_META = {
    */
   ogImage: "/og/d2c-og.png",
   ogImageAlt:
-    "Landing pages and advertorials for D2C brands, delivered in about an hour - Meet Khunt",
+    "Landing pages and advertorials for D2C brands, delivered in about an hour | Meet Khunt",
 };
 
 /* ------------------------------------------------------------------ 1. Hero */
