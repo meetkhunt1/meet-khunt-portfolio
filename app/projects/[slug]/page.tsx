@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import WorkIndex from "@/components/sections/WorkIndex";
 import CaseStudy from "@/components/sections/CaseStudy";
+import PageShowcase from "@/components/sections/PageShowcase";
 import {
   PROJECTS,
   WORK_CATEGORIES,
@@ -82,7 +83,7 @@ export default async function ProjectPage({
   return (
     <>
       <main className="flex w-full flex-col items-center overflow-hidden pt-20">
-        <CaseStudy project={project} />
+        {project.showcase ? <PageShowcase project={project} /> : <CaseStudy project={project} />}
         <Footer />
       </main>
     </>

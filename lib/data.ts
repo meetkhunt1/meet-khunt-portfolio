@@ -162,9 +162,81 @@ export type Project = {
   /** Extra live pages worth linking individually (funnels, landing pages) */
   links?: { label: string; href: string }[];
   gallery: GalleryImage[];
+  /**
+   * A collection of separate live pages shown as one project (see
+   * PageShowcase). When set, the project page uses the showcase layout
+   * instead of the standard case study, and `gallery` is not used.
+   */
+  showcase?: ShowcasePage[];
+};
+
+/** One live page in a showcase: full-length desktop and mobile captures. */
+export type ShowcasePage = {
+  /** Page type label, e.g. "Comparison Page", "Advertorial" */
+  type: string;
+  /** The page's own headline */
+  title: string;
+  url: string;
+  desktop: { src: string; width: number; height: number };
+  mobile: { src: string; width: number; height: number };
 };
 
 export const PROJECTS: Project[] = [
+  {
+    slug: "replo",
+    title: "Replo Page Designs: Comparison pages and advertorials",
+    category: "REPLO · PAGE DESIGNS",
+    image: "/projects/replo-card.webp",
+    brand: "Replo Page Designs",
+    summary:
+      "Comparison pages and advertorials designed and built in Replo for paid traffic.",
+    filters: ["Landing Pages"],
+    tag: "Replo Page Designs",
+    headline: "Comparison pages and advertorials built in Replo",
+    description: [
+      "A collection of pre-sell pages designed and built in Replo for DTC brands running paid traffic: product comparison pages that rank options side by side, and long-form advertorials that tell the story before the click to the store.",
+      "Each page is live. Scroll inside any desktop or mobile frame below to see the full page, or open it on its own site.",
+    ],
+    services: [
+      "Replo Page Design",
+      "Comparison Pages",
+      "Advertorials",
+      "Responsive Development",
+    ],
+    industries: ["Wellness", "Kitchen & Cookware"],
+    liveUrl: "https://www.apexiqo.com/pages/try-japanese-titanium",
+    gallery: [],
+    showcase: [
+      {
+        type: "Comparison Page",
+        title: "Best Weighted Comfort Plush of 2025",
+        url: "https://mindfulhabitsguide.com/pages/best-weighted-comfort-plush-1",
+        desktop: { src: "/projects/replo-comparison-plush-desktop.webp", width: 1200, height: 8644 },
+        mobile: { src: "/projects/replo-comparison-plush-mobile.webp", width: 500, height: 15637 },
+      },
+      {
+        type: "Advertorial",
+        title: "We Compared the 5 Most Common Frying Pan Materials. One Performed Best Across Every Test",
+        url: "https://www.apexiqo.com/pages/best-frying-pan-material",
+        desktop: { src: "/projects/replo-frying-pan-desktop.webp", width: 1200, height: 4424 },
+        mobile: { src: "/projects/replo-frying-pan-mobile.webp", width: 500, height: 6986 },
+      },
+      {
+        type: "Advertorial",
+        title: "I Finally Tossed My Wooden Cutting Board. Here's The Gross Reason Why.",
+        url: "https://www.apexiqo.com/pages/hidden-problem-with-wooden-cutting-boards",
+        desktop: { src: "/projects/replo-cutting-boards-desktop.webp", width: 1200, height: 5923 },
+        mobile: { src: "/projects/replo-cutting-boards-mobile.webp", width: 500, height: 8432 },
+      },
+      {
+        type: "Advertorial",
+        title: "Ditch Teflon: Try Japanese Titanium",
+        url: "https://www.apexiqo.com/pages/try-japanese-titanium",
+        desktop: { src: "/projects/replo-japanese-titanium-desktop.webp", width: 1200, height: 6516 },
+        mobile: { src: "/projects/replo-japanese-titanium-mobile.webp", width: 500, height: 10226 },
+      },
+    ],
+  },
   {
     slug: "athletic-annex",
     title: "Athletic Annex: Find the shoe that fits",
