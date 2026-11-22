@@ -19,7 +19,7 @@ export const CC_PATH = "/checkout-champ-developer/";
 
 export const CC_META = {
   title:
-    "Checkout Champ Developer | Custom Funnels & Integrations - Meet Khunt",
+    "Checkout Champ Developer | Custom Funnels & Integrations | Meet Khunt",
   description:
     "Hire Meet Khunt, a Checkout Champ developer who builds DTC funnels end to end: advertorials, VSL pages, checkouts, upsells, subscriptions, tracking and A/B tests.",
   /**

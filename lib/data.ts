@@ -1,6 +1,6 @@
 export const SITE = {
   /* Leads with what clients search for: the platforms and who it is for. */
-  title: "Meet Khunt - Shopify & Checkout Champ Developer for DTC Brands",
+  title: "Meet Khunt | Shopify & Checkout Champ Developer for DTC Brands",
   description:
     "Meet Khunt builds Shopify stores, landing pages, advertorials and Checkout Champ and Funnelish funnels for DTC brands and agencies. Send a project inquiry.",
   /** Google Tag Manager container ID. Empty = off. */
@@ -64,6 +64,7 @@ export const WORK_FILTERS = [
   "Shopify",
   "WordPress",
   "Landing Pages",
+  "Checkout Champ",
 ] as const;
 
 export type WorkFilter = Exclude<(typeof WORK_FILTERS)[number], "All Projects">;
@@ -72,7 +73,7 @@ export type WorkFilter = Exclude<(typeof WORK_FILTERS)[number], "All Projects">;
 export const WORK_INDEX = {
   headline: "Ecommerce work built to sell, not just to look good.",
   filterLabel: "Filter Work:",
-  title: "Work - Meet Khunt",
+  title: "Work | Meet Khunt",
   description:
     "Ecommerce case studies by Meet Khunt: Shopify stores, landing pages, advertorials and WordPress sites built for DTC brands.",
 };
@@ -89,25 +90,77 @@ export const WORK_CATEGORIES: Record<
   Shopify: {
     slug: "shopify",
     headline: "Shopify stores and pages built to sell.",
-    title: "Shopify Development Projects - Meet Khunt",
+    title: "Shopify Development Projects | Meet Khunt",
     description:
       "Shopify case studies by Meet Khunt: store redesigns, collection and product pages, and landing pages built for DTC brands.",
   },
   WordPress: {
     slug: "wordpress",
     headline: "WordPress websites built to earn trust.",
-    title: "WordPress Development Projects - Meet Khunt",
+    title: "WordPress Development Projects | Meet Khunt",
     description:
       "WordPress case studies by Meet Khunt: business websites designed and built with clear structure, responsive layouts and easy navigation.",
   },
   "Landing Pages": {
     slug: "landing-pages",
     headline: "Landing pages and advertorials built for paid traffic.",
-    title: "Landing Page & Advertorial Projects - Meet Khunt",
+    title: "Landing Page & Advertorial Projects | Meet Khunt",
     description:
       "Landing page and advertorial case studies by Meet Khunt: pages built for cold paid traffic on Shopify, Funnelish and more.",
   },
+  "Checkout Champ": {
+    slug: "checkout-champ",
+    headline: "Checkout Champ funnels, from presell to thank-you page.",
+    title: "Checkout Champ Funnel Projects | Meet Khunt",
+    description:
+      "Checkout Champ funnels built by Meet Khunt for DTC brands: advertorials, sales pages, checkouts and post-purchase upsells.",
+  },
 };
+
+/**
+ * Work shown on /projects as a card only, before its case study is written:
+ * no page, no link, a "coming soon" label instead. Kept apart from PROJECTS
+ * so nothing (routes, sitemap, links) can point at a page that doesn't exist.
+ * When a case study is ready, move the project into PROJECTS.
+ */
+export type UpcomingProject = {
+  key: string;
+  brand: string;
+  category: string;
+  summary: string;
+  image: string;
+  filters: WorkFilter[];
+};
+
+export const UPCOMING_PROJECTS: UpcomingProject[] = [
+  {
+    key: "hume-band-checkout-champ",
+    brand: "Hume Band",
+    category: "CHECKOUT CHAMP · FUNNEL",
+    summary:
+      "A full funnel for the Hume Band wearable: advertorial, product page, checkout, upsell and thank-you page.",
+    image: "/projects/cc-hume-band-cover.webp",
+    filters: ["Checkout Champ"],
+  },
+  {
+    key: "plateful-checkout-champ",
+    brand: "Plateful",
+    category: "CHECKOUT CHAMP · FUNNEL",
+    summary:
+      "A food warming mat funnel: sales page, checkout, multiple upsell paths and thank-you page.",
+    image: "/projects/cc-plateful-cover.webp",
+    filters: ["Checkout Champ"],
+  },
+  {
+    key: "pelsbarn-checkout-champ",
+    brand: "Pelsbarn",
+    category: "CHECKOUT CHAMP · FUNNEL",
+    summary:
+      "A multi-step funnel: advertorial, listicle, sales page, checkout, two upsells and thank-you page.",
+    image: "/projects/cc-pelsbarn-cover.webp",
+    filters: ["Checkout Champ"],
+  },
+];
 
 /** URL of a filter tab; "All Projects" is the /projects/ index itself. */
 export function workFilterPath(filter: (typeof WORK_FILTERS)[number]) {
@@ -315,6 +368,162 @@ export const PROJECTS: Project[] = [
         alt: "Patient story videos, closing offer and clinic footer",
         width: 1920,
         height: 1511,
+        full: true,
+      },
+    ],
+  },
+  {
+    slug: "airbond",
+    title: "Airbond: An industrial machinery store on Shopify",
+    category: "SHOPIFY · STORE DEVELOPMENT",
+    image: "/projects/airbond-card.webp",
+    brand: "Airbond",
+    summary:
+      "End-to-end Shopify development for an Indian maker of pumps, gauges and workshop machinery.",
+    filters: ["Shopify"],
+    tools: ["Shopify"],
+    tag: "Agriculture & Industrial Machinery (Shopify Store Development)",
+    headline: "End-to-End Shopify Store Development",
+    description: [
+      "Airbond manufactures tyre air pressure gauges, vulcanizing machines, agriculture sprayer pumps and commercial flange pumps in India, for workshops, farms and industrial buyers across the country. They needed their range online as a working store they could sell from directly.",
+      "I handled the Shopify build end to end: developing the store, setting up the full product catalogue with categories and specification tables, configuring shipping and payments for the Indian market, and connecting the integrations the store runs on, so it launched ready to take orders.",
+    ],
+    services: [
+      "Shopify Store Development",
+      "Product Catalogue Setup",
+      "Shipping Configuration",
+      "Payment Gateway Setup",
+      "App & Third-Party Integrations",
+      "Responsive Development",
+    ],
+    industries: ["Agriculture Machinery", "Industrial Tools & Equipment"],
+    liveUrl: "https://airbond.in/",
+    gallery: [
+      {
+        src: "/projects/airbond-mobile-home.webp",
+        alt: "Airbond Shopify store homepage on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/airbond-mobile-catalog.webp",
+        alt: "Airbond product catalogue on mobile with filter and sort",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/airbond-mobile-product.webp",
+        alt: "Airbond ABV 4 vulcanizing machine product page on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/airbond-mobile-specs.webp",
+        alt: "Airbond product specification table on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/airbond-home.webp",
+        alt: "Airbond homepage with hero, shop by category and new products",
+        width: 1920,
+        height: 2384,
+        full: true,
+      },
+      {
+        src: "/projects/airbond-brand.webp",
+        alt: "Airbond Built for Accuracy and Our Mission sections",
+        width: 1920,
+        height: 1385,
+        full: true,
+      },
+      {
+        src: "/projects/airbond-catalog.webp",
+        alt: "Airbond product catalogue with availability and price filters",
+        width: 1920,
+        height: 1840,
+        full: true,
+      },
+      {
+        src: "/projects/airbond-product.webp",
+        alt: "Airbond product page with specification table, add to cart and buy now",
+        width: 1920,
+        height: 1900,
+        full: true,
+      },
+    ],
+  },
+  {
+    slug: "mumma-mall",
+    title: "Mumma Mall: A kids' store redesigned on Shopify",
+    category: "SHOPIFY · STORE REDESIGN",
+    image: "/projects/mumma-mall-card.webp",
+    brand: "Mumma Mall",
+    summary:
+      "A Shopify redesign for an Indian kids' store selling educational toys, busy books and baby essentials.",
+    filters: ["Shopify"],
+    tools: ["Shopify"],
+    tag: "Kids' Toys & Baby Products (Shopify Store Redesign)",
+    headline: "Shopify Store Redesign",
+    description: [
+      "Mumma Mall sells educational toys, busy books, activity books, ride-on vehicles and baby essentials to parents across India, alongside its own retail stores. The range is large and changes often, so the storefront has to make it easy to find the right product for a child's age and stage.",
+      "I redesigned the store directly in Shopify: a bolder homepage with a rotating hero and best sellers, shoppable video reels, a featured product block with cash on delivery up front, parenting articles, reviews and an FAQ, plus cleaner collection pages and product pages built to sell.",
+    ],
+    services: [
+      "Shopify Store Redesign",
+      "Homepage Sections",
+      "Collection & Product Pages",
+      "Shoppable Video Reels",
+      "Responsive Development",
+    ],
+    industries: ["Kids' Toys", "Baby Products", "Education"],
+    liveUrl: "https://mummamall.com/",
+    gallery: [
+      {
+        src: "/projects/mumma-mall-mobile-home.webp",
+        alt: "Mumma Mall homepage on mobile with hero banner and best sellers",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/mumma-mall-mobile-catalog.webp",
+        alt: "Mumma Mall educational toys collection on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/mumma-mall-home.webp",
+        alt: "Mumma Mall homepage hero, category strip and best sellers",
+        width: 1920,
+        height: 2090,
+        full: true,
+      },
+      {
+        src: "/projects/mumma-mall-reels.webp",
+        alt: "Mumma Mall shoppable video reels and featured product block",
+        width: 1920,
+        height: 1870,
+        full: true,
+      },
+      {
+        src: "/projects/mumma-mall-community.webp",
+        alt: "Mumma Mall parenting articles and Trusted by Over 2 Million Customers banner",
+        width: 1920,
+        height: 1020,
+        full: true,
+      },
+      {
+        src: "/projects/mumma-mall-catalog.webp",
+        alt: "Mumma Mall educational toys collection page with filters",
+        width: 1920,
+        height: 2300,
+        full: true,
+      },
+      {
+        src: "/projects/mumma-mall-product.webp",
+        alt: "Mumma Mall product page with cash on delivery and delivery timeline",
+        width: 1920,
+        height: 1080,
         full: true,
       },
     ],

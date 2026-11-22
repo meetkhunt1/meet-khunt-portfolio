@@ -9,7 +9,7 @@ import type { ServicePage } from "@/lib/services";
 export const LANDING_PAGE: ServicePage = {
   path: "/landing-page-developer/",
   meta: {
-    title: "Landing Page & Advertorial Developer for DTC Brands - Meet Khunt",
+    title: "Landing Page & Advertorial Developer for DTC Brands | Meet Khunt",
     description:
       "Hire Meet Khunt to design and build landing pages, advertorials and listicles for DTC brands running paid traffic, in Shopify, Funnelish, Checkout Champ and page builders.",
   },
@@ -144,7 +144,7 @@ export const LANDING_PAGE: ServicePage = {
 export const CRO_PAGE: ServicePage = {
   path: "/conversion-optimization/",
   meta: {
-    title: "Conversion Rate Optimization for Shopify & DTC Brands - Meet Khunt",
+    title: "Conversion Rate Optimization for Shopify & DTC Brands | Meet Khunt",
     description:
       "Conversion rate optimization for DTC brands from Meet Khunt: page reviews, fixes in priority order, and A/B tests set up properly on Shopify stores, funnels and landing pages.",
   },

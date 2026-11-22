@@ -10,7 +10,7 @@
 export const AS_PATH = "/advertorial-system/";
 
 export const AS_META = {
-  title: "AI Advertorial & Listicle Builder for D2C Brands - Claude-Based System",
+  title: "AI Advertorial & Listicle Builder for D2C Brands | Claude-Based System",
   description:
     "A Claude-based system that turns a reference advertorial, your product page and a marketing angle into a ready-to-edit advertorial or listicle in Shopify, Funnelish, GemPages, Replo or any page builder, so D2C brands and agencies can test more angles faster.",
 };

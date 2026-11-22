@@ -11,7 +11,7 @@ import { CONTACT, MAIN_SERVICES } from "@/lib/data";
  */
 
 export const metadata: Metadata = {
-  title: { absolute: "Page not found - Meet Khunt" },
+  title: { absolute: "Page not found | Meet Khunt" },
   description: "This page doesn't exist. Head back home, browse the work, or pick a service.",
   robots: { index: false, follow: true },
 };
