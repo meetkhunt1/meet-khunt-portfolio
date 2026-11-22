@@ -56,7 +56,7 @@ const CODE_LANGS = [
   "http",
 ] as const;
 
-const CODE_THEME = "github-light";
+const CODE_THEME = "github-dark-default";
 
 let highlighter: Promise<Highlighter> | null = null;
 const getHighlighter = () =>

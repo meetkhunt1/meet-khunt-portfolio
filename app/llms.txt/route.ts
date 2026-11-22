@@ -3,6 +3,8 @@ import { CC_META, CC_PATH } from "@/lib/checkout-champ";
 import { FOOTER, HERO, HIDDEN_PROFILES, INQUIRY, SITE, WORK_CATEGORIES } from "@/lib/data";
 import { D2C_META } from "@/lib/d2c";
 import { SHOPIFY_PAGE } from "@/lib/services";
+import { CRO_PAGE, LANDING_PAGE } from "@/lib/services-landing-cro";
+import { AS_META, AS_PATH } from "@/lib/advertorial-system";
 import { absoluteUrl } from "@/lib/schema";
 
 /* Emitted once at build time as /llms.txt (static export). */
@@ -30,6 +32,9 @@ export async function GET() {
     "## Services",
     link("Shopify development", SHOPIFY_PAGE.path, SHOPIFY_PAGE.meta.description),
     link("Checkout Champ development", CC_PATH, CC_META.description),
+    link("Landing page development", LANDING_PAGE.path, LANDING_PAGE.meta.description),
+    link("Conversion optimization", CRO_PAGE.path, CRO_PAGE.meta.description),
+    link("Claude-based advertorial system", AS_PATH, AS_META.description),
     link("Landing pages and advertorials", "/d2c/", D2C_META.description),
     "",
     "## Work",

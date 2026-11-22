@@ -22,6 +22,7 @@ export const HERO = {
   headline: "Storefronts & landing pages built to convert",
   sub: "Faster load times, clearer hierarchy and stronger product presentation - the frontend work that actually moves revenue for DTC brands.",
   cta: "Let’s talk",
+  ctaSecondary: { label: "See my work", href: "/projects/" },
   /** Real client names, not an invented rating. Every one has a case study. */
   proof: "Shipping for Luma Nutrition, Hume Health, Aavilo, Baby Gains & more",
   /**
@@ -144,6 +145,8 @@ export type Project = {
   brand: string;
   /** One-line pitch under the card title on /projects */
   summary: string;
+  /** Platforms shown on the case study. Leave out to infer from the services. */
+  tools?: string[];
   /** Which /projects filter tabs this project belongs to (see WORK_FILTERS) */
   filters: WorkFilter[];
   /** Shown in the home-page "Selected work" grid; every project shows on /projects */
@@ -166,7 +169,7 @@ export const PROJECTS: Project[] = [
     slug: "athletic-annex",
     title: "Athletic Annex: Find the shoe that fits",
     category: "SHOPIFY · COLLECTION PAGE",
-    image: "/projects/annex-cover.webp",
+    image: "/projects/annex-card.webp",
     brand: "Athletic Annex",
     summary:
       "A Shopify collection page rebuilt around how runners actually shop: by activity, not by SKU.",
@@ -230,7 +233,7 @@ export const PROJECTS: Project[] = [
     slug: "riversol",
     title: "Riversol: Dermatologist-developed skincare",
     category: "SHOPIFY · LANDING PAGE",
-    image: "/projects/riversol-cover.webp",
+    image: "/projects/riversol-card.webp",
     brand: "Riversol",
     summary:
       "A long-form Shopify landing page that teaches the routine before it asks for the sale.",
@@ -294,7 +297,7 @@ export const PROJECTS: Project[] = [
     slug: "jadu-beauty",
     title: "Jadu Beauty: Haircare with a clean label",
     category: "SHOPIFY · LANDING PAGE",
-    image: "/projects/jadu-cover.webp",
+    image: "/projects/jadu-card.webp",
     brand: "Jadu Beauty",
     summary:
       "A founder-led haircare page that argues the formula before it sells the bundle.",
@@ -691,23 +694,86 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    slug: "wacky-jackys",
+    title: "Wacky Jacky's: Batik fabrics and textile retreats",
+    category: "SHOPIFY · STORE MANAGEMENT",
+    image: "/projects/wacky-jackys-card.webp",
+    brand: "Wacky Jacky's",
+    summary:
+      "Ongoing Shopify store management and design improvements for a batik fabric and textile retreat brand.",
+    filters: ["Shopify"],
+    tools: ["Shopify"],
+    tag: "Batik Fabrics & Textile Retreats (Shopify Store Management)",
+    headline: "Shopify Store Management & Design Improvements",
+    description: [
+      "Wacky Jacky's ships hand-made batik fabrics from Bali and runs textile retreats in Bali and Java for quilters and makers. The store sells fabric collections, a monthly mystery box and retreat places, so it changes often as new seasons and collections arrive.",
+      "I worked on the Shopify side of the business: managing the store day to day and improving the design of its pages, so new collections, retreats and offers are easy to find and the storefront keeps a consistent, polished look.",
+    ],
+    services: [
+      "Shopify Store Management",
+      "Shopify Design Improvements",
+      "Collection & Product Updates",
+      "Homepage Sections",
+      "Responsive Development",
+    ],
+    industries: ["Batik Fabrics", "Quilting & Textiles", "Retreats & Travel"],
+    liveUrl: "https://wackyjackys.com/",
+    gallery: [
+      {
+        src: "/projects/wacky-jackys-hero.webp",
+        alt: "Wacky Jacky's Shopify homepage with the Mystery Monthly Box banner",
+        width: 1920,
+        height: 1100,
+        full: true,
+      },
+      {
+        src: "/projects/wacky-jackys-retreats.webp",
+        alt: "Wacky Jacky's upcoming textile retreats section",
+        width: 1920,
+        height: 1050,
+        full: true,
+      },
+      {
+        src: "/projects/wacky-jackys-collection.webp",
+        alt: "Wacky Jacky's batik fabric collection with category tabs",
+        width: 1920,
+        height: 1050,
+        full: true,
+      },
+      {
+        src: "/projects/wacky-jackys-testimonials.webp",
+        alt: "Wacky Jacky's retreat testimonials and brand highlights",
+        width: 1920,
+        height: 1980,
+        full: true,
+      },
+      {
+        src: "/projects/wacky-jackys-community.webp",
+        alt: "Wacky Jacky's retreat photo gallery section",
+        width: 1920,
+        height: 1560,
+        full: true,
+      },
+    ],
+  },
+  {
     slug: "kitchen-corner",
     title: "Kitchen Corner: Craftsmanship online",
-    category: "WORDPRESS",
+    category: "HEADLESS WORDPRESS",
     image: "/projects/kitchen-corner-card.webp",
     brand: "Kitchen Corner",
     summary:
-      "A corporate WordPress site that turns a twenty-year company story into credibility.",
+      "A headless WordPress site that turns a twenty-year company story into credibility.",
     filters: ["WordPress"],
     featured: true,
-    tag: "Kitchen Solutions Brand (WordPress Development)",
-    headline: "Corporate Website Design & Development",
+    tag: "Kitchen Solutions Brand (Headless WordPress Development)",
+    headline: "Headless WordPress Website Design & Development",
     description: [
       "Kitchen Corner wanted a professional website to showcase the company's journey, expertise, completed projects, and product offerings. The objective was to establish credibility while creating an informative platform that highlights the brand's experience and craftsmanship.",
-      "The website was built on WordPress with a clean, modern design, intuitive navigation, responsive layouts, and structured content that effectively communicates the company's history, services, and portfolio.",
+      "The website was built as a headless WordPress site: WordPress manages the content, delivered to a separate custom front end with a clean, modern design, intuitive navigation, responsive layouts, and structured content that effectively communicates the company's history, services, and portfolio.",
     ],
     services: [
-      "WordPress Development",
+      "Headless WordPress Development",
       "Website Design",
       "UI/UX Design",
       "Responsive Development",
@@ -758,9 +824,6 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-/** Home page shows a curated subset; /projects shows every project. */
-export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
-
 /**
  * The offer, in the words used to sell it. Single source for both the header's
  * Services dropdown and the About block, so the two can't drift apart. Every
@@ -784,8 +847,8 @@ export const SERVICES = [
   },
   {
     label: "Landing Pages",
-    href: "/#services",
-    hash: "#services",
+    href: "/landing-page-developer/",
+    hash: undefined,
     blurb:
       "Standalone pages and advertorials built to take paid traffic. Send a reference link, get a live page in about an hour.",
   },
@@ -805,8 +868,8 @@ export const SERVICES = [
   },
   {
     label: "Conversion Optimization",
-    href: "/#services",
-    hash: "#services",
+    href: "/conversion-optimization/",
+    hash: undefined,
     blurb:
       "Find what the current page is costing you, fix it, and measure the difference instead of guessing at it.",
   },
@@ -835,9 +898,9 @@ export const SHOPIFY_SERVICE = {
 };
 
 /**
- * The four services shown anywhere in the UI (header dropdown, home Services
- * list, About). Shopify and Checkout Champ are the main offers; Landing Pages
- * and Conversion Optimization sit beside them. The other SERVICES entries are
+ * The four services shown in the UI lists (header dropdown, About). Shopify
+ * and Checkout Champ are the main offers; Landing Pages and Conversion
+ * Optimization sit beside them. The other SERVICES entries are
  * kinds of work, not separate offers, so they stay out of the UI and only
  * feed structured data (and their own pages later).
  */
@@ -849,51 +912,209 @@ export const MAIN_SERVICES = [
   byLabel("Conversion Optimization"),
 ];
 
-/** The home-page Services list. */
-export const HOME_SERVICES = MAIN_SERVICES;
-
 /**
- * The stack, as a logo wall.
+ * The five platforms the work is built on, shown as app tiles with a row of
+ * things a client can ask for underneath.
  *
- * `src` is a logo file; `mark` narrows the box for square icons so they do not
- * float in a wordmark-sized slot. Three tools (Klaviyo, Unbounce, GoHighLevel)
- * have no usable logo — Simple Icons does not carry them and the only favicons
- * available are solid tiles that would render as black squares once the wall's
- * monochrome filter is applied — so they are set as type instead. Drop a
- * transparent logo into public/tools/ and add a `src` to promote them.
+ * `bg` is the tile colour; `size` is the logo width inside the tile;
+ * `knockout` turns the logo white (for logos placed on their brand colour).
+ * Figma has no file: its mark is drawn inline by the section.
  */
 export const TOOLS_SECTION = {
-  heading: "Tools I’ve worked with",
+  heading: "From Figma to checkout",
+  sub: "I build on the platforms DTC brands already sell with, from the first design file to the last upsell.",
   tools: [
-    { label: "Shopify", src: "/tools/shopify.webp" },
-    { label: "WordPress", src: "/tools/wordpress.svg", mark: true },
-    { label: "WooCommerce", src: "/tools/woocommerce.svg", mark: true },
-    { label: "Webflow", src: "/tools/webflow.svg", mark: true },
-    { label: "Wix", src: "/tools/wix.svg", mark: true },
-    { label: "Figma", src: "/tools/figma.svg", mark: true },
-    { label: "Replo", src: "/tools/replo.webp" },
-    { label: "PageFly", src: "/tools/pagefly.webp" },
-    { label: "GemPages", src: "/tools/gempages.webp" },
-    { label: "Funnelish", src: "/tools/funnelish.svg" },
-    { label: "CheckoutChamp", src: "/tools/checkout-champ.png" },
-    { label: "Klaviyo" },
-    { label: "Unbounce" },
-    { label: "GoHighLevel" },
-  ] as { label: string; src?: string; mark?: boolean }[],
+    { label: "Shopify", src: "/tools/shopify-bag.webp", bg: "#ffffff", size: "54%" },
+    { label: "Checkout Champ", src: "/tools/checkout-champ-mark.webp", bg: "#f36319", size: "64%", knockout: true },
+    { label: "Funnelish", src: "/tools/funnelish-mark.webp", bg: "#24242c", size: "62%" },
+    { label: "Figma", bg: "#1e1e1e", size: "34%" },
+    { label: "WordPress", src: "/tools/wordpress.svg", bg: "#21759b", size: "58%", knockout: true },
+  ] as { label: string; src?: string; bg: string; size: string; knockout?: boolean }[],
+  chips: [
+    "Redesign a Shopify store",
+    "Launch a sales funnel",
+    "Set up subscriptions",
+    "Add upsells & downsells",
+    "Turn Figma into code",
+    "Build a WordPress site",
+  ],
 };
 
-/** Copy for the home-page services section. First person: this is a portfolio. */
+/**
+ * Home-page services as cards: a macOS-style window (working close,
+ * minimise and zoom buttons), a glowing line illustration (drawn in code, see
+ * ServiceGraphic) and the copy. `details` shows in the zoomed window. First
+ * person: this is a portfolio.
+ */
 export const SERVICES_SECTION = {
   heading: "Services",
-  sub: "I design, build and optimize storefronts and landing pages for DTC brands. That includes:",
-  shots: [
+  sub: "Two platforms I specialise in, and the work that makes them sell.",
+  cards: [
     {
-      src: "/projects/aavilo-pdp-purple.webp",
-      alt: "Aavilo mobile ordering experience",
+      tag: "Shopify",
+      title: "Shopify Development",
+      text: "Store redesigns, product and collection pages, and Figma to Shopify builds your team can edit.",
+      href: "/shopify-developer/",
+      linkLabel: "Explore Shopify development",
+      details: [
+        "Store redesigns and migrations",
+        "Product and collection pages",
+        "Figma to Shopify, section by section",
+        "Custom theme sections in Liquid",
+      ],
+      graphic: "shopify",
     },
     {
-      src: "/projects/luma-turmeric.webp",
-      alt: "Luma Nutrition turmeric curcumin advertorial",
+      tag: "Checkout Champ",
+      title: "Checkout Champ Funnels",
+      text: "Advertorials, checkouts, upsells and subscriptions, tested with real orders before traffic hits.",
+      href: "/checkout-champ-developer/",
+      linkLabel: "Explore Checkout Champ development",
+      details: [
+        "Advertorial, VSL and quiz pages",
+        "Checkout, upsell and downsell flows",
+        "Subscriptions and recurring billing",
+        "Pixels, UTMs and A/B tests set up and verified",
+      ],
+      graphic: "funnel",
+    },
+    {
+      tag: "Landing Pages",
+      title: "Landing Pages",
+      text: "Long-form landing pages and advertorials built to take paid traffic from Meta and Google.",
+      href: "/landing-page-developer/",
+      linkLabel: "Explore landing page development",
+      details: [
+        "Long-form landing pages",
+        "Editorial advertorials",
+        "Built for Meta and Google traffic",
+        "Fast and responsive on every phone",
+      ],
+      graphic: "landing",
+    },
+    {
+      tag: "CRO",
+      title: "Conversion Optimization",
+      text: "Find what the current page is costing you, fix it, and measure the difference.",
+      href: "/conversion-optimization/",
+      linkLabel: "Explore conversion optimization",
+      details: [
+        "A review of what the page is costing you",
+        "Clear fixes, in priority order",
+        "A/B tests set up properly",
+        "The difference measured before and after",
+      ],
+      graphic: "cro",
+    },
+  ] as {
+    tag: string;
+    title: string;
+    text: string;
+    href: string;
+    linkLabel: string;
+    details: string[];
+    graphic: "shopify" | "funnel" | "landing" | "cro";
+  }[],
+};
+
+/** Home-page work grid: four projects that cover the range of the work. */
+export const SELECTED_WORK = {
+  heading: "Selected work",
+  sub: "A few recent builds across Shopify stores, funnels and landing pages.",
+  slugs: ["baby-gains", "hume-health", "hanson-of-sonoma", "aavilo"],
+  allHref: "/projects/",
+  allLabel: "See all case studies",
+};
+
+/**
+ * Home-page "How I work": four stages on a horizontal timeline. Each stage
+ * has an intro line, three steps and the outcome it leaves you with.
+ */
+export const PROCESS = {
+  heading: "How I work",
+  sub: "Four stages from first message to a live page, so you always know what happens next.",
+  stages: [
+    {
+      icon: "brief",
+      title: "Brief & Scope",
+      intro: "Every project starts with the goal, not the page.",
+      steps: [
+        "You send the goal, the store or Figma file, and the pages that matter",
+        "I review what is live now and ask the questions that change the build",
+        "A clear scope and a fixed quote before any work starts",
+      ],
+      outcome: "You know exactly what you get and what it costs",
+    },
+    {
+      icon: "design",
+      title: "Design",
+      intro: "Layouts planned for the phone first, where most traffic lands.",
+      steps: [
+        "Desktop and mobile layouts, or your Figma file checked",
+        "Missing states and breakpoints filled in before the build",
+        "Hierarchy built around the offer and the call to action",
+      ],
+      outcome: "A design that is ready to build, not just to look at",
+    },
+    {
+      icon: "build",
+      title: "Build",
+      intro: "Hand-built, and easy for your team to edit afterwards.",
+      steps: [
+        "Shopify theme sections in Liquid, HTML, CSS and JavaScript",
+        "Funnels configured in Checkout Champ and Funnelish",
+        "Offers, step paths and tracking set up as part of the build",
+      ],
+      outcome: "Pages your team can edit without touching code",
+    },
+    {
+      icon: "launch",
+      title: "Test & Launch",
+      intro: "Proved working before paid traffic hits it.",
+      steps: [
+        "Checked on real devices and browsers",
+        "Every funnel run end to end with real test orders",
+        "Pixels and events verified, then launched with you",
+      ],
+      outcome: "A launch with no surprises after it goes live",
+    },
+  ] as {
+    icon: "brief" | "design" | "build" | "launch";
+    title: string;
+    intro: string;
+    steps: string[];
+    outcome: string;
+  }[],
+};
+
+/** Home-page FAQ. Also emitted as FAQPage structured data on the home page. */
+export const HOME_FAQ = {
+  heading: "Questions, answered",
+  sub: "The things people usually ask before we start. Anything else, just ask.",
+  items: [
+    {
+      q: "How much does a project cost?",
+      a: "It depends on scope: one landing page is a much smaller job than a store redesign or a full funnel. Send the details through the inquiry form and I'll quote the agreed scope before any work starts.",
+    },
+    {
+      q: "How long does a project take?",
+      a: "That also depends on scope. You get a timeline together with the quote, so you know when to expect each page before anything starts.",
+    },
+    {
+      q: "Which platforms do you build on?",
+      a: "Shopify for stores, Checkout Champ and Funnelish for funnels, and WordPress for content sites. Designs usually start in Figma, and I can design them too.",
+    },
+    {
+      q: "Do you work with agencies?",
+      a: "Yes. I take on white-label development for agencies, working to your process and staying invisible to your client.",
+    },
+    {
+      q: "Can my team edit the pages after launch?",
+      a: "Yes. Shopify pages are built as theme sections you edit in the theme editor, and funnel pages stay editable in the platform's page builder.",
+    },
+    {
+      q: "How do we get started?",
+      a: "Send a project inquiry with your goal and any links or Figma files. I read every message myself and reply by email with questions or a next step.",
     },
   ],
 };
@@ -914,16 +1135,8 @@ export const NAV = {
       /* The four main services only (see MAIN_SERVICES). */
       items: MAIN_SERVICES,
     },
-    { label: "Case Studies", href: "/projects/" },
+    { label: "Work", href: "/projects/" },
   ],
-};
-
-/** Copy for the home-page work carousel */
-export const WORKS = {
-  eyebrow: "Case Studies",
-  heading: "Selected work",
-  subheading:
-    "I don’t just talk about what I can build - here’s what I’ve already shipped.",
 };
 
 export const ABOUT = {
@@ -951,6 +1164,9 @@ export const CONTACT = {
   /* Every "Let’s talk" / "Work with me" button opens the inquiry form. */
   href: "/contact/",
   label: "Let’s talk",
+  /* Closing section on the home page */
+  closingText: "Have a store, funnel or landing page in mind? Tell me what you are building and I will reply by email.",
+  closingCta: "Send a project inquiry",
 };
 
 /**
@@ -980,7 +1196,7 @@ export const INQUIRY = {
   /** Photo reel under the form: stacked, one shown per second, grain on top. */
   reel: {
     images: [1, 2, 3, 4, 5, 6].map((n) => `/images/contact/reel/reel-${n}.webp`),
-    grain: "/images/contact/reel/grain.png",
+    grain: "/images/grain.png",
   },
   /** Recent work shown under the form. */
   showcase: [
@@ -1039,7 +1255,7 @@ export const FOOTER = {
       title: "Meet Khunt",
       links: [
         { label: "Home", href: "/" },
-        { label: "Case Studies", href: "/projects/" },
+        { label: "Work", href: "/projects/" },
         { label: "Blog", href: "/blog/" },
         { label: "Let's talk", href: "/contact/" },
       ],
@@ -1049,8 +1265,8 @@ export const FOOTER = {
       links: [
         { label: "Shopify Development", href: "/shopify-developer/" },
         { label: "Checkout Champ Funnels", href: "/checkout-champ-developer/" },
-        { label: "Landing Pages", href: "/projects/landing-pages/" },
-        { label: "Conversion Optimization", href: "/#services" },
+        { label: "Landing Pages", href: "/landing-page-developer/" },
+        { label: "Conversion Optimization", href: "/conversion-optimization/" },
       ],
     },
     {

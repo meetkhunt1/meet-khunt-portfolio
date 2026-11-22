@@ -74,7 +74,7 @@ export default function CustomCursor() {
       <span
         ref={labelRef}
         className="text-[2.5px] font-semibold uppercase tracking-[0.05em] text-black opacity-0"
-        style={{ fontFamily: "var(--font-inter)" }}
+        style={{ fontFamily: "var(--font-body)" }}
       >
         View
       </span>

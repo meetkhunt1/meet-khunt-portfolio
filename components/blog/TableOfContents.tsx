@@ -68,7 +68,7 @@ export function TocCard({
   return (
     <nav
       aria-label="Table of contents"
-      className="hidden rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(16,24,40,0.35)] lg:block"
+      className="hidden rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(0,0,0,0.35)] lg:block"
     >
       <div className="flex items-center justify-between gap-4 border-b-2 border-fg pb-3">
         <p className="font-sans text-[17px] font-semibold tracking-[-0.01em] text-fg">

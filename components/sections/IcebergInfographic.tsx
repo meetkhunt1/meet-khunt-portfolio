@@ -10,7 +10,8 @@ import { CC_ICEBERG } from "@/lib/checkout-champ";
  * same width. Everything readable is HTML, not SVG text: it reflows on a
  * phone, stays sharp, and is crawlable like the rest of the page.
  *
- * Palette is scoped to this component: the site's ink and white, plus a
+ * Palette is scoped to this component (fixed ink #101828 and white, so it
+ * reads the same on the dark site), plus a
  * sky-to-deep-water blue range.
  */
 
@@ -95,7 +96,7 @@ function Chip({
       <span
         className={`block rounded-[10px] border px-3 py-2 font-ui text-[12px] font-semibold leading-[1.3] tracking-[-0.01em] lg:text-[12.5px] ${
           above
-            ? "border-[#c6daef] bg-white text-fg shadow-[0_6px_16px_-10px_rgba(16,24,40,0.35)]"
+            ? "border-[#c6daef] bg-white text-[#101828] shadow-[0_6px_16px_-10px_rgba(0,0,0,0.35)]"
             : "border-white/20 bg-white/[0.08] text-white backdrop-blur-sm"
         } ${side === "left" ? "sm:text-right" : ""}`}
       >
@@ -135,19 +136,19 @@ export default function IcebergInfographic() {
     <figure
       aria-labelledby="iceberg-title"
       aria-describedby="iceberg-desc"
-      className="overflow-hidden rounded-[16px] border border-line shadow-[0_24px_60px_-30px_rgba(16,24,40,0.45)]"
+      className="overflow-hidden rounded-[16px] border border-[#101828]/12 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.45)]"
     >
       {/* Sky: headline + what customers see */}
       <div className="bg-[linear-gradient(180deg,#ffffff_0%,#eef5fc_100%)] px-5 pt-6 sm:px-7 sm:pt-8">
         <p
           id="iceberg-title"
-          className="max-w-[20ch] font-sans text-[22px] font-medium leading-[1.1] tracking-[-0.02em] text-fg sm:text-[26px]"
+          className="max-w-[20ch] font-sans text-[22px] font-medium leading-[1.1] tracking-[-0.02em] text-[#101828] sm:text-[26px]"
         >
           {CC_ICEBERG.headline}
         </p>
         <p
           id="iceberg-desc"
-          className="mt-3 max-w-[46ch] font-ui text-[14px] leading-[1.55] text-fg/70"
+          className="mt-3 max-w-[46ch] font-ui text-[14px] leading-[1.55] text-[#101828]/70"
         >
           {CC_ICEBERG.supporting}
         </p>
@@ -201,7 +202,7 @@ export default function IcebergInfographic() {
         </svg>
 
         {/* Connector on the waterline (tablet+; repeated below on phones) */}
-        <span className="absolute right-5 top-0 z-[1] hidden -translate-y-1/2 items-center gap-1.5 rounded-full border border-[#c6daef] bg-white px-3 py-1.5 font-ui text-[11px] font-semibold text-fg shadow-[0_6px_16px_-8px_rgba(16,24,40,0.4)] sm:inline-flex sm:right-7">
+        <span className="absolute right-5 top-0 z-[1] hidden -translate-y-1/2 items-center gap-1.5 rounded-full border border-[#c6daef] bg-white px-3 py-1.5 font-ui text-[11px] font-semibold text-[#101828] shadow-[0_6px_16px_-8px_rgba(0,0,0,0.4)] sm:inline-flex sm:right-7">
           <span aria-hidden>⇅</span>
           {CC_ICEBERG.connector}
         </span>

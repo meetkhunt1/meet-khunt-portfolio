@@ -68,7 +68,7 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
           <Link
             href="/"
             data-cursor="grow"
-            className="font-sans text-[22px] font-bold uppercase leading-none tracking-[-0.01em] text-fg transition-colors duration-200 hover:text-muted"
+            className="font-ui text-[20px] font-bold uppercase leading-none tracking-[0.01em] text-fg transition-colors duration-200 hover:text-muted"
           >
             {SITE.headerName}
           </Link>
@@ -98,7 +98,7 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
                 {/* Panel sits flush under the bar, so the pointer never
                     crosses dead space on the way down. */}
                 {entry.items && (
-                  <div className="invisible absolute left-1/2 top-full min-w-[248px] -translate-x-1/2 translate-y-1.5 rounded-[14px] border border-line bg-bg p-2 opacity-0 shadow-[0_24px_48px_-24px_rgba(16,24,40,0.45)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className="invisible absolute left-1/2 top-full min-w-[248px] -translate-x-1/2 translate-y-1.5 rounded-[14px] border border-line bg-bg p-2 opacity-0 shadow-[0_24px_48px_-24px_rgba(0,0,0,0.45)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     {entry.items.map((item) => (
                       <Link
                         key={item.label}
@@ -155,7 +155,7 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
       <div
         id="site-menu"
         inert={!open}
-        className={`absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-b border-line bg-bg shadow-[0_24px_40px_-28px_rgba(16,24,40,0.5)] transition-all duration-200 md:hidden ${
+        className={`absolute inset-x-0 top-full max-h-[calc(100dvh-var(--header-h))] overflow-y-auto border-b border-line bg-bg shadow-[0_24px_40px_-28px_rgba(0,0,0,0.5)] transition-all duration-200 md:hidden ${
           open
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-2 opacity-0"

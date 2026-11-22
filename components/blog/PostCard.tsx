@@ -21,7 +21,7 @@ export default function PostCard({
     <Link
       href={post.path}
       data-cursor="view"
-      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-bg transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(16,24,40,0.3)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-bg transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.3)]"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-line bg-surface">
         <PostCover post={post} sizes={sizes} />

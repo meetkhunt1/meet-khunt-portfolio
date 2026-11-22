@@ -1,11 +1,13 @@
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
-import Works from "@/components/sections/Works";
 import Services from "@/components/sections/Services";
+import SelectedWork from "@/components/sections/SelectedWork";
+import Process from "@/components/sections/Process";
 import Tools from "@/components/sections/Tools";
 import About from "@/components/sections/About";
+import HomeFaq from "@/components/sections/HomeFaq";
 import Contact from "@/components/sections/Contact";
-import { SERVICES, SITE } from "@/lib/data";
+import { HOME_FAQ, SERVICES, SITE } from "@/lib/data";
 import { CC_PATH } from "@/lib/checkout-champ";
 import {
   PERSON_ID,
@@ -64,6 +66,15 @@ const structuredData = jsonLd([
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": PERSON_ID },
   },
+  {
+    "@type": "FAQPage",
+    "@id": `${SITE_URL}/#faq`,
+    mainEntity: HOME_FAQ.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  },
 ]);
 
 export default function Home() {
@@ -72,10 +83,12 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
       <main className="flex w-full flex-col items-center overflow-hidden">
         <Hero />
-        <Works />
         <Services />
+        <SelectedWork />
+        <Process />
         <Tools />
         <About />
+        <HomeFaq />
         <Contact />
         <Footer />
       </main>

@@ -45,7 +45,9 @@ export default function FooterReveal({
   return (
     <div
       className={`relative w-full ${className}`}
-      style={height ? { height, clipPath: "inset(0)" } : undefined}
+      /* Clipped 1px from the top: at the slot's top edge the fixed footer
+         could peek through as a hairline seam above the rounded strip. */
+      style={height ? { height, clipPath: "inset(1px 0 0 0)" } : undefined}
     >
       <div ref={ref} className={height ? "fixed inset-x-0 bottom-0" : ""}>
         {children}
