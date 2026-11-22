@@ -238,6 +238,88 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    slug: "johnson-spinal-care",
+    title: "Johnson Spinal Care: A $45 new patient offer page",
+    category: "GOHIGHLEVEL · LANDING PAGE",
+    image: "/projects/johnson-card.webp",
+    brand: "Johnson Spinal Care",
+    summary:
+      "A GoHighLevel landing page that turns a $45 new patient special into booked appointments.",
+    filters: ["Landing Pages"],
+    /* GoHighLevel has no tile in TOOLS_SECTION; empty keeps the platform
+       list from being guessed from the services */
+    tools: [],
+    tag: "Chiropractic Clinic (GoHighLevel Landing Page)",
+    headline: "New Patient Offer Landing Page in GoHighLevel",
+    description: [
+      "Johnson Spinal Care is a chiropractic clinic in Minnesota. Their $45 New Patient Special needed a page of its own: somewhere ad traffic could land, understand the offer in seconds and book a first visit without hunting through a full website.",
+      "I built the page in GoHighLevel around that one action. A welcome video and the offer open the page, followed by why patients choose the clinic, what the first visit includes, an appointment form, video patient stories and a closing offer, with a Claim Your Offer button repeated down the page.",
+    ],
+    services: [
+      "GoHighLevel Landing Page",
+      "Offer Page Design",
+      "Appointment Form",
+      "Video Testimonials",
+      "Responsive Development",
+    ],
+    industries: ["Chiropractic", "Healthcare"],
+    liveUrl: "https://offer.johnsonspinalcare.com/",
+    gallery: [
+      {
+        src: "/projects/johnson-mobile-hero.webp",
+        alt: "Johnson Spinal Care offer page on mobile: $45 new patient special and welcome video",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/johnson-mobile-why.webp",
+        alt: "Johnson Spinal Care on mobile: why patients choose the clinic",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/johnson-mobile-receive.webp",
+        alt: "Johnson Spinal Care on mobile: what the first visit includes",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/johnson-mobile-schedule.webp",
+        alt: "Johnson Spinal Care on mobile: schedule your appointment section",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/johnson-hero.webp",
+        alt: "Johnson Spinal Care offer page hero with the $45 new patient special and welcome video",
+        width: 1920,
+        height: 1983,
+        full: true,
+      },
+      {
+        src: "/projects/johnson-why.webp",
+        alt: "Why Choose Johnson Spinal Care section with an image carousel",
+        width: 1920,
+        height: 1062,
+        full: true,
+      },
+      {
+        src: "/projects/johnson-offer.webp",
+        alt: "What You'll Receive cards and the appointment booking form",
+        width: 1920,
+        height: 1781,
+        full: true,
+      },
+      {
+        src: "/projects/johnson-stories.webp",
+        alt: "Patient story videos, closing offer and clinic footer",
+        width: 1920,
+        height: 1511,
+        full: true,
+      },
+    ],
+  },
+  {
     slug: "athletic-annex",
     title: "Athletic Annex: Find the shoe that fits",
     category: "SHOPIFY · COLLECTION PAGE",
