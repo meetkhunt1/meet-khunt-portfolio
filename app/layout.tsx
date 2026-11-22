@@ -5,7 +5,7 @@ import "./globals.css";
 import SiteChrome from "@/components/providers/SiteChrome";
 import Header from "@/components/layout/Header";
 import Analytics from "@/components/providers/Analytics";
-import { SITE } from "@/lib/data";
+import { PROJECTS, SITE } from "@/lib/data";
 import { getPosts } from "@/lib/blog/posts";
 
 /* Type is shared with sketfuture.com so the two sites read as one brand:
@@ -60,7 +60,7 @@ export default async function RootLayout({
     >
       <body className="min-h-screen bg-bg text-fg antialiased">
         <SiteChrome>
-          <Header showBlog={showBlog} />
+          <Header showBlog={showBlog} caseStudySlugs={PROJECTS.map((p) => p.slug)} />
           {children}
         </SiteChrome>
         <div className="site-grain" aria-hidden />

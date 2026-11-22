@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/anim/FadeIn";
 import ScrollLink from "@/components/ui/ScrollLink";
+import MockupHero from "@/components/sections/MockupHero";
+import { CASE_STUDY_HERO } from "@/lib/case-study-hero";
 import { CONTACT, type Project, type ShowcasePage } from "@/lib/data";
 
 /**
@@ -25,10 +27,20 @@ export default function PageShowcase({ project }: { project: Project }) {
   const types = [...new Set(pages.map((p) => p.type))];
   const sites = [...new Set(pages.map((p) => host(p.url)))];
 
+  const mockup = CASE_STUDY_HERO[project.slug];
+
   return (
     <>
+      {mockup && (
+        <MockupHero
+          hero={mockup}
+          label={`${project.brand}: ${pages[0]?.title ?? "page"}, scrolling`}
+          alt={pages[0]?.title ?? project.brand}
+        />
+      )}
+
       {/* Intro */}
-      <section className="section-row pt-[24px] lg:pt-[32px]">
+      <section className={`section-row ${mockup ? "pt-[56px] lg:pt-[72px]" : "pt-[24px] lg:pt-[32px]"}`}>
         <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#111116] px-6 py-12 lg:px-16 lg:py-20">
           <div
             aria-hidden

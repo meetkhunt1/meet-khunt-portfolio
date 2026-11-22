@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLenis } from "@/components/providers/SmoothScroll";
 import { CONTACT, NAV, SITE } from "@/lib/data";
 
@@ -32,8 +33,19 @@ function ChevronDown({ className = "" }: { className?: string }) {
 /** Top-level link added once the blog has a published article. */
 const BLOG_NAV = { label: "Blog", href: "/blog/", hash: undefined, items: undefined };
 
-export default function Header({ showBlog = false }: { showBlog?: boolean }) {
+export default function Header({
+  showBlog = false,
+  caseStudySlugs = [],
+}: {
+  showBlog?: boolean;
+  /** Slugs of /projects/<slug>/ case studies (not the filter pages). */
+  caseStudySlugs?: string[];
+}) {
   const [open, setOpen] = useState(false);
+  /* On a case study the header scrolls away with the page instead of staying
+     pinned, so nothing sits over the work while a visitor reads it. */
+  const pathname = usePathname();
+  const caseStudy = caseStudySlugs.some((s) => pathname?.replace(/\/$/, "") === `/projects/${s}`);
   const navItems: (typeof NAV.items)[number][] = showBlog
     ? [...NAV.items, BLOG_NAV]
     : NAV.items;
@@ -62,7 +74,9 @@ export default function Header({ showBlog = false }: { showBlog?: boolean }) {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 border-b border-line bg-bg">
+    <header
+      className={`${caseStudy ? "absolute" : "fixed"} inset-x-0 top-0 z-30 border-b border-line bg-bg`}
+    >
       <div className="section-row flex h-[var(--header-h)] items-center">
         <div className="header-in flex w-full items-center gap-8">
           <Link

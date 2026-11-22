@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/anim/FadeIn";
 import { ToolTile } from "@/components/sections/Tools";
+import MockupHero from "@/components/sections/MockupHero";
+import { CASE_STUDY_HERO } from "@/lib/case-study-hero";
 import { CONTACT, TOOLS_SECTION, type GalleryImage, type Project } from "@/lib/data";
 
 /**
@@ -36,9 +38,19 @@ export default function CaseStudy({ project }: { project: Project }) {
   const wide = project.gallery.filter((g) => !portrait.includes(g));
   const tools = projectTools(project);
 
+  const mockup = CASE_STUDY_HERO[project.slug];
+
   return (
     <>
-      {/* Hero */}
+      {/* Hero: the live site scrolling in the laptop mockup, or (for a
+          project with no hero entry yet) the cover in a browser window */}
+      {mockup ? (
+        <MockupHero
+          hero={mockup}
+          label={`${project.brand} website, scrolling`}
+          alt={`${project.brand} website`}
+        />
+      ) : (
       <section className="section-row pt-[24px] lg:pt-[32px]">
         <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#111116] px-5 pb-0 pt-10 lg:px-16 lg:pt-16">
           <div
@@ -68,6 +80,7 @@ export default function CaseStudy({ project }: { project: Project }) {
           </div>
         </div>
       </section>
+      )}
 
       {/* Intro */}
       <section className="section-row grid grid-cols-1 gap-12 pt-[64px] lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-20 lg:pt-[88px]">
