@@ -158,7 +158,7 @@ export default function ContactForm() {
           {status === "sending" ? "Sending..." : INQUIRY.submit}
         </button>
         {status === "error" && (
-          <p role="alert" className="font-ui text-[14px] text-[#b42318]">
+          <p role="alert" className="font-ui text-[14px] text-accent">
             {INQUIRY.errorText}
           </p>
         )}

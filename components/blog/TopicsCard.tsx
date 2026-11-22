@@ -6,7 +6,7 @@ export default function TopicsCard({ active }: { active?: string }) {
   return (
     <nav
       aria-label="Blog topics"
-      className="rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(16,24,40,0.35)]"
+      className="rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(0,0,0,0.35)]"
     >
       <p className="border-b-2 border-fg pb-3 font-sans text-[17px] font-semibold tracking-[-0.01em] text-fg">
         Guides by Topic

@@ -80,13 +80,22 @@ export default function Hero() {
             </p>
 
             <div className="mt-9 flex flex-col items-start gap-5">
-              <a
-                href={CONTACT.href}
-                data-cursor="grow"
-                className="pill rounded-[10px] px-7 py-4 text-[14px] tracking-[-0.01em]"
-              >
-                {HERO.cta}
-              </a>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={CONTACT.href}
+                  data-cursor="grow"
+                  className="pill rounded-[10px] px-7 py-4 text-[14px] tracking-[-0.01em]"
+                >
+                  {HERO.cta}
+                </a>
+                <a
+                  href={HERO.ctaSecondary.href}
+                  data-cursor="grow"
+                  className="pill pill-ghost rounded-[10px] px-7 py-4 text-[14px] tracking-[-0.01em]"
+                >
+                  {HERO.ctaSecondary.label}
+                </a>
+              </div>
 
               <p className="font-ui text-[13px] leading-[1.5] text-muted">
                 {HERO.proof}

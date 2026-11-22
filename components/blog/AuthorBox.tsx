@@ -10,7 +10,7 @@ export default function AuthorBox({ author }: { author: Author }) {
   return (
     <section
       aria-label="About the author"
-      className="flex flex-col gap-6 rounded-[14px] border border-line bg-bg p-6 shadow-[0_18px_50px_-30px_rgba(16,24,40,0.35)] sm:flex-row sm:items-start lg:p-8"
+      className="flex flex-col gap-6 rounded-[14px] border border-line bg-bg p-6 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.35)] sm:flex-row sm:items-start lg:p-8"
     >
       <Image
         src={author.image}

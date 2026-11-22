@@ -9,6 +9,7 @@
  * /projects/ plus its filter pages are what search engines should list.
  */
 
+import { AS_PATH } from "@/lib/advertorial-system";
 import { CC_PATH } from "@/lib/checkout-champ";
 import { PROJECTS, WORK_CATEGORIES } from "@/lib/data";
 
@@ -18,6 +19,9 @@ export const INDEXED_ROUTES: string[] = [
   ...Object.values(WORK_CATEGORIES).map((c) => `/projects/${c.slug}/`),
   CC_PATH,
   "/shopify-developer/",
+  "/landing-page-developer/",
+  "/conversion-optimization/",
+  AS_PATH,
   "/d2c/",
   "/contact/",
 ];

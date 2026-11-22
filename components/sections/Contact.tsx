@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import RevealText from "@/components/anim/RevealText";
-import { CONTACT } from "@/lib/data";
+import { CONTACT, FOOTER } from "@/lib/data";
 
 export default function Contact() {
   const linkRef = useRef<HTMLAnchorElement>(null);
@@ -29,7 +29,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-row relative flex justify-center py-[120px] pb-[200px] lg:py-[200px]"
+      className="section-row relative flex flex-col items-center py-[120px] pb-[160px] text-center lg:py-[180px]"
     >
       {/* "Working worldwide", said quietly. A static SVG rather than inline
           markup: ~2,400 dots would be 60KB of home-page HTML, but as a
@@ -45,10 +45,28 @@ export default function Contact() {
         className="relative z-[1] will-change-transform"
         data-cursor="grow"
       >
-        <RevealText as="h3" className="heading-xl" split="lines">
+        <RevealText as="h2" className="heading-xl" split="lines">
           {CONTACT.label}
         </RevealText>
       </a>
+
+      <p className="relative z-[1] mt-6 max-w-[40ch] font-ui text-[16px] leading-[1.6] text-muted lg:text-[18px]">
+        {CONTACT.closingText}
+      </p>
+      <a
+        href={CONTACT.href}
+        data-cursor="grow"
+        className="pill relative z-[1] mt-8 h-12 rounded-full px-8 text-[15px] tracking-[-0.01em]"
+      >
+        {CONTACT.closingCta}
+      </a>
+      <p className="relative z-[1] mt-6 flex items-center gap-2.5 font-ui text-[14px] text-muted">
+        <span className="relative flex size-2">
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-[#4ade80] opacity-60 motion-reduce:animate-none" />
+          <span className="relative inline-flex size-2 rounded-full bg-[#4ade80]" />
+        </span>
+        {FOOTER.status}
+      </p>
     </section>
   );
 }

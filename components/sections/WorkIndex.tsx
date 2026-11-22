@@ -28,7 +28,7 @@ function WorkCard({ project }: { project: Project }) {
       data-cursor="view"
       className="group flex flex-col"
     >
-      <div className="relative aspect-square w-full overflow-hidden rounded-[14px] border border-fg/20 bg-fg/5 shadow-[0_16px_40px_-18px_rgba(16,24,40,0.25)]">
+      <div className="relative aspect-square w-full overflow-hidden rounded-[14px] border border-fg/20 bg-fg/5 shadow-[0_16px_40px_-18px_rgba(0,0,0,0.25)]">
         <Image
           src={project.image}
           alt={project.title}

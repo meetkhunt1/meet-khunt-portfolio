@@ -176,7 +176,7 @@ export default function FunnelStepArt({ label }: { label: string }) {
     <svg
       viewBox="0 0 50 80"
       aria-hidden="true"
-      className="block w-full rounded-[6px] border border-fg/25 bg-bg text-fg shadow-[0_6px_14px_-10px_rgba(16,24,40,0.35)]"
+      className="block w-full rounded-[6px] border border-fg/25 bg-bg text-fg shadow-[0_6px_14px_-10px_rgba(0,0,0,0.35)]"
     >
       <Art kind={kindOf(label)} />
     </svg>

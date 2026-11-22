@@ -58,7 +58,7 @@ export default function ContactPage() {
         <section className="section-row">
           {/* First screen: sized so the top 10% of the photo reel peeks in
               under it (100svh minus the 80px header and 10% of the reel). */}
-          <div className="flex min-h-[calc(100svh-80px-34px)] flex-col justify-center py-5 sm:min-h-[calc(100svh-80px-42px)] lg:min-h-[calc(100svh-80px-48px)]">
+          <div className="flex min-h-[calc(100svh-80px-34px)] flex-col justify-center py-5 md:min-h-[calc(100svh-80px-42px)] lg:min-h-[calc(100svh-80px-48px)]">
           <div className="mx-auto flex w-full max-w-[920px] flex-col items-center text-center">
             {/* Client proof */}
             <div className="flex items-center gap-3">
@@ -82,7 +82,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <h1 className="mt-5 font-sans text-[34px] font-medium leading-[1.12] tracking-[-0.035em] text-balance text-fg sm:text-[44px] lg:text-[52px]">
+            <h1 className="mt-5 font-sans text-[34px] font-medium leading-[1.12] tracking-[-0.035em] text-balance text-fg md:text-[44px] lg:text-[52px]">
               {INQUIRY.heading}
             </h1>
             <p className="mt-4 max-w-[52ch] font-ui text-[16px] leading-[1.6] text-fg/65 lg:text-[17px]">
@@ -100,7 +100,7 @@ export default function ContactPage() {
           <ImageReel
             images={INQUIRY.reel.images}
             grain={INQUIRY.reel.grain}
-            className="mx-auto h-[340px] w-full max-w-[1180px] rounded-t-[16px] sm:h-[420px] lg:h-[480px]"
+            className="mx-auto h-[340px] w-full max-w-[1180px] rounded-t-[16px] md:h-[420px] lg:h-[480px]"
           />
         </section>
       </main>

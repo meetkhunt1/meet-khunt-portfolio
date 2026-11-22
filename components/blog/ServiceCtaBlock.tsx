@@ -9,7 +9,7 @@ export default function ServiceCtaBlock({ cta }: { cta: ServiceCta }) {
   return (
     <aside
       aria-label="Related service"
-      className="relative overflow-hidden rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(16,24,40,0.35)]"
+      className="relative overflow-hidden rounded-[14px] border border-line bg-bg p-6 shadow-[0_10px_30px_-22px_rgba(0,0,0,0.35)]"
     >
       <span
         aria-hidden

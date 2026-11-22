@@ -1,9 +1,11 @@
 import Link from "next/link";
 import RevealText from "@/components/anim/RevealText";
 import FadeIn from "@/components/anim/FadeIn";
+import ServiceGraphic from "@/components/sections/ServiceGraphic";
 import { CONTACT } from "@/lib/data";
 
-export type ToolMark = "shopify" | "checkout-champ";
+/** A tool logo, or a drawn graphic for services with no tool of their own. */
+export type ToolMark = "shopify" | "checkout-champ" | "landing" | "cro";
 
 export type ServiceHeroContent = {
   /** Two-line headline: the first line in ink, the second in grey. */
@@ -65,7 +67,7 @@ export default function ServiceHero({ content }: { content: ServiceHeroContent }
   );
 }
 
-const MARKS: Record<ToolMark, { src: string; label: string; width: string }> = {
+const MARKS: Record<"shopify" | "checkout-champ", { src: string; label: string; width: string }> = {
   shopify: { src: "/tools/shopify-bag.webp", label: "Shopify", width: "52%" },
   "checkout-champ": { src: "/tools/checkout-champ-mark.webp", label: "Checkout Champ", width: "62%" },
 };
@@ -75,6 +77,13 @@ const MARKS: Record<ToolMark, { src: string; label: string; width: string }> = {
  * scaled), a light grey border, a soft layered shadow and a slight tilt.
  */
 function ToolTile({ mark }: { mark: ToolMark }) {
+  if (mark === "landing" || mark === "cro") {
+    return (
+      <div className="relative size-[140px] -rotate-[8deg] overflow-hidden rounded-[17.8%] border border-white/15 bg-[#16161b] bg-[radial-gradient(ellipse_at_center,rgba(238,33,36,0.25),transparent_70%)] shadow-[0_10px_30px_-8px_rgba(0,0,0,0.8)] lg:size-[190px]">
+        <ServiceGraphic kind={mark} />
+      </div>
+    );
+  }
   const m = MARKS[mark];
   return (
     <div
