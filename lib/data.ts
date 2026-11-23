@@ -66,6 +66,7 @@ export const WORK_FILTERS = [
   "Landing Pages",
   "Checkout Champ",
   "Wix",
+  "Squarespace",
 ] as const;
 
 export type WorkFilter = Exclude<(typeof WORK_FILTERS)[number], "All Projects">;
@@ -122,6 +123,13 @@ export const WORK_CATEGORIES: Record<
     title: "Wix Website Projects | Meet Khunt",
     description:
       "Wix website case studies by Meet Khunt: business websites designed in Figma and built in Wix with responsive layouts and clear service pages.",
+  },
+  Squarespace: {
+    slug: "squarespace",
+    headline: "Squarespace websites for creative and coaching businesses.",
+    title: "Squarespace Website Projects | Meet Khunt",
+    description:
+      "Squarespace website case studies by Meet Khunt: websites for a photographer and a fitness coach, built with booking, services and content pages.",
   },
 };
 
@@ -612,6 +620,148 @@ export const PROJECTS: Project[] = [
         alt: "Microdot implementation services page with process diagram",
         width: 1920,
         height: 2050,
+        full: true,
+      },
+    ],
+  },
+  {
+    slug: "rizzo-photographs",
+    title: "Rizzo Photographs: A photographer's website in Squarespace",
+    category: "SQUARESPACE · WEBSITE DEVELOPMENT",
+    image: "/projects/rizzo-card.webp",
+    brand: "Rizzo Photographs",
+    summary:
+      "A Squarespace website for a San Francisco wedding, boudoir and portrait photographer who shoots worldwide.",
+    filters: ["Squarespace"],
+    tools: ["Squarespace"],
+    tag: "Wedding & Portrait Photography (Squarespace Website)",
+    headline: "Squarespace Website Development",
+    description: [
+      "Rizzo Photographs is Chantalle's photography studio: unique weddings, elopements, boudoir, couples, maternity and branding shoots, based in San Francisco and travelling worldwide. The website has to show the work, carry her playful personality and turn visitors into booked consultation calls.",
+      "I built the website in Squarespace: a bold, image-led homepage with the studio's story and galleries, dedicated pages for weddings, boudoir and portraits, an about page, a blog and a booking flow, with book-a-call prompts throughout and layouts that work on every screen size.",
+    ],
+    services: [
+      "Squarespace Website Development",
+      "Gallery & Portfolio Pages",
+      "Booking & Contact Pages",
+      "Blog Setup",
+      "Responsive Development",
+    ],
+    industries: ["Photography", "Weddings", "Creative Services"],
+    liveUrl: "https://www.rizzophotographs.com/",
+    gallery: [
+      {
+        src: "/projects/rizzo-mobile-home.webp",
+        alt: "Rizzo Photographs homepage on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/rizzo-mobile-about.webp",
+        alt: "Rizzo Photographs studio introduction and galleries on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/rizzo-home.webp",
+        alt: "Rizzo Photographs homepage hero and studio introduction",
+        width: 1920,
+        height: 2000,
+        full: true,
+      },
+      {
+        src: "/projects/rizzo-about.webp",
+        alt: "Rizzo Photographs about section introducing Chantalle",
+        width: 1920,
+        height: 1550,
+        full: true,
+      },
+      {
+        src: "/projects/rizzo-experiences.webp",
+        alt: "Rizzo Photographs gallery and photography experiences",
+        width: 1920,
+        height: 1350,
+        full: true,
+      },
+      {
+        src: "/projects/rizzo-weddings.webp",
+        alt: "Rizzo Photographs weddings page",
+        width: 1920,
+        height: 3200,
+        full: true,
+      },
+    ],
+  },
+  {
+    slug: "kim-lloyd-fitness",
+    title: "Kim Lloyd Fitness: A coaching website in Squarespace",
+    category: "SQUARESPACE · WEBSITE DEVELOPMENT",
+    image: "/projects/kim-lloyd-card.webp",
+    brand: "Kim Lloyd Fitness",
+    summary:
+      "A Squarespace website for a fitness coach helping women build realistic, sustainable health habits.",
+    filters: ["Squarespace"],
+    tools: ["Squarespace"],
+    tag: "Fitness & Health Coaching (Squarespace Website)",
+    headline: "Squarespace Website Development",
+    description: [
+      "Kim Lloyd Fitness helps women fit fitness into their lives in realistic, sustainable ways, with mindset, habit, fitness and nutrition coaching. Alongside coaching, Kim offers a book and planner, a podcast, video workouts, a blog and recommended gear, so the site has a lot to hold together.",
+      "I built the website in Squarespace: a homepage that speaks straight to the women Kim works with and leads to a free call, pages for services, resources, the book, the podcast and the blog, a free mini-course sign-up, and layouts that hold up on every screen size.",
+    ],
+    services: [
+      "Squarespace Website Development",
+      "Service & Coaching Pages",
+      "Lead Capture & Course Sign-Up",
+      "Podcast, Book & Blog Pages",
+      "Responsive Development",
+    ],
+    industries: ["Fitness & Health Coaching", "Women's Wellness"],
+    liveUrl: "https://www.kimlloydfitness.com/",
+    gallery: [
+      {
+        src: "/projects/kim-lloyd-mobile-home.webp",
+        alt: "Kim Lloyd Fitness homepage on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/kim-lloyd-mobile-help.webp",
+        alt: "Kim Lloyd Fitness 'Helping women live healthier lives' section on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/kim-lloyd-mobile-work.webp",
+        alt: "Kim Lloyd Fitness free call section on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/kim-lloyd-home.webp",
+        alt: "Kim Lloyd Fitness homepage hero and approach",
+        width: 1920,
+        height: 2400,
+        full: true,
+      },
+      {
+        src: "/projects/kim-lloyd-work-with-me.webp",
+        alt: "Kim Lloyd Fitness 'Work with me if you want' section",
+        width: 1920,
+        height: 1200,
+        full: true,
+      },
+      {
+        src: "/projects/kim-lloyd-coaching.webp",
+        alt: "Kim Lloyd Fitness coaching areas: mindset, habit, fitness and nutrition",
+        width: 1920,
+        height: 2325,
+        full: true,
+      },
+      {
+        src: "/projects/kim-lloyd-course.webp",
+        alt: "Kim Lloyd Fitness free Mindset Makeover course sign-up",
+        width: 1920,
+        height: 1075,
         full: true,
       },
     ],
@@ -1384,6 +1534,7 @@ export const TOOLS_SECTION = {
     /* Platforms named on case studies but not on the home "From Figma to
        checkout" grid (`hidden`). */
     { label: "Wix", src: "/tools/wix.svg", bg: "#ffffff", size: "62%", hidden: true },
+    { label: "Squarespace", src: "/tools/squarespace.svg", bg: "#ffffff", size: "56%", hidden: true },
   ] as { label: string; src?: string; bg: string; size: string; knockout?: boolean; hidden?: boolean }[],
   chips: [
     "Redesign a Shopify store",
