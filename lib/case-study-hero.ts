@@ -30,6 +30,10 @@ export const CASE_STUDY_HERO: Record<string, CaseStudyHero> = {
   },
   airbond: { screen: screen("airbond", 3750), colors: ["#0b2740", "#174a6e", "#ef7d1e"] },
   "mumma-mall": { screen: screen("mumma-mall", 3750), colors: ["#3a1570", "#7434b8", "#f4c21b"] },
+  "microdot-technologies": {
+    screen: screen("microdot", 2695),
+    colors: ["#0a1640", "#1e3a8a", "#f2a33a"],
+  },
   "athletic-annex": {
     screen: screen("athletic-annex", 3750),
     colors: ["#111827", "#2d3a4f", "#9bd43a"],

@@ -65,6 +65,7 @@ export const WORK_FILTERS = [
   "WordPress",
   "Landing Pages",
   "Checkout Champ",
+  "Wix",
 ] as const;
 
 export type WorkFilter = Exclude<(typeof WORK_FILTERS)[number], "All Projects">;
@@ -114,6 +115,13 @@ export const WORK_CATEGORIES: Record<
     title: "Checkout Champ Funnel Projects | Meet Khunt",
     description:
       "Checkout Champ funnels built by Meet Khunt for DTC brands: advertorials, sales pages, checkouts and post-purchase upsells.",
+  },
+  Wix: {
+    slug: "wix",
+    headline: "Wix websites, designed in Figma and built to scale.",
+    title: "Wix Website Projects | Meet Khunt",
+    description:
+      "Wix website case studies by Meet Khunt: business websites designed in Figma and built in Wix with responsive layouts and clear service pages.",
   },
 };
 
@@ -524,6 +532,86 @@ export const PROJECTS: Project[] = [
         alt: "Mumma Mall product page with cash on delivery and delivery timeline",
         width: 1920,
         height: 1080,
+        full: true,
+      },
+    ],
+  },
+  {
+    slug: "microdot-technologies",
+    title: "Microdot Technologies: A Microsoft partner's website in Wix",
+    category: "WIX · WEBSITE DESIGN & DEVELOPMENT",
+    image: "/projects/microdot-card.webp",
+    brand: "Microdot Technologies",
+    summary:
+      "A Wix website designed in Figma for a Microsoft partner selling Dynamics 365, AI and surveillance to Indian enterprises.",
+    filters: ["Wix"],
+    tools: ["Figma", "Wix"],
+    tag: "Microsoft Partner & Enterprise IT (Wix Website)",
+    headline: "Website Design in Figma & Development in Wix",
+    description: [
+      "Microdot Technologies is a Microsoft partner and ISO 9001:2015 company that has helped Indian enterprises since 1995 with Dynamics 365, Copilot and Azure AI, AI-powered CCTV and surveillance, network infrastructure and managed IT. Their website had to explain a wide offer clearly to manufacturers, retailers and multi-location businesses, and turn that interest into consultations.",
+      "I designed the website in Figma and built it in Wix: a homepage that brings Microsoft, AI and security under one partner, separate pages for each solution and service, an insights section and a contact page, with consultation calls to action throughout and responsive layouts for every screen size.",
+    ],
+    services: [
+      "Website Design in Figma",
+      "Wix Website Development",
+      "Solution & Service Pages",
+      "Responsive Development",
+    ],
+    industries: ["Enterprise IT", "Microsoft Dynamics 365", "AI & Surveillance"],
+    liveUrl: "https://www.microdottechnologies.com/",
+    gallery: [
+      {
+        src: "/projects/microdot-mobile-home.webp",
+        alt: "Microdot Technologies homepage hero on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/microdot-mobile-about.webp",
+        alt: "Microdot Technologies 'Where Operations, Intelligence and Security Come Together' section on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/microdot-mobile-solutions.webp",
+        alt: "Microdot Technologies solutions carousel on mobile",
+        width: 604,
+        height: 1208,
+      },
+      {
+        src: "/projects/microdot-home.webp",
+        alt: "Microdot Technologies homepage hero and introduction",
+        width: 1920,
+        height: 1312,
+        full: true,
+      },
+      {
+        src: "/projects/microdot-solutions.webp",
+        alt: "Microdot solutions carousel and digital transformation services",
+        width: 1920,
+        height: 1491,
+        full: true,
+      },
+      {
+        src: "/projects/microdot-contact.webp",
+        alt: "Microdot strengths, consultation call to action and footer",
+        width: 1920,
+        height: 1509,
+        full: true,
+      },
+      {
+        src: "/projects/microdot-surveillance.webp",
+        alt: "Microdot AI surveillance solutions page",
+        width: 1920,
+        height: 1800,
+        full: true,
+      },
+      {
+        src: "/projects/microdot-implementation.webp",
+        alt: "Microdot implementation services page with process diagram",
+        width: 1920,
+        height: 2050,
         full: true,
       },
     ],
@@ -1293,7 +1381,10 @@ export const TOOLS_SECTION = {
     { label: "Funnelish", src: "/tools/funnelish-mark.webp", bg: "#24242c", size: "62%" },
     { label: "Figma", bg: "#1e1e1e", size: "34%" },
     { label: "WordPress", src: "/tools/wordpress.svg", bg: "#21759b", size: "58%", knockout: true },
-  ] as { label: string; src?: string; bg: string; size: string; knockout?: boolean }[],
+    /* Platforms named on case studies but not on the home "From Figma to
+       checkout" grid (`hidden`). */
+    { label: "Wix", src: "/tools/wix.svg", bg: "#ffffff", size: "62%", hidden: true },
+  ] as { label: string; src?: string; bg: string; size: string; knockout?: boolean; hidden?: boolean }[],
   chips: [
     "Redesign a Shopify store",
     "Launch a sales funnel",
