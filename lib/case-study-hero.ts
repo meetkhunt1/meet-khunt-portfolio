@@ -38,6 +38,8 @@ export const CASE_STUDY_HERO: Record<string, CaseStudyHero> = {
     screen: screen("kim-lloyd", 3750),
     colors: ["#1b1f6b", "#1093c9", "#f2c414"],
   },
+  worldflow: { screen: screen("worldflow", 3129), colors: ["#0f1c2b", "#22405e", "#f26a21"] },
+  "anix-industries": { screen: screen("anix", 3750), colors: ["#121212", "#5a0f12", "#e02a2f"] },
   "microdot-technologies": {
     screen: screen("microdot", 2695),
     colors: ["#0a1640", "#1e3a8a", "#f2a33a"],
