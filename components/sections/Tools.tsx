@@ -22,7 +22,7 @@ export default function Tools() {
 
       <FadeIn delay={0.15}>
         <ul className="mt-12 flex flex-wrap justify-center gap-3 md:gap-4 lg:mt-14">
-          {TOOLS_SECTION.tools.map((tool) => (
+          {TOOLS_SECTION.tools.filter((tool) => !tool.hidden).map((tool) => (
             <li key={tool.label}>
               <ToolTile tool={tool} />
             </li>
