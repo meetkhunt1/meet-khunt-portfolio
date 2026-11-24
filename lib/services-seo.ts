@@ -417,6 +417,16 @@ export const STORE_REDESIGN_PAGE: ServicePage = {
         href: "/conversion-optimization/",
         text: "Improving the pages a redesign creates, based on how visitors actually use them.",
       },
+      {
+        label: "When to Redesign a Shopify Store",
+        href: "/blog/when-to-redesign-shopify-store/",
+        text: "Eight signs a DTC brand has outgrown its store, and when smaller fixes are enough.",
+      },
+      {
+        label: "Common Shopify Conversion Problems",
+        href: "/blog/shopify-cro-common-conversion-problems/",
+        text: "Twelve reasons visitors leave without buying, and what to fix first.",
+      },
     ],
   },
   cta: {

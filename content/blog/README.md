@@ -27,7 +27,7 @@ featuredImage: "/images/blog/customize-checkout-champ-checkout-page.webp"   # op
 featuredImageAlt: "Checkout Champ checkout page with a custom package selector"   # required with an image
 featured: false                   # true = lead article on /blog/ (newest featured wins)
 draft: false                      # true = never built, listed or put in the sitemap
-cta: "checkout-champ"             # optional: checkout-champ | shopify | landing-pages | general | false
+cta: "checkout-champ"             # optional: checkout-champ | shopify | shopify-redesign | cro | landing-pages | general | false
 related:                          # optional: hand-picked related article slugs
   - "checkout-champ-shopify-integration"
 ---

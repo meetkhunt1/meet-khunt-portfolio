@@ -177,6 +177,11 @@ export const SHOPIFY_PAGE: ServicePage = {
         href: "/landing-page-developer/",
         text: "Advertorials and landing pages for paid traffic, in Shopify and beyond.",
       },
+      {
+        label: "Development vs Theme Customization",
+        href: "/blog/shopify-development-vs-theme-customization/",
+        text: "What each can do, and how to tell which your store needs.",
+      },
     ],
   },
   cta: {
