@@ -84,7 +84,19 @@ export const SERVICE_CTAS = {
     heading: "Need a Shopify Developer?",
     text: "I design, build and optimize Shopify storefronts, product pages and landing pages for DTC brands.",
     label: "See my Shopify services",
-    href: "/#services",
+    href: "/shopify-developer/",
+  },
+  "shopify-redesign": {
+    heading: "Planning a Shopify Redesign?",
+    text: "I redesign Shopify stores for DTC brands: homepage, product and collection pages, built on an unpublished theme and launched without downtime.",
+    label: "See Shopify redesign services",
+    href: "/shopify-store-redesign/",
+  },
+  cro: {
+    heading: "Want More From the Traffic You Already Have?",
+    text: "I find what stops Shopify visitors from buying and rebuild the pages that need it, from product pages to the cart.",
+    label: "See conversion optimization",
+    href: "/conversion-optimization/",
   },
   "landing-pages": {
     heading: "Need Landing Pages or Advertorials?",
