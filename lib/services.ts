@@ -30,6 +30,13 @@ export type ServicePage = {
   faq: { heading: string; items: { q: string; a: string }[] };
   cta: { heading: string; description: string };
   knowsAbout: string[];
+  /**
+   * Optional long-form sections after the services grid: the depth a search
+   * ranking page needs (who it's for, how it works, what to watch out for).
+   */
+  sections?: { heading: string; paragraphs?: string[]; bullets?: { title: string; text: string }[] }[];
+  /** Optional internal links to related pages, shown after the FAQ. */
+  related?: { heading: string; links: { label: string; href: string; text: string }[] };
 };
 
 export const SHOPIFY_PAGE: ServicePage = {
@@ -149,6 +156,26 @@ export const SHOPIFY_PAGE: ServicePage = {
       {
         q: "How much does a Shopify project cost?",
         a: "It depends on scope: one landing page is a much smaller job than a full store redesign. Send the details through the inquiry form and I'll quote the agreed scope before any work starts.",
+      },
+    ],
+  },
+  related: {
+    heading: "More Shopify Services",
+    links: [
+      {
+        label: "Shopify Store Redesign",
+        href: "/shopify-store-redesign/",
+        text: "Full redesigns for DTC brands, built on an unpublished theme and launched without downtime.",
+      },
+      {
+        label: "White Label Shopify Development",
+        href: "/white-label-shopify-development/",
+        text: "For agencies: Shopify builds and redesigns delivered under your brand.",
+      },
+      {
+        label: "Landing Page Development",
+        href: "/landing-page-developer/",
+        text: "Advertorials and landing pages for paid traffic, in Shopify and beyond.",
       },
     ],
   },

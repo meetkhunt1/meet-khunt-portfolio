@@ -149,6 +149,34 @@ export default function ServiceLanding({ page }: { page: ServicePage }) {
           </ul>
         </section>
 
+        {/* Long-form sections (ranking pages) */}
+        {page.sections?.map((s) => (
+          <section key={s.heading} className="section-row pt-[100px] lg:pt-[160px]">
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+              <RevealText as="h2" className="heading-md max-w-[18ch]" split="lines">
+                {s.heading}
+              </RevealText>
+              <FadeIn className="flex flex-col gap-5">
+                {s.paragraphs?.map((p) => (
+                  <p key={p.slice(0, 32)} className="max-w-[68ch] font-ui text-[16px] leading-[1.75] text-fg/80 lg:text-[17px]">
+                    {p}
+                  </p>
+                ))}
+                {s.bullets && (
+                  <ul className="mt-2 grid grid-cols-1 border-t border-line">
+                    {s.bullets.map((b) => (
+                      <li key={b.title} className="border-b border-line py-5">
+                        <h3 className="font-sans text-[19px] font-semibold tracking-[-0.01em] text-fg">{b.title}</h3>
+                        <p className="mt-2 max-w-[66ch] font-ui text-[15px] leading-[1.65] text-fg/70">{b.text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </FadeIn>
+            </div>
+          </section>
+        ))}
+
         {/* Work */}
         <section className="section-row pt-[100px] lg:pt-[160px]">
           <SectionHeading heading={page.work.heading} description={page.work.description} />
@@ -204,6 +232,30 @@ export default function ServiceLanding({ page }: { page: ServicePage }) {
             <Accordion items={page.faq.items} />
           </div>
         </section>
+
+        {/* Related pages (internal links) */}
+        {page.related && (
+          <section className="section-row pt-[100px] lg:pt-[140px]">
+            <SectionHeading heading={page.related.heading} />
+            <ul className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {page.related.links.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    data-cursor="view"
+                    className="group flex h-full flex-col rounded-[14px] border border-line p-6 transition-colors hover:border-fg/40"
+                  >
+                    <span className="flex items-baseline justify-between gap-4 font-sans text-[19px] font-semibold tracking-[-0.01em] text-fg">
+                      {l.label}
+                      <span aria-hidden className="text-muted transition-transform group-hover:translate-x-1">→</span>
+                    </span>
+                    <span className="mt-2 font-ui text-[15px] leading-[1.6] text-fg/70">{l.text}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Final CTA */}
         <section className="section-row relative flex flex-col items-center py-[120px] text-center lg:py-[180px]">

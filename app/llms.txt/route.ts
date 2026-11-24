@@ -12,6 +12,7 @@ import {
 } from "@/lib/data";
 import { D2C_META } from "@/lib/d2c";
 import { SHOPIFY_PAGE } from "@/lib/services";
+import { STORE_REDESIGN_PAGE, WHITE_LABEL_PAGE } from "@/lib/services-seo";
 import { CRO_PAGE, LANDING_PAGE } from "@/lib/services-landing-cro";
 import { AS_META, AS_PATH } from "@/lib/advertorial-system";
 import { absoluteUrl } from "@/lib/schema";
@@ -40,6 +41,8 @@ export async function GET() {
     "",
     "## Services",
     link("Shopify development", SHOPIFY_PAGE.path, SHOPIFY_PAGE.meta.description),
+    link("Shopify store redesign", STORE_REDESIGN_PAGE.path, STORE_REDESIGN_PAGE.meta.description),
+    link("White label Shopify development for agencies", WHITE_LABEL_PAGE.path, WHITE_LABEL_PAGE.meta.description),
     link("Checkout Champ development", CC_PATH, CC_META.description),
     link("Landing page development", LANDING_PAGE.path, LANDING_PAGE.meta.description),
     link("Conversion optimization", CRO_PAGE.path, CRO_PAGE.meta.description),
