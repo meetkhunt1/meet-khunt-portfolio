@@ -19,6 +19,8 @@ export const INDEXED_ROUTES: string[] = [
   ...Object.values(WORK_CATEGORIES).map((c) => `/projects/${c.slug}/`),
   CC_PATH,
   "/shopify-developer/",
+  "/shopify-store-redesign/",
+  "/white-label-shopify-development/",
   "/landing-page-developer/",
   "/conversion-optimization/",
   AS_PATH,
