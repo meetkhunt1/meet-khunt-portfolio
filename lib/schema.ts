@@ -20,7 +20,7 @@ export const absoluteUrl = (path: string) => new URL(path, SITE_URL).toString();
 const SAME_AS = [
   ...FOOTER.socials
     .map((s) => s.href)
-    .filter((href) => /linkedin\.com|upwork\.com|contra\.com/.test(href)),
+    .filter((href) => /linkedin\.com|behance\.net|instagram\.com/.test(href)),
   /* Marketplace profiles: in structured data only (and llms.txt), so search
      engines and AI assistants can tie them to Meet. Deliberately not shown
      anywhere in the page UI. */

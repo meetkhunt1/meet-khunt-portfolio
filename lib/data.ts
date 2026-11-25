@@ -1988,11 +1988,14 @@ export const INQUIRY = {
 export const HIDDEN_PROFILES = [
   { label: "Upwork", href: "https://www.upwork.com/freelancers/~0110c208fdf0361786" },
   { label: "Contra", href: "https://contra.com/meetkhunt" },
+  { label: "Reddit", href: "https://www.reddit.com/user/Serious-Key-3253/" },
 ];
 
 export const FOOTER = {
   socials: [
     { label: "LINKEDIN", href: "https://www.linkedin.com/in/meetkhunt1/" },
+    { label: "BEHANCE", href: "https://www.behance.net/meetkhuntt" },
+    { label: "INSTAGRAM", href: "https://www.instagram.com/meetxpatel_/" },
     { label: "SKET FUTURE", href: "https://sketfuture.com" },
   ],
   address: [
@@ -2028,6 +2031,8 @@ export const FOOTER = {
       links: [
         { label: "Send a project inquiry", href: "/contact/" },
         { label: "LinkedIn", href: "https://www.linkedin.com/in/meetkhunt1/" },
+        { label: "Behance", href: "https://www.behance.net/meetkhuntt" },
+        { label: "Instagram", href: "https://www.instagram.com/meetxpatel_/" },
         { label: "Sket Future", href: "https://sketfuture.com" },
       ],
     },
