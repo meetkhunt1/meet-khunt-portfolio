@@ -1,0 +1,8 @@
+# One canonical host: send www.meetkhunt.com to meetkhunt.com (301), so Google
+# never sees the www copy as a separate site.
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.meetkhunt\.com$ [NC]
+RewriteRule ^(.*)$ https://meetkhunt.com/$1 [R=301,L]
+
+# Serve the site's own 404 page (built from app/not-found.tsx) for unknown URLs
+ErrorDocument 404 /404.html
