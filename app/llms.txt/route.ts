@@ -63,7 +63,12 @@ export async function GET() {
       ? ["## Articles", ...posts.map((p) => link(p.title, p.path, p.description)), ""]
       : []),
     "## Profiles",
-    ...[...FOOTER.socials.filter((s) => s.href.includes("linkedin.com")).map((s) => ({ label: "LinkedIn", href: s.href })), ...HIDDEN_PROFILES].map((p) => `- [${p.label}](${p.href})`),
+    ...[...FOOTER.socials
+      .filter((s) => /linkedin\.com|behance\.net|instagram\.com/.test(s.href))
+      .map((s) => ({
+        label: s.href.includes("linkedin") ? "LinkedIn" : s.href.includes("behance") ? "Behance" : "Instagram",
+        href: s.href,
+      })), ...HIDDEN_PROFILES].map((p) => `- [${p.label}](${p.href})`),
     "",
     "## Contact",
     link("Project inquiry form", INQUIRY.path, "The way to hire Meet: describe the project and he replies by email."),

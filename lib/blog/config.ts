@@ -221,7 +221,11 @@ export const AUTHORS: Author[] = [
     image: "/images/blog/authors/meet-khunt.webp",
     bio: "Web Developer specializing in eCommerce development, custom sales funnels, Checkout Champ, Shopify, and frontend development.",
     href: "/#about",
-    profiles: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/meetkhunt1/" }],
+    profiles: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/meetkhunt1/" },
+      { label: "Behance", href: "https://www.behance.net/meetkhuntt" },
+      { label: "Instagram", href: "https://www.instagram.com/meetxpatel_/" },
+    ],
   },
 ];
 
